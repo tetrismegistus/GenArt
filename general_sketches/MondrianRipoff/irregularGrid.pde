@@ -10,20 +10,24 @@ float tileSize = 20;
 Tile[][] board = new Tile[rows][cols];
 ArrayList<TileRect> rects = new ArrayList<TileRect>();
 
-color[] pal = {#fac901, #ffffff, #225095, #dd0100};
+color[] pal = {#CFD2CF, #A2B5BB, #EB1D36};
 
 void setup() {
 
   colorMode(HSB, 360, 100, 100, 1);
   
-  for (int i = 0; i < 10000000; i++) {
+  for (int i = 0; i < 100000000; i++) {
     color c = color(pal[(int)random(pal.length)]);
     float h = hue(c);
     float s = saturation(c);
     float b = brightness(c);
     float alpha = .75;
     color c2 = color(h,s,b,alpha);
-    TileRect tr = new TileRect((int)random(rows), (int)random(cols), (int)random(1, 50), (int)random(1, 50), c2); 
+    int x = (int)random(cols);
+    int y = (int)random(rows);
+    int maxW = (int) map(x, 0, rows, 1, rows/2);
+    int maxH = (int) map(x, 0, rows, cols/2, 1);
+    TileRect tr = new TileRect(x, y, (int)random(1, maxH), maxW, c2); 
     if (tr.place(board)) {
       rects.add(tr);
     }
@@ -32,7 +36,7 @@ void setup() {
    
   
   size(1100, 1100);
-  colorMode(HSB, 360, 100, 100, 1);
+
   ellipseMode(CENTER);
   
   
@@ -40,23 +44,22 @@ void setup() {
 
 
 void draw() {
-  background(0, 0, 100);
+  background(#F5EDDC);
   grid();
   noStroke();
   fill(0, 0, 100, 1);
-  rect(0, 0, width, tileSize*3);
-  rect(0, 0, tileSize*3, height);
-  rect(tileSize*3 + tileSize*(cols - 1), 0, tileSize*3, height);
-  rect(0, tileSize*3 + tileSize*(rows - 1), width, tileSize*3);
+
   //background(0);
 
+  /*
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {
-      if (board[i][j] != null) {
+      if (board[i][j] != null) {        
         board[i][j].render();
       }      
     }  
   }
+  */
   
   for (TileRect tr : rects) {
     tr.render();
@@ -65,27 +68,11 @@ void draw() {
   stroke(0, 0, 0, .75);
   strokeWeight(4);
   noFill();
-  rect(tileSize * 3, tileSize * 3, (cols -1) * tileSize, (rows - 1) * tileSize);
+  //rect(tileSize * 3, tileSize * 3, (cols -1) * tileSize, (rows - 1) * tileSize);
   noLoop();
   
 }
 
-void keyReleased() {
-  if (key == 's' || key == 'S') saveFrame(getTemporalName(sketchName, saveFormat));  
-}
-
-
-String getTemporalName(String prefix, String suffix){
-  // Thanks! SparkyJohn @Creative Coders on Discord
-  long time = System.currentTimeMillis();
-  if(lastTime == time) {
-    calls ++;
-  } else {
-    lastTime = time;
-    calls = 0;
-  }
-  return prefix + time + (calls>0?"-"+calls : "")  +suffix;
-}
 
 class Tile {
   int x, y;
@@ -152,7 +139,16 @@ class TileRect {
     noFill();
     stroke(0, 0, 0, .75);
     strokeWeight(4);
-    rect(tileSize * 3 + x * tileSize, tileSize * 3 + y * tileSize, w * tileSize, h * tileSize);
+    fill(c);
+    if (w != h) {
+      
+      rect(tileSize * 3 + x * tileSize, tileSize * 3 + y * tileSize, w * tileSize, h * tileSize);
+      
+    } else {
+      
+      ellipseMode(CORNER);
+      circle(tileSize * 3 + x * tileSize, tileSize * 3 + y * tileSize, w * tileSize);
+    }
   }
 }
 
