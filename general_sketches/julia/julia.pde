@@ -111,7 +111,7 @@ float magnitude(float[] z) {
   return sqrt(pow(z[0], 2) + pow(z[1], 2));
 }
 
-
+// what do these "keyPressed" funtions do? 
 void keyPressed() {
   
   if (key == '1') {
