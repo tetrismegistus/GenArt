@@ -123,7 +123,7 @@ double magnitude(double[] z) {
 
 
 void keyPressed() {
-  
+  // What does all these key presses do? 
   if (key == '1') {
     mode = 1;
   }
