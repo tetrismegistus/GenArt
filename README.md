@@ -6,6 +6,7 @@ Though this is currently meant as a general dump of the art I've created, primar
 Most, if not all, sketches were written in the [Processing Framework](https://processing.org/).
 
 ## Sample Gallery
+![SelfAvoiding](https://github.com/tetrismegistus/GenArt/blob/main/general_sketches/thoughtAvoidingWalk/mySketch1680912620472.png)
 ![DoctorsNote](https://github.com/tetrismegistus/GenArt/blob/main/general_sketches/DoctorsNote/mySketch1652897053525.png)
 ![crepuscular](https://github.com/tetrismegistus/GenArt/blob/main/general_sketches/crepuscular/mySketch1652992364061.png)
 ![dad_commission](https://github.com/tetrismegistus/GenArt/blob/main/general_sketches/dad_commission/frames/gif-000.png)
