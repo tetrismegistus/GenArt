@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="LazyGui">
+    <CLASSES>
+      <root url="jar://D:/processing-4.2/LazyGui.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/processing-4.2/LazyGui.jar!/" />
+    </SOURCES>
+  </library>
+</component>
