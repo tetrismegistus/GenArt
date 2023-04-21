@@ -1,0 +1,1265 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="edge" attr.name="weight" attr.type="long" />
+  <graph edgedefault="directed">
+    <node id="___BEGIN__ ___BEGIN__" />
+    <node id="The" />
+    <node id="She" />
+    <node id="In" />
+    <node id="Her" />
+    <node id="At" />
+    <node id="Both" />
+    <node id="How" />
+    <node id="Read" />
+    <node id="Was" />
+    <node id="Look" />
+    <node id="We" />
+    <node id="Their" />
+    <node id="There" />
+    <node id="I" />
+    <node id="Nothing" />
+    <node id="___BEGIN__ The" />
+    <node id="photograph" />
+    <node id="street" />
+    <node id="woman" />
+    <node id="repetition" />
+    <node id="The photograph" />
+    <node id="shows" />
+    <node id="photograph shows" />
+    <node id="two" />
+    <node id="shows two" />
+    <node id="people" />
+    <node id="two people" />
+    <node id="in" />
+    <node id="people in" />
+    <node id="their" />
+    <node id="in their" />
+    <node id="bathrobes" />
+    <node id="their bathrobes" />
+    <node id="walking" />
+    <node id="bathrobes walking" />
+    <node id="along" />
+    <node id="walking along" />
+    <node id="a" />
+    <node id="along a" />
+    <node id="crowded" />
+    <node id="a crowded" />
+    <node id="side" />
+    <node id="crowded side" />
+    <node id="side street" />
+    <node id="street in" />
+    <node id="Chinatown." />
+    <node id="in Chinatown." />
+    <node id="___END__" />
+    <node id="The street" />
+    <node id="is" />
+    <node id="street is" />
+    <node id="covered" />
+    <node id="is covered" />
+    <node id="covered in" />
+    <node id="snow" />
+    <node id="in snow" />
+    <node id="and" />
+    <node id="snow and" />
+    <node id="the" />
+    <node id="and the" />
+    <node id="rooftops," />
+    <node id="the rooftops," />
+    <node id="too," />
+    <node id="rooftops, too," />
+    <node id="are" />
+    <node id="too, are" />
+    <node id="blanketed" />
+    <node id="are blanketed" />
+    <node id="with" />
+    <node id="blanketed with" />
+    <node id="white." />
+    <node id="with white." />
+    <node id="The woman" />
+    <node id="woman is" />
+    <node id="is a" />
+    <node id="forlorn" />
+    <node id="handsome," />
+    <node id="test" />
+    <node id="a forlorn" />
+    <node id="figure." />
+    <node id="forlorn figure." />
+    <node id="___BEGIN__ She" />
+    <node id="appears" />
+    <node id="She appears" />
+    <node id="to" />
+    <node id="appears to" />
+    <node id="be" />
+    <node id="to be" />
+    <node id="hurrying" />
+    <node id="desirable." />
+    <node id="be hurrying" />
+    <node id="along," />
+    <node id="hurrying along," />
+    <node id="as" />
+    <node id="along, as" />
+    <node id="if" />
+    <node id="as if" />
+    <node id="late" />
+    <node id="each" />
+    <node id="if late" />
+    <node id="for" />
+    <node id="late for" />
+    <node id="an" />
+    <node id="for an" />
+    <node id="appointment" />
+    <node id="an appointment" />
+    <node id="or" />
+    <node id="appointment or" />
+    <node id="missing" />
+    <node id="or missing" />
+    <node id="missing the" />
+    <node id="last" />
+    <node id="the last" />
+    <node id="streetcar" />
+    <node id="last streetcar" />
+    <node id="home." />
+    <node id="streetcar home." />
+    <node id="___BEGIN__ In" />
+    <node id="truth," />
+    <node id="In truth," />
+    <node id="she" />
+    <node id="truth, she" />
+    <node id="simply" />
+    <node id="she simply" />
+    <node id="seems" />
+    <node id="simply seems" />
+    <node id="uncomfortable," />
+    <node id="seems uncomfortable," />
+    <node id="unsure" />
+    <node id="uncomfortable, unsure" />
+    <node id="where" />
+    <node id="unsure where" />
+    <node id="where to" />
+    <node id="place" />
+    <node id="to place" />
+    <node id="her" />
+    <node id="place her" />
+    <node id="arms" />
+    <node id="her arms" />
+    <node id="arms and" />
+    <node id="afraid" />
+    <node id="and afraid" />
+    <node id="afraid to" />
+    <node id="touch" />
+    <node id="to touch" />
+    <node id="touch the" />
+    <node id="shopping" />
+    <node id="the shopping" />
+    <node id="bags" />
+    <node id="shopping bags" />
+    <node id="of" />
+    <node id="bags of" />
+    <node id="food" />
+    <node id="of food" />
+    <node id="food she" />
+    <node id="carries." />
+    <node id="she carries." />
+    <node id="___BEGIN__ Her" />
+    <node id="face" />
+    <node id="Her face" />
+    <node id="face is" />
+    <node id="hidden" />
+    <node id="is hidden" />
+    <node id="from" />
+    <node id="hidden from" />
+    <node id="us" />
+    <node id="from us" />
+    <node id="by" />
+    <node id="us by" />
+    <node id="by the" />
+    <node id="balloon" />
+    <node id="shoulder" />
+    <node id="the balloon" />
+    <node id="balloon of" />
+    <node id="of her" />
+    <node id="collar," />
+    <node id="hat" />
+    <node id="companion," />
+    <node id="her collar," />
+    <node id="collar, the" />
+    <node id="brim" />
+    <node id="the brim" />
+    <node id="brim of" />
+    <node id="her hat" />
+    <node id="hat and" />
+    <node id="and by" />
+    <node id="the shoulder" />
+    <node id="shoulder of" />
+    <node id="her companion," />
+    <node id="who" />
+    <node id="companion, who" />
+    <node id="who is" />
+    <node id="a handsome," />
+    <node id="dark-haired" />
+    <node id="handsome, dark-haired" />
+    <node id="man." />
+    <node id="dark-haired man." />
+    <node id="___BEGIN__ At" />
+    <node id="his" />
+    <node id="At his" />
+    <node id="side," />
+    <node id="his side," />
+    <node id="he" />
+    <node id="side, he" />
+    <node id="carries" />
+    <node id="he carries" />
+    <node id="carries a" />
+    <node id="small" />
+    <node id="a small" />
+    <node id="white" />
+    <node id="small white" />
+    <node id="dog." />
+    <node id="white dog." />
+    <node id="___BEGIN__ Both" />
+    <node id="Both are" />
+    <node id="seen" />
+    <node id="are seen" />
+    <node id="seen walking" />
+    <node id="away," />
+    <node id="walking away," />
+    <node id="some" />
+    <node id="away, some" />
+    <node id="distance" />
+    <node id="some distance" />
+    <node id="apart" />
+    <node id="distance apart" />
+    <node id="apart and" />
+    <node id="and as" />
+    <node id="if each" />
+    <node id="proceeds" />
+    <node id="each proceeds" />
+    <node id="on" />
+    <node id="proceeds on" />
+    <node id="on an" />
+    <node id="errand" />
+    <node id="an errand" />
+    <node id="errand of" />
+    <node id="of his" />
+    <node id="own." />
+    <node id="his own." />
+    <node id="___BEGIN__ How" />
+    <node id="am" />
+    <node id="How am" />
+    <node id="am I" />
+    <node id="I to" />
+    <node id="know" />
+    <node id="to know" />
+    <node id="this?" />
+    <node id="know this?" />
+    <node id="___BEGIN__ Read" />
+    <node id="Read the" />
+    <node id="word" />
+    <node id="the word" />
+    <node id="word on" />
+    <node id="on his" />
+    <node id="shirt," />
+    <node id="his shirt," />
+    <node id="walk." />
+    <node id="shirt, walk." />
+    <node id="___BEGIN__ Was" />
+    <node id="my" />
+    <node id="Was my" />
+    <node id="father" />
+    <node id="my father" />
+    <node id="somehow" />
+    <node id="father somehow" />
+    <node id="walking?" />
+    <node id="somehow walking?" />
+    <node id="___BEGIN__ Look" />
+    <node id="at" />
+    <node id="Look at" />
+    <node id="at the" />
+    <node id="figures" />
+    <node id="the figures" />
+    <node id="behind" />
+    <node id="figures behind" />
+    <node id="behind the" />
+    <node id="lone" />
+    <node id="the lone" />
+    <node id="lone woman" />
+    <node id="woman and" />
+    <node id="dog" />
+    <node id="and her" />
+    <node id="her dog" />
+    <node id="dog man." />
+    <node id="At each" />
+    <node id="turn" />
+    <node id="each turn" />
+    <node id="turn of" />
+    <node id="of the" />
+    <node id="street," />
+    <node id="journey" />
+    <node id="the street," />
+    <node id="they," />
+    <node id="street, they," />
+    <node id="they, too," />
+    <node id="leave" />
+    <node id="too, leave" />
+    <node id="leave a" />
+    <node id="station" />
+    <node id="a station" />
+    <node id="station to" />
+    <node id="proceed" />
+    <node id="to proceed" />
+    <node id="proceed on" />
+    <node id="on their" />
+    <node id="way." />
+    <node id="their way." />
+    <node id="The repetition" />
+    <node id="itself" />
+    <node id="repetition itself" />
+    <node id="mesmerizes." />
+    <node id="itself mesmerizes." />
+    <node id="___BEGIN__ We" />
+    <node id="We are" />
+    <node id="are in" />
+    <node id="mid-winter." />
+    <node id="in mid-winter." />
+    <node id="___BEGIN__ Their" />
+    <node id="destination" />
+    <node id="passage" />
+    <node id="Their destination" />
+    <node id="does" />
+    <node id="destination does" />
+    <node id="not" />
+    <node id="does not" />
+    <node id="appear" />
+    <node id="not appear" />
+    <node id="appear to" />
+    <node id="be desirable." />
+    <node id="Their passage" />
+    <node id="passage is" />
+    <node id="a test" />
+    <node id="test of" />
+    <node id="of their" />
+    <node id="endurance" />
+    <node id="their endurance" />
+    <node id="endurance and" />
+    <node id="ability" />
+    <node id="and ability" />
+    <node id="ability to" />
+    <node id="endure" />
+    <node id="to endure" />
+    <node id="together." />
+    <node id="endure together." />
+    <node id="___BEGIN__ There" />
+    <node id="There is" />
+    <node id="no" />
+    <node id="fear" />
+    <node id="is no" />
+    <node id="evidence" />
+    <node id="no evidence" />
+    <node id="that," />
+    <node id="evidence that," />
+    <node id="like" />
+    <node id="that, like" />
+    <node id="like the" />
+    <node id="the woman" />
+    <node id="and dog" />
+    <node id="man," />
+    <node id="dog man," />
+    <node id="they" />
+    <node id="man, they" />
+    <node id="share" />
+    <node id="they share" />
+    <node id="share the" />
+    <node id="same" />
+    <node id="the same" />
+    <node id="destination." />
+    <node id="same destination." />
+    <node id="___BEGIN__ I" />
+    <node id="think," />
+    <node id="I think," />
+    <node id="No." />
+    <node id="think, No." />
+    <node id="___BEGIN__ Nothing" />
+    <node id="would" />
+    <node id="Nothing would" />
+    <node id="have" />
+    <node id="would have" />
+    <node id="occurred" />
+    <node id="have occurred" />
+    <node id="between" />
+    <node id="occurred between" />
+    <node id="them" />
+    <node id="between them" />
+    <node id="but" />
+    <node id="them but" />
+    <node id="distance." />
+    <node id="but distance." />
+    <node id="is fear" />
+    <node id="fear and" />
+    <node id="and that," />
+    <node id="that, too," />
+    <node id="too, is" />
+    <node id="mysterious." />
+    <node id="is mysterious." />
+    <node id="is the" />
+    <node id="length" />
+    <node id="the length" />
+    <node id="length of" />
+    <node id="the journey" />
+    <node id="journey and" />
+    <node id="and I" />
+    <node id="think" />
+    <node id="I think" />
+    <node id="this" />
+    <node id="think this" />
+    <node id="this is" />
+    <node id="what" />
+    <node id="is what" />
+    <node id="makes" />
+    <node id="what makes" />
+    <node id="me," />
+    <node id="makes me," />
+    <node id="her," />
+    <node id="me, her," />
+    <node id="sad" />
+    <node id="her, sad" />
+    <node id="sad and" />
+    <node id="also" />
+    <node id="and also" />
+    <node id="angry." />
+    <node id="also angry." />
+    <edge source="___BEGIN__ ___BEGIN__" target="The">
+      <data key="d0">4</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="She">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="In">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Her">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="At">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Both">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="How">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Read">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Was">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Look">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="We">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Their">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="There">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="I">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ ___BEGIN__" target="Nothing">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ The" target="photograph">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ The" target="street">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ The" target="woman">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ The" target="repetition">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="The photograph" target="shows">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="photograph shows" target="two">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="shows two" target="people">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="two people" target="in">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="people in" target="their">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="in their" target="bathrobes">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="their bathrobes" target="walking">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="bathrobes walking" target="along">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="walking along" target="a">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="along a" target="crowded">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="a crowded" target="side">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="crowded side" target="street">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="side street" target="in">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="street in" target="Chinatown.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="in Chinatown." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="The street" target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="street is" target="covered">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is covered" target="in">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="covered in" target="snow">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="in snow" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="snow and" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and the" target="rooftops,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the rooftops," target="too,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="rooftops, too," target="are">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="too, are" target="blanketed">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="are blanketed" target="with">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="blanketed with" target="white.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="with white." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="The woman" target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="woman is" target="a">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is a" target="forlorn">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is a" target="handsome,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is a" target="test">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="a forlorn" target="figure.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="forlorn figure." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ She" target="appears">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="She appears" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="appears to" target="be">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to be" target="hurrying">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to be" target="desirable.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="be hurrying" target="along,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="hurrying along," target="as">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="along, as" target="if">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="as if" target="late">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="as if" target="each">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="if late" target="for">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="late for" target="an">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="for an" target="appointment">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="an appointment" target="or">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="appointment or" target="missing">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="or missing" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="missing the" target="last">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the last" target="streetcar">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="last streetcar" target="home.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="streetcar home." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ In" target="truth,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="In truth," target="she">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="truth, she" target="simply">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="she simply" target="seems">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="simply seems" target="uncomfortable,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="seems uncomfortable," target="unsure">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="uncomfortable, unsure" target="where">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="unsure where" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="where to" target="place">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to place" target="her">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="place her" target="arms">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="her arms" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="arms and" target="afraid">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and afraid" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="afraid to" target="touch">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to touch" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="touch the" target="shopping">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the shopping" target="bags">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="shopping bags" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="bags of" target="food">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of food" target="she">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="food she" target="carries.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="she carries." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Her" target="face">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Her face" target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="face is" target="hidden">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is hidden" target="from">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="hidden from" target="us">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="from us" target="by">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="us by" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="by the" target="balloon">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="by the" target="shoulder">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the balloon" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="balloon of" target="her">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of her" target="collar,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of her" target="hat">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of her" target="companion,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="her collar," target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="collar, the" target="brim">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the brim" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="brim of" target="her">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="her hat" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="hat and" target="by">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and by" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the shoulder" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="shoulder of" target="her">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="her companion," target="who">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="companion, who" target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="who is" target="a">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="a handsome," target="dark-haired">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="handsome, dark-haired" target="man.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="dark-haired man." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ At" target="his">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ At" target="each">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="At his" target="side,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="his side," target="he">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="side, he" target="carries">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="he carries" target="a">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="carries a" target="small">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="a small" target="white">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="small white" target="dog.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="white dog." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Both" target="are">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Both are" target="seen">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="are seen" target="walking">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="seen walking" target="away,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="walking away," target="some">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="away, some" target="distance">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="some distance" target="apart">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="distance apart" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="apart and" target="as">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and as" target="if">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="if each" target="proceeds">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="each proceeds" target="on">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="proceeds on" target="an">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="on an" target="errand">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="an errand" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="errand of" target="his">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of his" target="own.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="his own." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ How" target="am">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="How am" target="I">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="am I" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="I to" target="know">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to know" target="this?">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="know this?" target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Read" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Read the" target="word">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the word" target="on">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="word on" target="his">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="on his" target="shirt,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="his shirt," target="walk.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="shirt, walk." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Was" target="my">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Was my" target="father">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="my father" target="somehow">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="father somehow" target="walking?">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="somehow walking?" target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Look" target="at">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Look at" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="at the" target="figures">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the figures" target="behind">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="figures behind" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="behind the" target="lone">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the lone" target="woman">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="lone woman" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="woman and" target="her">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="woman and" target="dog">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and her" target="dog">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="her dog" target="man.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="dog man." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="At each" target="turn">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="each turn" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="turn of" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of the" target="street,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of the" target="journey">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the street," target="they,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="street, they," target="too,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="they, too," target="leave">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="too, leave" target="a">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="leave a" target="station">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="a station" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="station to" target="proceed">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to proceed" target="on">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="proceed on" target="their">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="on their" target="way.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="their way." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="The repetition" target="itself">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="repetition itself" target="mesmerizes.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="itself mesmerizes." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ We" target="are">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="We are" target="in">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="are in" target="mid-winter.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="in mid-winter." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Their" target="destination">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Their" target="passage">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Their destination" target="does">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="destination does" target="not">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="does not" target="appear">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="not appear" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="appear to" target="be">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="be desirable." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Their passage" target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="passage is" target="a">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="a test" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="test of" target="their">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="of their" target="endurance">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="their endurance" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="endurance and" target="ability">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and ability" target="to">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="ability to" target="endure">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="to endure" target="together.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="endure together." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ There" target="is">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="There is" target="no">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="There is" target="fear">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="There is" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is no" target="evidence">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="no evidence" target="that,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="evidence that," target="like">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="that, like" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="like the" target="woman">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the woman" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and dog" target="man,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="dog man," target="they">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="man, they" target="share">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="they share" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="share the" target="same">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the same" target="destination.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="same destination." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ I" target="think,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="I think," target="No.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="think, No." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="___BEGIN__ Nothing" target="would">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Nothing would" target="have">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="would have" target="occurred">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="have occurred" target="between">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="occurred between" target="them">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="between them" target="but">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="them but" target="distance.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="but distance." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is fear" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="fear and" target="that,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and that," target="too,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="that, too," target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="too, is" target="mysterious.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is mysterious." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is the" target="length">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the length" target="of">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="length of" target="the">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="the journey" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="journey and" target="I">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and I" target="think">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="I think" target="this">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="think this" target="is">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="this is" target="what">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="is what" target="makes">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="what makes" target="me,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="makes me," target="her,">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="me, her," target="sad">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="her, sad" target="and">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="sad and" target="also">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="and also" target="angry.">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="also angry." target="___END__">
+      <data key="d0">1</data>
+    </edge>
+  </graph>
+</graphml>
