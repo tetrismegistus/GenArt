@@ -3,8 +3,8 @@ import processing.core.PApplet;
 public class DistanceGrid extends Grid {
     private Distances distances;
 
-    public DistanceGrid(int rows, int columns) {
-        super(rows, columns);
+    public DistanceGrid(int rows, int columns, Cell[][] cells) {
+        super(rows, columns, cells);
     }
 
     public void setDistances(Distances distances) {

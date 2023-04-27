@@ -24,11 +24,12 @@ public class Main extends PApplet  {
 
     int calls = 0;
     long lastTime;
-    ColoredGrid grid;
-    float cellSize = 10;
+    MaskedGrid grid;
+    float cellSize = 1;
     float startX = 50;
     float startY = 50;
     boolean animationFinished = false;
+    boolean animate = false;
     Cell startingCell;
 
     public static void main(String[] args) {
@@ -39,39 +40,49 @@ public class Main extends PApplet  {
 
         //gui = new LazyGui(this);
         colorMode(HSB, 360, 100, 100, 1);
-        grid = new ColoredGrid(80, 80);
-        AldousBroder.on(grid);
-        startingCell = grid.randomCell();
-        //startingCell.initDistances();
-        Distances distances = startingCell.distances();
-        grid.setDistances(distances);
+        //grid = new ColoredGrid(1000, 1000);
+        grid = this.makeMaskedMaze("1.png");
+        //RecursiveBacktracker.on(grid);
 
+
+
+            startingCell = grid.randomCell();
+            startingCell.initDistances();
+            Distances distances = startingCell.distances();
+            grid.setDistances(distances);
+            println(grid.getRows());
+
+        noLoop();
 
 
     }
 
     public void settings() {
-        size(900, 900);
+        size(1245, 962);
     }
 
     public void draw() {
         background(360, 0, 100);
-        //pg.beginDraw();
-        //drawBackground();
-        //Distances updatedDistances = startingCell.updateFrontier();
+        /*
+        if (animate) {
+            Distances updatedDistances = startingCell.updateFrontier();
+            if (updatedDistances != null) {
+                grid.setDistances(updatedDistances); // Set the distances of the ColoredGrid
+            }
+        }
 
-        //if (updatedDistances != null) {
-        //    grid.setDistances(updatedDistances); // Set the distances of the ColoredGrid
-        //}
-        grid.display(startX, startY, cellSize, this, 0xFE654F, 0xFEFEFF, true);
+         */
 
-        //endDraw();
-        //image(pg, 0, 0);
-        //gui.draw();
-        //save(getTemporalName(sketchName, saveFormat));
-        //if (updatedDistances != null) {
-        //            saveFrame("frames/####.png");
-        //}
+        grid.display(startX, startY, cellSize, this, 0x1A8FE3, 0xD11149, false);
+
+
+
+        save(getTemporalName(sketchName, saveFormat));
+        /*
+        if (updatedDistances != null) {
+                    saveFrame("frames/####.png");
+        }
+        */
     }
 
     public void keyReleased() {
@@ -89,6 +100,13 @@ public class Main extends PApplet  {
             calls = 0;
         }
         return prefix + time + (calls > 0 ? "-" + calls : "") + suffix;
+    }
+
+    public MaskedGrid makeMaskedMaze(String filename) {
+        Mask mask = Mask.fromPNG(filename, this);
+        MaskedGrid grid = new MaskedGrid(mask);
+        RecursiveBacktracker.on(grid);
+        return grid;
     }
 
     public void connectPoints(ArrayList<PVector> points, float sw, float alpha, float radius) {

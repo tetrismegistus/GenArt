@@ -4,8 +4,8 @@ public class ColoredGrid extends Grid {
     private Distances distances;
     private int maximum;
 
-    public ColoredGrid(int rows, int columns) {
-        super(rows, columns);
+    public ColoredGrid(int rows, int columns, Cell[][] cells) {
+        super(rows, columns, cells);
     }
 
     public void setDistances(Distances distances) {
