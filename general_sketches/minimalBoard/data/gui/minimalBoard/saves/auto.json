@@ -806,6 +806,12 @@
           "type": "TRANSIENT"
         }
       ],
+      "window": {
+        "posX": 286.0,
+        "posY": 0.0,
+        "closed": false,
+        "windowSizeX": 198.0
+      },
       "className": "SaveFolderNode",
       "path": "saves",
       "type": "FOLDER"
@@ -817,7 +823,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.00201,
+      "valueFloat": 0.0010099999,
       "currentPrecisionIndex": 1,
       "valueFloatPrecision": 0.001,
       "className": "SliderNode",
@@ -825,7 +831,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.0,
+      "valueFloat": 7.4505806E-8,
       "currentPrecisionIndex": 3,
       "valueFloatPrecision": 0.1,
       "className": "SliderNode",
@@ -833,7 +839,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.20000005,
+      "valueFloat": 1.0430813E-7,
       "currentPrecisionIndex": 3,
       "valueFloatPrecision": 0.1,
       "className": "SliderNode",
@@ -849,7 +855,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.5,
+      "valueFloat": 0.1,
       "currentPrecisionIndex": 3,
       "valueFloatPrecision": 0.1,
       "className": "SliderNode",
@@ -857,7 +863,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 1.0,
+      "valueFloat": 3.0,
       "currentPrecisionIndex": 4,
       "valueFloatPrecision": 1.0,
       "className": "SliderNode",
@@ -865,7 +871,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 10.0,
+      "valueFloat": 20.0,
       "currentPrecisionIndex": 4,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
@@ -881,7 +887,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.31999993,
+      "valueFloat": 0.0,
       "currentPrecisionIndex": 2,
       "valueFloatPrecision": 0.01,
       "className": "SliderNode",
@@ -900,8 +906,8 @@
     }
   ],
   "window": {
-    "posX": 22.0,
-    "posY": 22.0,
+    "posX": 44.0,
+    "posY": 0.0,
     "closed": false,
     "windowSizeX": 220.0
   },

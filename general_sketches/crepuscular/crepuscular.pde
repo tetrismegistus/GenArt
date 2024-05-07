@@ -1,11 +1,11 @@
-String sketchName = "crepuscular";
+String sketchName = "crepuscular"; //<>//
 String saveFormat = ".png";
 
 int calls = 0;
 long lastTime;
 
 void setup() {
-  size(800, 800);
+  size(3600, 3600);
   colorMode(HSB, 360, 100, 100, 1);
 
 }
@@ -13,27 +13,27 @@ void setup() {
 
 void draw() {
   background(#5b7c99);
-  textSquare(50, 50, 700, #FEFBEA);
+  textSquare(160, 160, 3280, #FEFBEA);
   //fill(255, 0, 0, .1);
   noFill();
   stroke(#fd5e53, .8);
   strokeWeight(10);
-  textCircle(width/2, height/2, 400, #fd5e53);
-  for (int cirPoint = 1; cirPoint < 360; cirPoint++) {
+  textCircle(width/2, height/2, 2560, #fd5e53);
+  for (int cirPoint = 0; cirPoint < 360; cirPoint++) {
     float ltheta = radians(cirPoint - 1);
     float theta = radians(cirPoint);
-    float nx = width/2 + cos(theta) * 200;
-    float ny = height / 2 + sin(theta)*200;
-    float ox = width/2 + cos(ltheta) * 200;
-    float oy = height / 2 + sin(ltheta)*200;    
+    float nx = width/2 + cos(theta) * 1280;
+    float ny = height / 2 + sin(theta)*1280;
+    float ox = width/2 + cos(ltheta) * 1280;
+    float oy = height / 2 + sin(ltheta)*1280;    
     myLine(ox, oy, nx, ny);
     
   }
   
   stroke(255, 100, 50, .75);
-  strokeWeight(10);
-  myLine(100, height/2, 700, height/2);
-
+  strokeWeight(20);
+  myLine(320, height/2, 3280, height/2);
+  save(getTemporalName(sketchName, saveFormat));
   noLoop();
   
 }
@@ -41,7 +41,7 @@ void draw() {
 
 void myLine(float x1, float y1, float x2, float y2) {
 
-  float tweakLimit = 30;
+  float tweakLimit = 60;
   
   float scale = 2;
   int nPoints = (int) 100;
@@ -113,7 +113,7 @@ void dropSand(PVector[] inputs, int passes) {
 
       //stroke(0);
       //line(lst.x, lst.y, nxt.x, nxt.y);
-      for (int sand = 0; sand < 10; sand++) { //<>// //<>//
+      for (int sand = 0; sand < 10; sand++) { //<>//
         float li = sand/10.;
         float lx = lerp(lst.x, nxt.x, li);
         float ly = lerp(lst.y, nxt.y, li);

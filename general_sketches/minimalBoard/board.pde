@@ -8,12 +8,12 @@ class Board {
   ColorPalette palA, palB; 
 
   // Modify the constructor to accept two palettes
-  Board(float x, float y, int r, int c, float tSz, ColorPalette paletteA, ColorPalette paletteB) {
+  Board(float x, float y, int c, int r, float tSz, ColorPalette paletteA, ColorPalette paletteB) {
     this.x = x;
     this.y = y;    
-    rows = r;
     cols = c;
-    board = new Tile[rows][cols];  
+    rows = r;
+    board = new Tile[cols][rows];  
     this.tileSize = tSz;
     this.palA = paletteA;
     this.palB = paletteB;

@@ -5,6 +5,7 @@ Description: My default starting point for sketches
 */
 
 import java.lang.Math;
+import java.util.function.IntUnaryOperator;
 
 String sketchName = "mySketch";
 String saveFormat = ".png";
@@ -13,47 +14,80 @@ int calls = 0;
 long lastTime;
 UnivariateSolver solver;
 
-color[] p = {#3b429f, #aa7dce, #f5d7e3, #f4a5ae, #a8577e};
+color[] p = {#D62828, #F77F00, #FCBF49, #EAE2B7};
+float macroTileSize = 4600;  
+
+int maxCount = 10;
 
 void setup() {
-  size(1000, 1000);
-  colorMode(HSB, 360, 100, 100, 1);
+  size(4600 * 3, 4600);
+  //colorMode(HSB, 360, 100, 100, 1);
   solver = new BrentSolver();
   noLoop();
 }
 
 
 void draw() {
-  background(#000000);  
-  int m = 0;
-        
-      tileDraw(0, 0, width, (int) random(50), (int) random(50));
-  
+  background(#003049);  
+  float imageMargin = macroTileSize / 10;
+  macroTileDraw(imageMargin, imageMargin, macroTileSize - imageMargin*2, 
+    col -> col < maxCount / 2 ? col : maxCount - col - 1, // Lambda for m calculation
+    row -> row < maxCount / 2 ? row : maxCount - row - 1  // Lambda for n calculation
+  );
+  println("1");
+  macroTileDraw(imageMargin + macroTileSize, imageMargin, macroTileSize - imageMargin*2, 
+    col -> col < maxCount / 2 ? col : maxCount - col - 1, // Lambda for m calculation
+    row -> row < maxCount / 2 ? row : maxCount - row - 1  // Lambda for n calculation
+  );
+  println("2");
+  macroTileDraw(imageMargin + macroTileSize * 2, imageMargin, macroTileSize - imageMargin*2, 
+    col -> col < maxCount / 2 ? col : maxCount - col - 1, // Lambda for m calculation
+    row -> row < maxCount / 2 ? row : maxCount - row - 1  // Lambda for n calculation
+  );
+  println("3");
   save(getTemporalName(sketchName, saveFormat));
+  println("done");
+}
+
+void macroTileDraw(float tx, float ty, float sz, IntUnaryOperator mFunc, IntUnaryOperator nFunc) {
+    float tileSize = sz / maxCount;
+    float tileMargin = tileSize / 10;
+    for (int col = 0; col < maxCount; col += 1) {
+        int m = mFunc.applyAsInt(col);          
+        for (int row = 0; row < maxCount; row += 1) {
+            int n = nFunc.applyAsInt(row);       
+            float x = col * tileSize + tx;
+            float y = row * tileSize + ty;
+            fill(random(255));            
+            tileDraw(x + tileMargin, y + tileMargin, tileSize - tileMargin * 2, m, n);    
+        }
+    }
 }
 
 void tileDraw(float x, float y, float sz, int m, int n){
-  double min = 0;
+  int aaFactor = 1;
   for (float cx = x; cx < x + sz; cx++) {
+        
         for (float cy = y; cy < y + sz; cy++) {
           
           float currX = map(cx, x, x+sz, 1, -1);
           float currY = map(cy, y, y+sz, 1, -1);
-          double w = getU(m, currX) * getU(n, currY) + getU(n, currX) * getU(m, currY);
-          if (w < min)
-            min = w;
-          stroke(map((float)w, -.5, .5, 0, 360), 100, 100);
-          
-          if(Math.abs(w) <= 0.5) { //<>//
-            int idx = (int)map((float)w, -.6, .6, 0, 5);
-            stroke(p[idx]);
-          
-            point(cx, cy);      
-          }
-          
+
+          float strokeSum = 0;
+          for (int i = 0; i < aaFactor; i++) {
+            for (int j = 0; j< aaFactor; j++) {
+              float offsetX = (float)i / aaFactor;
+              float offsetY = (float)j / aaFactor;              
+              double w = getU(m, currX + offsetX) * getU(n, currY + offsetY) + getU(n, currX + offsetX) * getU(m, currY + offsetY);
+              float strokeColor = map((float)w, -.5, .5, 0, 255);
+              strokeSum += strokeColor;
+            }
+          }          
+          float avgStroke = strokeSum / (aaFactor * aaFactor);
+          stroke(avgStroke);
+          point(cx, cy);                               //<>//
         }
-      }   
-  println(min);
+      }     
 }
 
 
