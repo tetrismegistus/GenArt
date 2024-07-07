@@ -49,13 +49,11 @@ vec3 palette(float k) {
 vec3 turnDiddlyBoo(vec3 p) {
   float a = -1.5;
   float b = 1.0;
-  float c = 1.6;
+  float c = 11.6;
   float d = 0.7;
-  float e = 3.0;
-  float f = 1.0;
+  float e = 3.0;  
   return vec3(sin(a * p.y) + b * cos(a * p.x),
-              sin(c * p.z) + d * cos(c * p.y),
-              sin(e * p.x) + f * cos(c * p.y));              
+              sin(c * 0.0) + d * cos(c * p.y), p.z * e);              
 }
 
 
@@ -69,6 +67,19 @@ vec3 rectanglesEffect(vec3 p, vec3 size) {
     vec3 a = 2.0 * floor(p / size + vec3(1.0)) * size - p;
     bvec3 cond = notEqual(size, vec3(0.0));
     return mix(p, a, cond);
+}
+
+
+vec3 mobiusStrip(float v_mult, float next) {
+    float u = 2.0 * PI * next;
+    float v = -1.0 + 2.0 * next;
+    v *= v_mult;
+    float a = 1.0 + v / 2.0 * cos(u / 2.0);
+    return vec3(
+        a * cos(u),
+        a * sin(u),
+        v / 2.0 * sin(u / 2.0)
+    );
 }
 
 vec3 mul3( in mat3 m, in vec3 v ){return vec3(dot(v,m[0]),dot(v,m[1]),dot(v,m[2]));}
@@ -132,27 +143,33 @@ vec2 project_particle(vec3 p){
 
 layout(location = 0) out vec4 out_color; // out_color must be written in order to see anything
 
-void processParticle(vec3 p, float line_iters, vec2 resolution, int id) {
+void processParticle(vec3 p, vec2 uv, float line_iters, vec2 resolution, int id) {
     for (float i = 0; i < line_iters; i++) {
         float r = hash_f();
-        if (r < .25) {          
-          float a = 1.76;
-          float b = .1;
-          p = vec3(a - p.y*p.y - b * p.z, p.x, p.y);          
+        if (r < 0.15) {                                    
+            float gridsize = 0.1;
+            vec3 block = floor(0.9 * p.x / gridsize + vec3(0.1)) + 0.5;
+            p += gridsize * block;
           
-        } else if (r <.5) {
+        } else if (r < 0.2) {            
+            p.xz *= rot(5.2 + sin(float(id) * 0.00001) * 0.001);            
           
-          vec3 q = rectanglesEffect(p, vec3(hash_f())) * fGlobalTime * .01;
-          p *= q;
+        } else if (r < 0.3) {            
+            p *= xyzzy(p, 0.2, 0.99999, 11.0);                        
           
-        } else if (r <.75) {          
-    
-          p.z *= sin(fGlobalTime * .01) + .4;
-        } else {                    
-          p -= 1.0;          
-          p /= dot(p * cos(fGlobalTime * .1), p * sin(fGlobalTime * .1));
-          
-        }
+        } else if (r < 0.4) {            
+            p += 0.05 * vec3(sin(hash_f() + uv.y * 10.0), cos(hash_f() + uv.x * 10.0), 1.0);           
+            p /= turnDiddlyBoo(p);          
+        } else if (r < 0.5) {
+          float a = 0.9;
+          float b = -.6013;
+          float c = 2.0;
+          float d = .5;          
+          p = vec3(p.x*p.x-p.y*p.y+a*p.x+b*p.y,2.0*p.x*p.y+c*p.x+d*p.y, 1.0);
+        } else {            
+            p /= dot(p, p);            
+        }                        
+        p /= dot(p * sin(fGlobalTime * .1), cos(fGlobalTime * .01) * p);   
         
 
         float particle_depth = p.z;
@@ -162,7 +179,7 @@ void processParticle(vec3 p, float line_iters, vec2 resolution, int id) {
             vec2 X = hash_v2() / min(resolution.x, resolution.y);
             vec2 a = vec2(sin(X.x), cos(X.x)) * sqrt(X.y);
             vec2 q = part_uv + a * .15;
-            ivec2 p_screencoords = ivec2((q) * ivec2(resolution));
+            ivec2 p_screencoords = ivec2((q + .5) * ivec2(resolution));
             if (
                 // Inside bounds
                 p_screencoords.x >= 0 && p_screencoords.x < int(resolution.x) &&
@@ -197,9 +214,9 @@ void main(void)
     ivec2 i_coords = ivec2(gl_FragCoord.xy);
     int id = i_coords.x + i_coords.y * int(v2Resolution.x);
     seed = id + 1235125u; // then hash_f() to get a random float
-    vec3 p = vec3(hash_f(), hash_f(), hash_f());
+    vec3 p = vec3(hash_f());    
     
-    processParticle(p, line_iters, v2Resolution, id);
+    processParticle(p, uv, line_iters, v2Resolution, id);
     vec4 color = imageLoad(computeTexBack[0], ivec2(gl_FragCoord)).xxxx;    
     // Define the colors
     vec3 col1 = vec3(0.455, 0.537, 0.753);
