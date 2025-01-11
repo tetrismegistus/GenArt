@@ -78,12 +78,12 @@ void stipple(PGraphics pg, int k, float rad, color col) {
   println("stippled... whew");
 }
 
-int n = 24;
+int n = 1;
 void drawVariationFP(PGraphics pg, float x, float y) {
   PVector v = new PVector(x, y);
   float margin = outputWidth * .95;
   for (int i = 0; i < n; i++) {
-    v =spherical(rectt(popcorn(v, 1.0), 1.0), 1.0);
+    v = heart(v);
     float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
     float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);
     pg.point(xx, yy);

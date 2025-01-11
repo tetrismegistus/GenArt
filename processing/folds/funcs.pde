@@ -20,6 +20,31 @@ PVector hyperbolic(PVector v, float amount) {
   return new PVector(x, y);
 }
 
+PVector polar(PVector v) {
+    float theta = getTheta(v);
+    float r = getR(v);
+    float x = theta/PI;
+    float y = r - 1.0;
+    return new PVector(x, y);
+}
+
+
+PVector handkerchief(PVector v) {
+  float theta = getTheta(v);
+  float r = getR(v);
+  float x = r * (sin(theta + r));
+  float y = cos(theta - r);
+  return new PVector(x, y);
+}
+
+PVector heart(PVector v) {
+  float theta = getTheta(v);
+  float r = getR(v);
+  float x = r * (sin(theta * r));
+  float y = -r * cos(theta * r);
+  return new PVector(x, y);
+}
+
 float pdj_a = 0.1;
 float pdj_b = 1.9;
 float pdj_c = -0.8;
@@ -90,4 +115,8 @@ float getR(PVector p) {
   float xsq = p.x * p.x;
   float ysq = p.y * p.y;
   return sqrt(xsq + ysq);
+}
+
+float getTheta(PVector v) {
+  return atan2(v.x, v.y);
 }
