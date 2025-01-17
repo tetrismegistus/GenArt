@@ -1,9 +1,16 @@
+/*
+  A big thank you to SebastienBissay who implemented random formula generation:
+  
+  https://github.com/SebastienBissay/RandomFormulaGenerator
+*/
+
+
 String sketchName = "folds";
 String saveFormat = ".png";
 int calls = 0;
 long lastTime;
 
-public static final long SEED = 1;
+public static final long SEED = 3;
 public static final int N = 3;
 public static final int WIDTH = 1200;
 public static final int HEIGHT = 1200;
@@ -12,7 +19,7 @@ public static final float MIN_X = -3;
 public static final float MAX_X = 3;
 public static final float MIN_Y = -3;
 public static final float MAX_Y = 3;
-public static final float STEP = sqrt(N) * (MAX_X - MIN_X) / (2.321f * WIDTH);
+public static final float STEP = sqrt(N) * (MAX_X - MIN_X) / (2.021f * WIDTH);
 public static final int MINIMUM_VARIATIONS = 3;
 public static final int MAXIMUM_VARIATIONS = 5;
 
