@@ -10,8 +10,8 @@ String saveFormat = ".png";
 int calls = 0;
 long lastTime;
 
-public static final long SEED = 3;
-public static final int N = 3;
+public static int SEED = 1554601216;
+public static final int N = 6;
 public static final int WIDTH = 1200;
 public static final int HEIGHT = 1200;
 public static final int MARGIN = 50;
@@ -19,10 +19,9 @@ public static final float MIN_X = -3;
 public static final float MAX_X = 3;
 public static final float MIN_Y = -3;
 public static final float MAX_Y = 3;
-public static final float STEP = sqrt(N) * (MAX_X - MIN_X) / (2.021f * WIDTH);
-public static final int MINIMUM_VARIATIONS = 3;
-public static final int MAXIMUM_VARIATIONS = 5;
-
+public static final float STEP = sqrt(N) * (MAX_X - MIN_X) / (2.321f * WIDTH);
+public static final int MINIMUM_VARIATIONS = 2;
+public static final int MAXIMUM_VARIATIONS = 6;
 public static final float LINEAR_PARAMETER = 1f;
 public static final float SINUSOIDAL_PARAMETER = 1f;
 public static final float HYPERBOLIC_PARAMETER = 1f;
@@ -38,13 +37,18 @@ public static final float EX_PARAMETER = 1f;
 public static final float DIAMOND_PARAMETER = 1f;
 public static final float SPIRAL_PARAMETER = 1f;
 public static final float DISC_PARAMETER = 1f;
+public static final float POLAR_PARAMETER = 1f;
+
+WrapMode currentMode = WrapMode.MOD_WRAP;
 
 static PApplet pApplet;
 
 void settings() {
   pApplet = this;
   size(WIDTH, HEIGHT);
-  randomSeed(floor(random(MAX_INT)));
+  //SEED = floor(random(MAX_INT));
+
+  randomSeed(SEED);
   noiseSeed(floor(random(MAX_INT)));
   smooth(8);
 }
@@ -53,18 +57,18 @@ void setup() {
   blendMode(MULTIPLY);
   colorMode(HSB, 360, 100, 100, 1);
   background(#EFEDE8);
-  
   noFill();
-  //stipple(300, 1.5, #ACABA9);
+  stipple(300, 1.5, #ACABA9);
   strokeWeight(.4);
   noLoop();
 }
 
 void draw() {
   Formula formula = new Formula(this);
-  System.out.println(formula.getName());
+  println(formula.getName());
+  println("N = " + N);
+  println("seed = " + SEED);
   stroke(#A7C0DB);
-  println("baking");
   for (float y = MIN_Y; y <= MAX_Y; y += STEP) {
     for (float x = MIN_X; x <= MAX_X; x += STEP) {
         drawVariation(x, y, formula);
@@ -79,14 +83,19 @@ void drawVariation(float x, float y, Formula formula) {
   for (int j = 0; j < N; j++) {
     PVector v = new PVector(x, y);
     v = formula.apply(v);
-    v = sinusoidal(v,(MAX_X -MIN_X)/2); 
+    currentMode.wrap(v); 
     float xx = map(v.x + 0.003f * randomGaussian(), MIN_X, MAX_X, MARGIN, WIDTH - MARGIN);
     float yy = map(v.y + 0.003f * randomGaussian(), MIN_Y, MAX_Y, MARGIN, HEIGHT - MARGIN);
     point(xx, yy);
   }
-
 }
-    
+
+void wrap(PVector v) {
+   PVector newV = sinusoidal(v,(MAX_X -MIN_X)/2);  // this is my wrap logic
+   v.x = newV.x;
+   v.y = newV.y;
+} 
+
 
 
 void keyReleased() {

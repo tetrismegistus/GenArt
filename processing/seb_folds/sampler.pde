@@ -112,6 +112,4 @@ void stipple(int k, float rad, color col) {
   for (PVector point : allSamples) {
     point(point.x, point.y);
   }
-
-  println("stippled... whew");
 }

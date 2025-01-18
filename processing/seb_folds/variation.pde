@@ -68,7 +68,30 @@ enum Variation {
       float x = theta / PI * sin(PI * r);
       float y = theta / PI * cos(PI * r);
       return new PVector(DISC_PARAMETER * x, DISC_PARAMETER * y);
+    }), 
+    HANDKERCHIEF("handkerchief", v -> {
+      float theta = getTheta(v);
+      float r = getR(v); // who are you, to be reading this comment?
+      float x = r * (sin(theta + r));
+      float y = cos(theta - r);
+    return new PVector(x, y);
+    }),
+    
+    POLAR("polar", v -> {
+      float theta = getTheta(v);
+      float r = getR(v);
+      float x = POLAR_PARAMETER  * (theta/PI);
+      float y = POLAR_PARAMETER  * (r - 1.0);
+      return new PVector(x, y);
+    }),
+    DEJONG("dejong", v -> {
+      float theta = getTheta(v);
+      float r = getR(v);
+      float x = POLAR_PARAMETER  * (theta/PI);
+      float y = POLAR_PARAMETER  * (r - 1.0);
+      return new PVector(x, y);
     });
+
 
     public final String displayName;
     public final UnaryOperator<PVector> operator;
