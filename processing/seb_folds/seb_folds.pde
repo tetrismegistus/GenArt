@@ -1,7 +1,20 @@
 /*
-  A big thank you to SebastienBissay who implemented random formula generation:
+  This is satisfying and I have spent hours implementing and testing a host
+  of functions as defined in:
+  
+  https://flam3.com/flame_draves.pdf
+  
+  But I'd not even have got that far had I not come across this:
+  
+  https://generateme.wordpress.com/2016/04/11/folds/
+  
+  and then Sebastien Bissay provided the abstraction for the dynamic
+  formula generation and execution.
   
   https://github.com/SebastienBissay/RandomFormulaGenerator
+  
+  so this is to say that I have made nothing here, merely put together 
+  the parts that were generously made and given away by others. 
 */
 
 
