@@ -85,11 +85,13 @@ enum Variation {
       return new PVector(x, y);
     }),
     DEJONG("dejong", v -> {
-      float theta = getTheta(v);
-      float r = getR(v);
-      float x = POLAR_PARAMETER  * (theta/PI);
-      float y = POLAR_PARAMETER  * (r - 1.0);
-      return new PVector(x, y);
+      float b = 2.71;
+      float d = -1.05;
+      float a = -.47;
+      float c = -0.8;
+      float x = sin(a * v.y) - cos(b * v.x);
+      float y = sin(c * v.x) - cos(d * v.y);
+      return new PVector(x * DEJONG_PARAMETER, y * DEJONG_PARAMETER);
     });
 
 

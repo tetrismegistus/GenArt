@@ -10,8 +10,8 @@ String saveFormat = ".png";
 int calls = 0;
 long lastTime;
 
-public static int SEED = 1554601216;
-public static final int N = 6;
+public static int SEED = 515612416;
+public static final int N = 10;
 public static final int WIDTH = 1200;
 public static final int HEIGHT = 1200;
 public static final int MARGIN = 50;
@@ -31,15 +31,16 @@ public static final float PDJ_C_PARAMETER = -0.8f;
 public static final float PDJ_D_PARAMETER = -1.2f;
 public static final float PDJ_PARAMETER = 1f;
 public static final float JULIA_PARAMETER = 1f;
-public static final float SECH_PARAMETER = 1f;
+public static final float SECH_PARAMETER = 2f;
 public static final float BENT_PARAMETER = 1f;
 public static final float EX_PARAMETER = 1f;
 public static final float DIAMOND_PARAMETER = 1f;
 public static final float SPIRAL_PARAMETER = 1f;
-public static final float DISC_PARAMETER = 1f;
+public static final float DEJONG_PARAMETER = 1f;
 public static final float POLAR_PARAMETER = 1f;
+public static final float DISC_PARAMETER = 1f;
 
-WrapMode currentMode = WrapMode.MOD_WRAP;
+WrapMode currentMode = WrapMode.SINUSOIDAL_WRAP;
 
 static PApplet pApplet;
 
@@ -80,8 +81,8 @@ void draw() {
 
 
 void drawVariation(float x, float y, Formula formula) {
+  PVector v = new PVector(x, y);
   for (int j = 0; j < N; j++) {
-    PVector v = new PVector(x, y);
     v = formula.apply(v);
     currentMode.wrap(v); 
     float xx = map(v.x + 0.003f * randomGaussian(), MIN_X, MAX_X, MARGIN, WIDTH - MARGIN);
