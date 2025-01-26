@@ -23,8 +23,10 @@ String saveFormat = ".png";
 int calls = 0;
 long lastTime;
 
-public static int SEED = 515612416;
-public static final int N = 10;
+public static int SEED = 1521561344;
+public static final boolean RNDSEED = false;
+WrapMode currentMode = WrapMode.SINUSOIDAL_WRAP;
+public static final int N = 1;
 public static final int WIDTH = 1200;
 public static final int HEIGHT = 1200;
 public static final int MARGIN = 50;
@@ -37,30 +39,41 @@ public static final int MINIMUM_VARIATIONS = 2;
 public static final int MAXIMUM_VARIATIONS = 6;
 public static final float LINEAR_PARAMETER = 1f;
 public static final float SINUSOIDAL_PARAMETER = 1f;
-public static final float HYPERBOLIC_PARAMETER = 1f;
+public static final float HYPERBOLIC_PARAMETER =1f;
 public static final float PDJ_A_PARAMETER = 0.1f;
 public static final float PDJ_B_PARAMETER = 1.9f;
-public static final float PDJ_C_PARAMETER = -0.8f;
-public static final float PDJ_D_PARAMETER = -1.2f;
+public static final float PDJ_C_PARAMETER = 1.4;
+public static final float PDJ_D_PARAMETER = TWO_PI;
 public static final float PDJ_PARAMETER = 1f;
+public static final float DPDJ_PARAMETER = 1f;
 public static final float JULIA_PARAMETER = 1f;
 public static final float SECH_PARAMETER = 2f;
 public static final float BENT_PARAMETER = 1f;
 public static final float EX_PARAMETER = 1f;
-public static final float DIAMOND_PARAMETER = 1f;
+public static final float DIAMOND_PARAMETER = .5f;
 public static final float SPIRAL_PARAMETER = 1f;
+public static final float DEJONG_B = 2.71;
+public static final float DEJONG_D = -1.05;
+public static final float DEJONG_A = -.47;
+public static final float DEJONG_C = -0.8;
 public static final float DEJONG_PARAMETER = 1f;
 public static final float POLAR_PARAMETER = 1f;
-public static final float DISC_PARAMETER = 1f;
-
-WrapMode currentMode = WrapMode.SINUSOIDAL_WRAP;
+public static final float DISC_PARAMETER =1f;
+public static final float RECT_PARAMETER = 2f;
+public static final float HEART_PARAMETER = 1f;
+public static final float SWIRL_PARAMETER = 1f;
+public static final float HORSESHOE_PARAMETER = 1;
+public static final float POPCORN_C_PARAMETER = .1;
+public static final float POPCORN_F_PARAMETER = .09;
+public static final float POPCORN_PARAMETER = 1.5f;
+public static final float SPHERICAL_PARAMETER = 1f;
 
 static PApplet pApplet;
 
 void settings() {
   pApplet = this;
   size(WIDTH, HEIGHT);
-  //SEED = floor(random(MAX_INT));
+  if (RNDSEED) SEED = floor(random(MAX_INT));
 
   randomSeed(SEED);
   noiseSeed(floor(random(MAX_INT)));

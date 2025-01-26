@@ -76,7 +76,6 @@ enum Variation {
       float y = cos(theta - r);
     return new PVector(x, y);
     }),
-    
     POLAR("polar", v -> {
       float theta = getTheta(v);
       float r = getR(v);
@@ -85,13 +84,45 @@ enum Variation {
       return new PVector(x, y);
     }),
     DEJONG("dejong", v -> {
-      float b = 2.71;
-      float d = -1.05;
-      float a = -.47;
-      float c = -0.8;
-      float x = sin(a * v.y) - cos(b * v.x);
-      float y = sin(c * v.x) - cos(d * v.y);
+      float x = sin(DEJONG_A * v.y) - cos(DEJONG_B * v.x);
+      float y = sin(DEJONG_C * v.x) - cos(DEJONG_D * v.y);
       return new PVector(x * DEJONG_PARAMETER, y * DEJONG_PARAMETER);
+    }),
+    RECT("rect", v -> {
+      float x = RECT_PARAMETER * (RECT_PARAMETER * ( 2.0 * floor(v.x/RECT_PARAMETER) + 1.0) - v.x);
+      float y = RECT_PARAMETER * (RECT_PARAMETER * ( 2.0 * floor(v.y/RECT_PARAMETER) + 1.0) - v.y);
+      return new PVector(x, y);
+    }),
+    HEART("heart", v -> {
+      float theta = getTheta(v);
+      float r = getR(v);
+      float x = r * (sin(theta * r));
+      float y = r * cos(theta * -r);
+      return new PVector(x * HEART_PARAMETER, y * HEART_PARAMETER);
+    }),
+    SWIRL("swirl", v -> {
+      float r = getR(v);
+      float x = v.x * sin(r * r) - v.y * cos(r * r);
+      float y = v.x * cos(r * r) - v.y * sin(r * r);
+      return new PVector(SWIRL_PARAMETER * x, SWIRL_PARAMETER * y);
+    }),
+    HORSESHOE("horseshoe", v -> {
+      float r = getR(v);
+      float j = 1.0/r;
+      float x = j * ((v.x - v.y) * (v.x + v.y));
+      float y = j * (2.0 * v.x * v.y);
+      return new PVector(HORSESHOE_PARAMETER * x, HORSESHOE_PARAMETER * y);
+    }),
+    POPCORN("popcorn", v -> {
+      float x = v.x + POPCORN_C_PARAMETER * sin(tan(3.0 * v.y));
+      float y = v.y + POPCORN_F_PARAMETER * sin(tan(3.0 * v.x));
+      return new PVector(POPCORN_PARAMETER * x, POPCORN_PARAMETER * y);
+    }),
+    SPHERICAL("spherical", v -> {
+      float r = 1/pow(getR(v), 2);
+      float x = SPHERICAL_PARAMETER * v.x * r;
+      float y = SPHERICAL_PARAMETER * v.y * r;
+      return new PVector(x, y);
     });
 
 

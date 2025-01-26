@@ -12,6 +12,13 @@ enum WrapMode {
             v.set(newV);
         }
     },
+    SPHERICAL_WRAP {
+        @Override
+        void wrap(PVector v) {
+            PVector newV = spherical(v, (MAX_X - MIN_X) / 2);
+            v.set(newV);
+        }
+    },
     MOD_WRAP {
         @Override
         void wrap(PVector v) {
@@ -33,6 +40,13 @@ enum WrapMode {
     PVector sinusoidal(PVector v, float amplitude) {
       return new PVector((float) Math.sin(v.x) * amplitude, (float) Math.sin(v.y) * amplitude);
     }
+    
+   PVector spherical(PVector p, float amount) {
+    float r = 1/pow(getR(p), 2);
+    float x = amount * p.x * r;
+    float y = amount * p.y * r;
+    return new PVector(x, y);
+  }
 
 
     abstract void wrap(PVector v);

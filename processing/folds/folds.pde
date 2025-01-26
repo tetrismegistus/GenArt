@@ -1,3 +1,11 @@
+// credit to https://generateme.wordpress.com/2016/04/11/folds/
+
+/*
+ Special collaborator
+ https://github.com/SebastienBissay/Genuary11
+ */
+
+
 String sketchName = "mySketch";
 String saveFormat = ".png";
 int calls = 0;
@@ -11,18 +19,22 @@ float x1, y1, x2, y2; // Function domain
 float step; // Step within domain
 float y;
 
+color c1 = #A7C0DB;
+color c2 = #63E06E;
 
 void setup() {
   size(1000, 1000); // Display resolution
   background(#EFEDE8);
-  
+
   pg = createGraphics(outputWidth, outputHeight);
+
   pg.smooth(8);
   pg.beginDraw();
-  pg.background(#EFEDE8);
-
-  pg.noFill();
   pg.blendMode(MULTIPLY);
+  pg.background(#EFEDE8);
+  
+  pg.noFill();
+
   pg.endDraw();
 
   // Initialize domain variables
@@ -35,19 +47,22 @@ void setup() {
 
   // Draw stipple pattern
   stipple(pg, 300, 1.5, #ACABA9);
- 
+
   pg.beginDraw();
-  pg.stroke(#A7C0DB);
+
   pg.strokeWeight(0.4);
   pg.endDraw();
 }
 
 boolean go = true;
 void draw() {
+
   if (go) {
     pg.beginDraw();
-    for (int i = 0; (i < 20) & go; i++) { // Draw 20 lines at once
+    for (int i = 0; (i < 40) & go; i++) { // Draw 20 lines at once
       for (float x = x1; x <= x2; x += step) {
+          pg.stroke(c1);
+        //float n = map(noise(x, y), 0, 1, .0, .5);
         drawVariationFP(pg, x, y);
       }
       y += step;
@@ -62,7 +77,6 @@ void draw() {
 
   // Display the PGraphics on the main window
   image(pg, 0, 0, width, height);
-
 }
 
 void stipple(PGraphics pg, int k, float rad, color col) {
@@ -78,28 +92,23 @@ void stipple(PGraphics pg, int k, float rad, color col) {
   println("stippled... whew");
 }
 
-int n = 1;
+int n = 3;
 void drawVariationFP(PGraphics pg, float x, float y) {
   PVector v = new PVector(x, y);
   float margin = outputWidth * .95;
   for (int i = 0; i < n; i++) {
-    v = heart(v);
+ 
+    v = fisheye(rectt(v, 1.0), 1.0);
+
     float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
     float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);
     pg.point(xx, yy);
   }
 }
 
-void drawVariation(PGraphics pg, float x, float y) {
-  PVector v = new PVector(x,y);
-  float amount = 1.0;
- 
-  v = swirl(v, amount);
- 
-  float xx = map(v.x+0.003*randomGaussian(), x1, x2, 20, width-20);
-  float yy = map(v.y+0.003*randomGaussian(), y1, y2, 20, height-20);
-  pg.point(xx, yy);
-}
+
+
+
 
 void keyReleased() {
   if (key == 's' || key == 'S') {
