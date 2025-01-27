@@ -23,8 +23,10 @@ String saveFormat = ".png";
 int calls = 0;
 long lastTime;
 
-public static int SEED = 1545539072;
-public static final boolean RNDSEED = true;
+
+Texture sampler = Texture.HALTON;
+public static int SEED = 771416448;
+public static final boolean RNDSEED = false;
 WrapMode currentMode = WrapMode.MOD_WRAP;
 public static final int N = 3;
 public static final int WIDTH = 1200;
@@ -95,9 +97,11 @@ void setup() {
   colorMode(HSB, 360, 100, 100, 1);
   background(#EFEDE8);
   noFill();
-  stipple(300, 1.5, #ACABA9);
+  stipple();
   strokeWeight(.4);
+
   noLoop();
+
 }
 
 void draw() {

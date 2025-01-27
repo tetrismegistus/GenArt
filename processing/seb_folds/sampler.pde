@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.function.Function;
+
 import processing.core.PApplet;
 import processing.core.PVector;
-
 import static processing.core.PApplet.*;
 
 class PoissonDiscSampler {
@@ -104,12 +105,61 @@ class PoissonDiscSampler {
     }
 }
 
-void stipple(int k, float rad, color col) {
-  PoissonDiscSampler sampler = new PoissonDiscSampler(WIDTH, HEIGHT);
-  ArrayList<PVector> allSamples = sampler.poissonDiskSampling(rad, k);
-  strokeWeight(0.5);
-  stroke(col);
-  for (PVector point : allSamples) {
-    point(point.x, point.y);
+class Halton {
+    int n = 0;
+    int d = 1;
+
+    private Function<Integer, Float> haltonGenerator;
+
+    public Halton() {
+        initializeGenerator();
+    }
+
+    private void initializeGenerator() {
+        haltonGenerator = (Integer base) -> {
+            int x = d - n;
+            if (x == 1) {
+                n = 1;
+                d *= base;
+            } else {
+                int y = d / base;
+                while (x <= y) {
+                    y /= base;
+                }
+                n = (base + 1) * y - x;
+            }
+            return (float) n / d; 
+        };
+    }
+    public float generate(int base) {
+        return haltonGenerator.apply(base);
+    }
+}
+
+
+void stipple() {
+  color stroke = #ACABA9;
+  strokeWeight(.5);
+  stroke(stroke);  
+  if (sampler == Texture.POISSON) {
+    PoissonDiscSampler sampler = new PoissonDiscSampler(WIDTH, HEIGHT);
+    int k = 300; 
+    float rad = 1.5;
+    ArrayList<PVector> allSamples = sampler.poissonDiskSampling(rad, k);
+    for (PVector point : allSamples) {
+      point(point.x, point.y);
+    }
+  } else if (sampler == Texture.HALTON) {
+    Halton seqGenerator2 = new Halton();
+    Halton seqGenerator3 = new Halton();
+    for (int i = 0; i < width * height; i++) {
+      float r = (width * height)/500;
+      point(seqGenerator2.generate(2) * r, seqGenerator3.generate(3) * r);
+    }
   }
+}
+
+enum Texture {
+    POISSON,
+    HALTON
 }
