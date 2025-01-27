@@ -15,9 +15,19 @@ enum WrapMode {
     SPHERICAL_WRAP {
         @Override
         void wrap(PVector v) {
-            PVector newV = spherical(v, (MAX_X - MIN_X) / 2);
+          PVector newV = spherical(v, (MAX_X - MIN_X)/2);
+          newV.x = (newV.x - MIN_X) % (MAX_X - MIN_X);
+          if (newV.x < 0) {
+            newV.x += MAX_X - MIN_X;
+          }
+          newV.y = (newV.y - MIN_Y) % (MAX_Y - MIN_Y);
+          if (newV.y < 0) {
+            newV.y += MAX_Y - MIN_Y;
+          }
+          newV.x += MIN_X;
+          newV.y += MIN_Y;
             v.set(newV);
-        }
+          }
     },
     MOD_WRAP {
         @Override

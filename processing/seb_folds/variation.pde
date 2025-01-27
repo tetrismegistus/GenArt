@@ -74,7 +74,7 @@ enum Variation {
       float r = getR(v); // who are you, to be reading this comment?
       float x = r * (sin(theta + r));
       float y = cos(theta - r);
-    return new PVector(x, y);
+    return new PVector(x * HANDKERCHIEF_PARAMETER, y * HANDKERCHIEF_PARAMETER);
     }),
     POLAR("polar", v -> {
       float theta = getTheta(v);
@@ -123,6 +123,31 @@ enum Variation {
       float x = SPHERICAL_PARAMETER * v.x * r;
       float y = SPHERICAL_PARAMETER * v.y * r;
       return new PVector(x, y);
+    }),
+    WAVES("waves", v -> {
+      float x = v.x + WAVES_B_PARAMETER * sin(v.y/pow(WAVES_C_PARAMETER, 2));
+      float y = v.y + WAVES_E_PARAMETER * sin(v.x/pow(WAVES_F_PARAMETER, 2));
+      return new PVector(x * WAVES_PARAMETER, y * WAVES_PARAMETER);
+    }),
+    FISHEYE("fisheye", v -> {
+      float r = 2 / (getR(v) + 1);
+      float x = r * v.x;
+      float y = r * v.y;
+      return new PVector(FISHEYE_PARAMETER * x, FISHEYE_PARAMETER * y);
+    }),
+    EXPONENTIAL("exponential", v -> {
+      float factor = exp(v.x - 1.0);
+      float x = factor * cos(PI * v.y);
+      float y = factor * sin(PI * v.y);
+      return new PVector(EXPONENTIAL_PARAMETER * x, EXPONENTIAL_PARAMETER * y);
+    }),
+    POWER("power", v -> {
+      float r = getR(v);
+      float theta = getTheta(v);
+      float powR = pow(r, sin(theta));
+      float x = cos(theta) * powR;
+      float y = sin(theta) * powR;
+      return new PVector(POWER_PARAMETER * x, POWER_PARAMETER * y);
     });
 
 
