@@ -25,7 +25,7 @@ long lastTime;
 
 
 Texture sampler = Texture.HALTON;
-public static int SEED = 771416448;
+public static int SEED = 1742722816;
 public static final boolean RNDSEED = false;
 WrapMode currentMode = WrapMode.MOD_WRAP;
 public static final int N = 3;
@@ -86,7 +86,6 @@ void settings() {
   pApplet = this;
   size(WIDTH, HEIGHT);
   if (RNDSEED) SEED = floor(random(MAX_INT));
-
   randomSeed(SEED);
   noiseSeed(floor(random(MAX_INT)));
   smooth(8);
@@ -97,15 +96,17 @@ void setup() {
   colorMode(HSB, 360, 100, 100, 1);
   background(#EFEDE8);
   noFill();
-  stipple();
-  strokeWeight(.4);
-
+  
   noLoop();
 
 }
 
 void draw() {
+  strokeWeight(.4);
+
   Formula formula = new Formula(this);
+  stipple();
+
   println(formula.getName());
   println("N = " + N);
   println("seed = " + SEED);

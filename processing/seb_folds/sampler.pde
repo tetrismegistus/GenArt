@@ -156,10 +156,18 @@ void stipple() {
       float r = (width * height)/500;
       point(seqGenerator2.generate(2) * r, seqGenerator3.generate(3) * r);
     }
+  } else if (sampler == Texture.GAUSSIAN) {
+    float factor = 0.5f;
+    for (int i = 0; i < width; i++) {
+      for (int j = 0; j < height; j++) {
+       point(i + factor * randomGaussian(), j + factor * randomGaussian());
+    }
+    }
   }
 }
 
 enum Texture {
     POISSON,
-    HALTON
+    HALTON,
+    GAUSSIAN,
 }
