@@ -1,3 +1,5 @@
+import com.krab.lazy.*;
+
 import java.util.Random;
 
 String sketchName = "mySketch";

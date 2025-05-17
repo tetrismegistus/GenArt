@@ -49,6 +49,8 @@ class TileRect {
   }
   
   void render(float paddingPercentage) {
+      color ref = #E7DFC6;
+      strokeWeight(.5);
       if (draw) {
           float lX = x * tileSize;
           float lY = y * tileSize;
@@ -62,27 +64,25 @@ class TileRect {
             return;  // If after subtracting padding the rectangle would disappear, we don't render it.
           }
   
-          float n = evalNoiseWithOctaves(lX, lY, OCTAVES, PERSISTENCE, NOISE_SCALE);  
-          ColorPalette activePalette;
-          if (useNoiseForPalette) {
-            activePalette = (n > .5) ? paletteA : paletteB;
-          } else {
-            activePalette = (random(1) > .5) ? paletteA : paletteB;
-          }
+          for (float x = lX + actualPadding; x < lX + lW - 2*actualPadding; x++) {
+          //float n = evalNoiseWithOctaves(lX, lY, OCTAVES, PERSISTENCE, NOISE_SCALE);  
+            for (Float y = lY + actualPadding; y < lY + lH; y++) {
 
-          color randomColor = activePalette.getRandomColor();
-  
-          if (n > FILL_THRESHOLD) {
-              outputBuffer.stroke(BACKGROUND_COLOR);
-              outputBuffer.fill(randomColor);      
-          } else {
-              outputBuffer.stroke(randomColor);         
-              outputBuffer.noFill();
+              float n = fbm_warp(x, y, 3, .2, .9);
+
+              float brt = map(n, -1, 1, 75, 100);
+
+              outputBuffer.stroke(hue(ref), saturation(ref), brt, 1);
+              outputBuffer.point(x, y);
+            }
           }
-  
-          // Draw the rectangle with the padding accounted for.
+          outputBuffer.stroke(#000000);
+          outputBuffer.noFill();
+          outputBuffer.strokeWeight(2);
           outputBuffer.rect(lX + actualPadding, lY + actualPadding, lW - 2*actualPadding, lH - 2*actualPadding);
       }
+      
+      
   }
 
 

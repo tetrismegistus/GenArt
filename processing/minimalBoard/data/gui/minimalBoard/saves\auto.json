@@ -380,12 +380,6 @@
               "type": "FOLDER"
             }
           ],
-          "window": {
-            "posX": 481.00003,
-            "posY": 0.0,
-            "closed": true,
-            "windowSizeX": 220.0
-          },
           "className": "FolderNode",
           "path": "options/windows",
           "type": "FOLDER"
@@ -553,12 +547,6 @@
               "type": "VALUE"
             }
           ],
-          "window": {
-            "posX": 481.00003,
-            "posY": 0.0,
-            "closed": true,
-            "windowSizeX": 220.0
-          },
           "className": "FolderNode",
           "path": "options/grid",
           "type": "FOLDER"
@@ -757,12 +745,6 @@
           "type": "FOLDER"
         }
       ],
-      "window": {
-        "posX": 286.0,
-        "posY": 0.0,
-        "closed": true,
-        "windowSizeX": 198.0
-      },
       "className": "FolderNode",
       "path": "options",
       "type": "FOLDER"
@@ -827,7 +809,7 @@
       "window": {
         "posX": 286.0,
         "posY": 0.0,
-        "closed": true,
+        "closed": false,
         "windowSizeX": 198.0
       },
       "className": "SaveFolderNode",

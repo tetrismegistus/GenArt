@@ -52,7 +52,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/themes/focus foreground/hue",
@@ -60,7 +59,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/themes/focus foreground/sat",
@@ -68,7 +66,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/themes/focus foreground/br",
@@ -76,7 +73,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/themes/focus foreground/alpha",
@@ -102,7 +98,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/themes/focus background/hue",
@@ -110,15 +105,13 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/themes/focus background/sat",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.18431373,
-                  "currentPrecisionIndex": 2,
+                  "valueFloat": 0.18431372940540314,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/themes/focus background/br",
@@ -126,7 +119,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/themes/focus background/alpha",
@@ -152,7 +144,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/themes/normal foreground/hue",
@@ -160,15 +151,13 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/themes/normal foreground/sat",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.6901961,
-                  "currentPrecisionIndex": 2,
+                  "valueFloat": 0.6901960968971252,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/themes/normal foreground/br",
@@ -176,7 +165,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/themes/normal foreground/alpha",
@@ -202,7 +190,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/themes/normal background/hue",
@@ -210,15 +197,13 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/themes/normal background/sat",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.043137256,
-                  "currentPrecisionIndex": 2,
+                  "valueFloat": 0.04313725605607033,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/themes/normal background/br",
@@ -226,7 +211,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/themes/normal background/alpha",
@@ -252,7 +236,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/themes/window border/hue",
@@ -260,15 +243,13 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/themes/window border/sat",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.47058824,
-                  "currentPrecisionIndex": 2,
+                  "valueFloat": 0.47058823704719543,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/themes/window border/br",
@@ -276,7 +257,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/themes/window border/alpha",
@@ -301,7 +281,6 @@
           "children": [
             {
               "valueFloat": 22.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderIntNode",
               "path": "options/windows/cell size",
@@ -347,7 +326,6 @@
                 },
                 {
                   "valueFloat": 4.0,
-                  "currentPrecisionIndex": 4,
                   "valueFloatPrecision": 1.0,
                   "className": "SliderNode",
                   "path": "options/windows/resize/handle width",
@@ -368,7 +346,6 @@
                 },
                 {
                   "valueFloat": 0.5,
-                  "currentPrecisionIndex": 3,
                   "valueFloatPrecision": 0.1,
                   "className": "SliderNode",
                   "path": "options/windows/separators/weight",
@@ -400,7 +377,6 @@
             },
             {
               "valueFloat": 16.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderIntNode",
               "path": "options/font/main font size",
@@ -408,7 +384,6 @@
             },
             {
               "valueFloat": 15.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderIntNode",
               "path": "options/font/side font size",
@@ -416,7 +391,6 @@
             },
             {
               "valueFloat": 5.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderNode",
               "path": "options/font/x offset",
@@ -424,7 +398,6 @@
             },
             {
               "valueFloat": 13.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderNode",
               "path": "options/font/y offset",
@@ -476,7 +449,6 @@
             },
             {
               "valueFloat": 100.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderNode",
               "path": "options/grid/drag range",
@@ -492,7 +464,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/grid/point color/hue",
@@ -500,15 +471,13 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/grid/point color/sat",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.49803922,
-                  "currentPrecisionIndex": 2,
+                  "valueFloat": 0.49803921580314636,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/grid/point color/br",
@@ -516,7 +485,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/grid/point color/alpha",
@@ -534,7 +502,6 @@
             },
             {
               "valueFloat": 3.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderNode",
               "path": "options/grid/point size",
@@ -595,7 +562,6 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "HueNode",
                   "path": "options/context lines/color/hue",
@@ -603,15 +569,13 @@
                 },
                 {
                   "valueFloat": 0.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "SaturationNode",
                   "path": "options/context lines/color/sat",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.49803922,
-                  "currentPrecisionIndex": 2,
+                  "valueFloat": 0.49803921580314636,
                   "valueFloatPrecision": 0.01,
                   "className": "BrightnessNode",
                   "path": "options/context lines/color/br",
@@ -619,7 +583,6 @@
                 },
                 {
                   "valueFloat": 1.0,
-                  "currentPrecisionIndex": 2,
                   "valueFloatPrecision": 0.01,
                   "className": "AlphaNode",
                   "path": "options/context lines/color/alpha",
@@ -636,8 +599,7 @@
               "type": "FOLDER"
             },
             {
-              "valueFloat": 1.2,
-              "currentPrecisionIndex": 3,
+              "valueFloat": 1.2000000476837158,
               "valueFloatPrecision": 0.1,
               "className": "SliderNode",
               "path": "options/context lines/weight",
@@ -645,7 +607,6 @@
             },
             {
               "valueFloat": 3.5,
-              "currentPrecisionIndex": 3,
               "valueFloatPrecision": 0.1,
               "className": "SliderNode",
               "path": "options/context lines/end size",
@@ -695,6 +656,12 @@
               "type": "VALUE"
             },
             {
+              "valueBoolean": true,
+              "className": "ToggleNode",
+              "path": "options/hotkeys/mouse wheel",
+              "type": "VALUE"
+            },
+            {
               "stringValue": "r: reset control element to default value\nctrl + c: copy from (single value or folder)\nctrl + v: paste to (single value or folder)\nthese hotkeys cannot be turned off for now",
               "className": "TextNode",
               "path": "options/hotkeys/mouseover specific hotkeys",
@@ -709,7 +676,6 @@
           "children": [
             {
               "valueFloat": 500.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderIntNode",
               "path": "options/keyboard delay/delay (ms)",
@@ -753,13 +719,19 @@
       "children": [
         {
           "className": "ButtonNode",
-          "path": "saves/create new save",
+          "path": "saves/open save folder",
           "type": "TRANSIENT"
         },
         {
           "className": "ButtonNode",
-          "path": "saves/open save folder",
+          "path": "saves/create new save",
           "type": "TRANSIENT"
+        },
+        {
+          "stringValue": "",
+          "className": "TextNode",
+          "path": "saves/custom save name",
+          "type": "VALUE"
         },
         {
           "children": [
@@ -777,7 +749,6 @@
             },
             {
               "valueFloat": 1000.0,
-              "currentPrecisionIndex": 4,
               "valueFloatPrecision": 1.0,
               "className": "SliderIntNode",
               "path": "saves/autosave rules/save guard (ms)",
@@ -799,90 +770,82 @@
           "className": "FolderNode",
           "path": "saves/autosave rules",
           "type": "FOLDER"
-        },
-        {
-          "className": "SaveItemNode",
-          "path": "saves/auto",
-          "type": "TRANSIENT"
         }
       ],
+      "window": {
+        "posX": 264.0,
+        "posY": 22.0,
+        "closed": true,
+        "windowSizeX": 198.0
+      },
       "className": "SaveFolderNode",
       "path": "saves",
       "type": "FOLDER"
     },
     {
-      "valueBoolean": false,
+      "valueBoolean": true,
       "className": "ToggleNode",
       "path": "Use Noise for Palette",
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.0010100005,
-      "currentPrecisionIndex": 0,
-      "valueFloatPrecision": 1.0E-4,
+      "valueFloat": 0.0010000000474974513,
+      "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "NOISE_SCALE",
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.09999999,
-      "currentPrecisionIndex": 3,
+      "valueFloat": 0.0,
       "valueFloatPrecision": 0.1,
       "className": "SliderNode",
       "path": "FILL_THRESHOLD",
       "type": "VALUE"
     },
     {
-      "valueFloat": 10.0,
-      "currentPrecisionIndex": 4,
+      "valueFloat": 4.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "OCTAVES",
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.4,
-      "currentPrecisionIndex": 3,
-      "valueFloatPrecision": 0.1,
+      "valueFloat": 0.5,
+      "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "PERSISTENCE",
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.050000004,
-      "currentPrecisionIndex": 3,
-      "valueFloatPrecision": 0.1,
+      "valueFloat": 0.009999999776482582,
+      "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "PADDING",
       "type": "VALUE"
     },
     {
       "valueFloat": 1.0,
-      "currentPrecisionIndex": 4,
       "valueFloatPrecision": 1.0,
       "className": "SliderNode",
       "path": "STROKEWEIGHT",
       "type": "VALUE"
     },
     {
-      "valueFloat": 3.0,
-      "currentPrecisionIndex": 3,
+      "valueFloat": 0.0,
       "valueFloatPrecision": 0.1,
       "className": "SliderIntNode",
       "path": "MAX_DEPTH",
       "type": "VALUE"
     },
     {
-      "valueFloat": 20.0,
-      "currentPrecisionIndex": 4,
+      "valueFloat": 100.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MAX_TILE_WIDTH",
       "type": "VALUE"
     },
     {
-      "valueFloat": 30.0,
-      "currentPrecisionIndex": 4,
+      "valueFloat": 100.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MAX_TILE_HEIGHT",
@@ -895,8 +858,8 @@
     }
   ],
   "window": {
-    "posX": 44.0,
-    "posY": 66.0,
+    "posX": 22.0,
+    "posY": 22.0,
     "closed": false,
     "windowSizeX": 220.0
   },
