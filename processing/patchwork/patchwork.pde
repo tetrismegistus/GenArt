@@ -1,21 +1,37 @@
-color baseColor = #1D3354;   
-color accentColor = #9ED8DB; 
-
-void setup() {
-  size(1500, 1500, P2D);
-  colorMode(HSB, 360, 100, 100, 1);
-}
-
-
-void draw() {
-  background(#FFFFFF);
-
-  // Outer margin and large box
+color baseColor = #1D3354;
+color accentColor = #9ED8DB;
   float margin = width * 0.1;
   float boxX = margin;
   float boxY = margin;
   float boxW = width - 2 * margin;
   float boxH = height - 2 * margin;
+
+
+void setup() {
+  size(2500, 2500, P2D);
+  colorMode(HSB, 360, 100, 100, 1);
+
+}
+
+
+void draw() {
+  background(#FFFFFF);
+  for (int i = 0; i < 5; i++) {
+    jitter();   
+  }
+  save("grid-threadbox.png");
+  noLoop();
+}
+
+
+void jitter() {
+  float margin = width * 0.1;
+  float boxX = margin;
+  float boxY = margin;
+  float boxW = width - 2 * margin;
+  float boxH = height - 2 * margin;
+
+
 
   // Draw large base threadbox
   threadbox(boxX, boxY, boxW, boxH, 0, 3, baseColor);
@@ -35,41 +51,37 @@ void draw() {
   float startX = boxX + (boxW - totalGridW) / 2;
   float startY = boxY + (boxH - totalGridH) / 2;
 
-for (int y = 0; y < rows; y++) {
-  for (int x = 0; x < cols; x++) {
+  for (int y = 0; y < rows; y++) {
+    for (int x = 0; x < cols; x++) {
 
-    // ORGANIC GAP using Gaussian distribution
-    float drop = abs((float) randomGaussian());
-    if (drop > 1.5) continue;
+      // ORGANIC GAP using Gaussian distribution
+      float drop = abs((float) randomGaussian());
+      if (drop > 1.5) continue;
 
-    // Position and distortions
-    float jitterX = (float) randomGaussian() * spacing * 0.6;
-    float jitterY = (float) randomGaussian() * spacing * 0.3;
-    float px = startX + x * (cellW + spacing) + jitterX;
-    float py = startY + y * (cellH + spacing) + jitterY;
+      // Position and distortions
+      float jitterX = (float) randomGaussian() * spacing * 0.6;
+      float jitterY = (float) randomGaussian() * spacing * 0.3;
+      float px = startX + x * (cellW + spacing) + jitterX;
+      float py = startY + y * (cellH + spacing) + jitterY;
 
-    // Angle with some y-based drift
-    float angle = map(noise(x * 0.1, y * 0.1), 0, 1, 0, 360);
+      // Angle with some y-based drift
+      float angle = map(noise(x * 0.1, y * 0.1), 0, 1, 0, 360);
 
 
-    // Distance-based blend factor (optional hotspot targeting)
-    float dx = x - cols / 2;
-    float dy = y - rows / 2;
-    float d = sqrt(dx * dx + dy * dy);
-    float maxD = sqrt(sq(cols / 2) + sq(rows / 2));
-    float blendAmt = constrain(map((float) randomGaussian() + map(d, 0, maxD, 0, 2), 0, 3, 0, 1), 0, 1);
+      // Distance-based blend factor (optional hotspot targeting)
+      float dx = x - cols / 2;
+      float dy = y - rows / 2;
+      float d = sqrt(dx * dx + dy * dy);
+      float maxD = sqrt(sq(cols / 2) + sq(rows / 2));
+      float blendAmt = constrain(map((float) randomGaussian() + map(d, 0, maxD, 0, 2), 0, 3, 0, 1), 0, 1);
 
-    // Lerp between base and accent
-    color c = lerpColor(baseColor, accentColor, blendAmt);
+      // Lerp between base and accent
+      color c = lerpColor(baseColor, accentColor, blendAmt);
 
-    // Draw the threadbox
-    threadbox(px, py, cellW, cellH, angle, (int) 1, c);
+      // Draw the threadbox
+      threadbox(px, py, cellW, cellH, angle, (int) 1, c);
+    }
   }
-
-}
-
-  save("grid-threadbox.png");
-  noLoop();
 }
 
 
@@ -81,7 +93,7 @@ void draftsmanLine(float x1, float y1, float x2, float y2, color baseColor) {
   float baseHue = hue(baseColor);
   float baseSat = saturation(baseColor);
   float baseBrt = brightness(baseColor);
-  
+
   float hueScale = 0.01;
   float satScale = 0.2;
   float brtScale = 0.3;
@@ -100,7 +112,7 @@ void draftsmanLine(float x1, float y1, float x2, float y2, color baseColor) {
       float b = constrain(baseBrt + map(noise(x * brtScale, n), 0, 1, -20, 20), 0, 100);
       float w = map(noise(x * weightScale, n), 0, 1, .1, 2);
 
-      stroke(h, s, b, 1);
+      stroke(h, s, b, .2);
       strokeWeight(w);
       point(x + randomGaussian() * .1, y + randomGaussian() * .1);
     }
@@ -111,28 +123,28 @@ void draftsmanLine(float x1, float y1, float x2, float y2, color baseColor) {
 void threadbox(float x, float y, float w, float h, float angleDegrees, float spacing, color c) {
 
   float angle = radians(angleDegrees);
-  
+
   // Direction vector of the thread lines
   float dx = cos(angle);
   float dy = sin(angle);
-  
+
   // Orthogonal sweep direction
   float ox = -dy;
   float oy = dx;
-  
+
   // Sweep bounds
   float diag = dist(0, 0, w, h);
-  
+
   for (float i = -diag; i <= diag; i += spacing) {
     float cx = x + w / 2 + i * ox;
     float cy = y + h / 2 + i * oy;
-    
+
     // Start far away in both directions
     float x1 = cx - dx * diag;
     float y1 = cy - dy * diag;
     float x2 = cx + dx * diag;
     float y2 = cy + dy * diag;
-    
+
     // Find clipped segment inside box bounds
     PVector[] clipped = clipLineToRect(x1, y1, x2, y2, x, y, w, h);
     if (clipped != null) {

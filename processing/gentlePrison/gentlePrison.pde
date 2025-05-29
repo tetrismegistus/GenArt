@@ -15,27 +15,31 @@ ArrayList<Board> boards = new ArrayList<Board>();
 final ColorPalette PAL_A = new ColorPalette(new color[] {#D64045, #1D3354});
 final ColorPalette PAL_B = new ColorPalette(new color[] {#9ED8DB, #467599});
 final color BACKGROUND_COLOR = #E9FFF9;
-final float DEFAULT_TILE_SIZE = 5;
+final float DEFAULT_TILE_SIZE = 15;
 
 boolean useNoiseForPalette = true;  // Default to true
 int OCTAVES = 4;               // Default value
 float PERSISTENCE = 0.5f;     // Default value
-int MAX_TILE_WIDTH = 10;
-int MAX_TILE_HEIGHT = 20;
+int MAX_TILE_WIDTH = 40;
+int MAX_TILE_HEIGHT = 40;
+int MIN_TILE_WIDTH = 10;
+int MIN_TILE_HEIGHT = 10;
 int DEFAULT_MAX_DEPTH = 0;
 float FILL_THRESHOLD = 0;
 float PADDING = 0.01;
 float NOISE_SCALE = 0.001;
 float STROKEWEIGHT = 1;
-
+float jitterAmt = 5;  // adjust this value to control jitter magnitude
 PGraphics outputBuffer;
 
 OpenSimplexNoise oNoise;
 
-int outputWidth = 2000;
-int outputHeight = 2000;
+int outputWidth = 4000;
+int outputHeight = 4000;
 int previewWidth = 1000;
 int previewHeight = 1000;
+float padX, padY;
+int rows, cols;
 
 void setup() {    
   colorMode(HSB, 360, 100, 100, 1);
@@ -43,7 +47,15 @@ void setup() {
   
   smooth(8);    
   gui = new LazyGui(this);
+  float marginRatio = .05;
+  padX = outputWidth * marginRatio;
+  padY = outputHeight * marginRatio;
+  rows = (int) ((outputWidth - padX * 2) / DEFAULT_TILE_SIZE);
+  cols = (int) ((outputHeight - padY * 2) / DEFAULT_TILE_SIZE);
+
   genBoard();
+  
+
 }
 
 
@@ -55,10 +67,13 @@ void draw() {
   OCTAVES = gui.sliderInt("OCTAVES", OCTAVES, 1, 10); // Example with a max of 10 octaves
   PERSISTENCE = gui.slider("PERSISTENCE", PERSISTENCE, 0.1, 1.0);
   PADDING = gui.slider("PADDING", PADDING, 0, .45);
-  STROKEWEIGHT = gui.slider("STROKEWEIGHT", STROKEWEIGHT, 1, 10);
+  STROKEWEIGHT = gui.slider("STROKEWEIGHT", STROKEWEIGHT, 0, 10);
   DEFAULT_MAX_DEPTH = gui.sliderInt("MAX_DEPTH", DEFAULT_MAX_DEPTH, 0, 3);
-  MAX_TILE_WIDTH = gui.sliderInt("MAX_TILE_WIDTH", MAX_TILE_WIDTH, 2, 100);
-  MAX_TILE_HEIGHT = gui.sliderInt("MAX_TILE_HEIGHT", MAX_TILE_HEIGHT, 2, 100);
+  MAX_TILE_WIDTH = gui.sliderInt("MAX_TILE_WIDTH", MIN_TILE_WIDTH + 1, 2, 200);
+  MAX_TILE_HEIGHT = gui.sliderInt("MAX_TILE_HEIGHT", MIN_TILE_HEIGHT + 1, 2, 200);
+  MIN_TILE_WIDTH = gui.sliderInt("MIN_TILE_WIDTH", MIN_TILE_WIDTH, 1, MAX_TILE_WIDTH - 1);
+  MIN_TILE_HEIGHT = gui.sliderInt("MIN_TILE_HEIGHT", MIN_TILE_HEIGHT, 1, MAX_TILE_HEIGHT - 1);
+  jitterAmt =  gui.slider("jitter", jitterAmt, .1, 10);
   if(gui.button("rerender")){
     genBoard();
   }
@@ -79,7 +94,7 @@ void genBoard() {
   outputBuffer.ellipseMode(CENTER);    
   outputBuffer.background(BACKGROUND_COLOR);
   
-  Board b = new Board(50, 50, 380, 380, DEFAULT_TILE_SIZE, PAL_A, PAL_B, 0, DEFAULT_MAX_DEPTH);
+  Board b = new Board(padX, padY, cols, rows, DEFAULT_TILE_SIZE, PAL_A, PAL_B, 0, DEFAULT_MAX_DEPTH);
   
   b.fillBoard();
   boards.add(b);

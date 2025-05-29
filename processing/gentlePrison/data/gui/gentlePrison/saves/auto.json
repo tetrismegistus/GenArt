@@ -273,6 +273,12 @@
               "type": "FOLDER"
             }
           ],
+          "window": {
+            "posX": 484.0,
+            "posY": 22.0,
+            "closed": true,
+            "windowSizeX": 220.0
+          },
           "className": "FolderNode",
           "path": "options/themes",
           "type": "FOLDER"
@@ -357,6 +363,12 @@
               "type": "FOLDER"
             }
           ],
+          "window": {
+            "posX": 484.0,
+            "posY": 22.0,
+            "closed": true,
+            "windowSizeX": 220.0
+          },
           "className": "FolderNode",
           "path": "options/windows",
           "type": "FOLDER"
@@ -514,6 +526,12 @@
               "type": "VALUE"
             }
           ],
+          "window": {
+            "posX": 484.0,
+            "posY": 22.0,
+            "closed": true,
+            "windowSizeX": 220.0
+          },
           "className": "FolderNode",
           "path": "options/grid",
           "type": "FOLDER"
@@ -687,6 +705,12 @@
               "type": "TRANSIENT"
             }
           ],
+          "window": {
+            "posX": 484.0,
+            "posY": 22.0,
+            "closed": true,
+            "windowSizeX": 198.0
+          },
           "className": "FolderNode",
           "path": "options/keyboard delay",
           "type": "FOLDER"
@@ -706,11 +730,23 @@
               "type": "VALUE"
             }
           ],
+          "window": {
+            "posX": 484.0,
+            "posY": 22.0,
+            "closed": true,
+            "windowSizeX": 220.0
+          },
           "className": "FolderNode",
           "path": "options/mouse",
           "type": "FOLDER"
         }
       ],
+      "window": {
+        "posX": 264.0,
+        "posY": 22.0,
+        "closed": false,
+        "windowSizeX": 198.0
+      },
       "className": "FolderNode",
       "path": "options",
       "type": "FOLDER"
@@ -770,14 +806,18 @@
           "className": "FolderNode",
           "path": "saves/autosave rules",
           "type": "FOLDER"
+        },
+        {
+          "className": "SaveItemNode",
+          "path": "saves/1",
+          "type": "TRANSIENT"
+        },
+        {
+          "className": "SaveItemNode",
+          "path": "saves/auto",
+          "type": "TRANSIENT"
         }
       ],
-      "window": {
-        "posX": 264.0,
-        "posY": 22.0,
-        "closed": true,
-        "windowSizeX": 198.0
-      },
       "className": "SaveFolderNode",
       "path": "saves",
       "type": "FOLDER"
@@ -803,7 +843,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 4.0,
+      "valueFloat": 8.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "OCTAVES",
@@ -817,38 +857,59 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.009999999776482582,
+      "valueFloat": 0.20000001788139343,
       "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "PADDING",
       "type": "VALUE"
     },
     {
-      "valueFloat": 1.0,
+      "valueFloat": 10.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderNode",
       "path": "STROKEWEIGHT",
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.0,
+      "valueFloat": 0.10000000149011612,
       "valueFloatPrecision": 0.1,
       "className": "SliderIntNode",
       "path": "MAX_DEPTH",
       "type": "VALUE"
     },
     {
-      "valueFloat": 100.0,
+      "valueFloat": 101.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MAX_TILE_WIDTH",
       "type": "VALUE"
     },
     {
-      "valueFloat": 100.0,
+      "valueFloat": 97.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MAX_TILE_HEIGHT",
+      "type": "VALUE"
+    },
+    {
+      "valueFloat": 11.0,
+      "valueFloatPrecision": 1.0,
+      "className": "SliderIntNode",
+      "path": "MIN_TILE_WIDTH",
+      "type": "VALUE"
+    },
+    {
+      "valueFloat": 6.0,
+      "valueFloatPrecision": 1.0,
+      "className": "SliderIntNode",
+      "path": "MIN_TILE_HEIGHT",
+      "type": "VALUE"
+    },
+    {
+      "valueFloat": 6.100000381469727,
+      "valueFloatPrecision": 1.0,
+      "className": "SliderNode",
+      "path": "jitter",
       "type": "VALUE"
     },
     {

@@ -29,23 +29,12 @@ class Board {
               if (board[ty][tx] == null) {
                   
                   // Use the new tryPlaceTile method.
-                  TileRect tr = tryPlaceTile(tx, ty, (int)random(4, MAX_TILE_WIDTH), (int)random(4, MAX_TILE_HEIGHT));
+                  TileRect tr = tryPlaceTile(tx, ty, (int)random(MIN_TILE_WIDTH, MAX_TILE_WIDTH), (int)random(MIN_TILE_HEIGHT, MAX_TILE_HEIGHT));
   
                   if (tr != null) {
-                      if (tr.w % 2 == 0 && tr.h % 2 == 0 && depth < maxDepth) {
-                          tr.draw = false;                        
-                          Board newBoard = new Board(this.x + tr.x * tileSize, 
-                                                    this.y + tr.y * tileSize, 
-                                                    tr.h * 2, tr.w * 2, 
-                                                    tileSize/2, 
-                                                    palA, palB, depth+1, this.maxDepth); // Pass both palettes
-                          newBoard.fillBoard();
-                          boards.add(newBoard);          
-                          rects.add(tr);
-                      } else {
-                          rects.add(tr);
-                      }
-                  }         
+                    rects.add(tr);
+                  }
+       
               }    
           }
       }    
@@ -69,7 +58,7 @@ class Board {
         // Pass both palettes to the TileRect constructor
         TileRect tr = new TileRect(startX, startY, width, height, palA, palB, tileSize*rows*.005, tileSize);
 
-        while (width > 0 && height > 0) {
+        while (width >  MIN_TILE_WIDTH && height > MIN_TILE_HEIGHT) {
             if (tr.checkIsValid(board)) {
                 tr.place(board);
                 return tr;
