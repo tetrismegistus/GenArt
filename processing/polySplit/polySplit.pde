@@ -5,12 +5,12 @@ import java.util.*;
 
 String sketchName = "polySplit";
 String saveFormat = ".png";
-int numLines = 5;  // Number of random lines
+int numLines = 100;  // Number of random lines
 float splitWidth = 3;
 int PACK_ATTEMPTS = 100000;
 color[] p = {#0D1321, #1D2D44};
 color[] p1 = {#F08A4B, #F2A541};
-
+PGraphics embossBuffer;
 float radius = 5; // Adjust the radius as needed
 int k = 30; // Adjust the k parameter as needed
 ArrayList<PVector> points;
@@ -25,12 +25,12 @@ List<Polygon> outerPolygons = new ArrayList<>();
 List<Polygon> innerPolygons = new ArrayList<>();
 
 void setup() {
-  size(1500, 1500);
+  size(1500, 1500, P2D);
   colorMode(HSB, 360, 100, 100, 1);
-  buffer = createGraphics(width, height);
-
+  buffer = createGraphics(width, height, P2D);
+  embossBuffer = createGraphics(width, height, P2D);
   // Poisson disk sample points if needed elsewhere
-  points = poissonDiskSampling(radius, k);
+  //points = poissonDiskSampling(radius, k);
 
   float margin = 0.1 * width; // 10% margin on each side
 
@@ -79,7 +79,7 @@ void setup() {
 
   // 6. Split polygons with random buffered lines
   List<Polygon> splits = createSplits(numLines, splitWidth);
-  outerPolygons = splitPolygons(outerPolygons, splits);
+  //outerPolygons = splitPolygons(outerPolygons, splits);
   innerPolygons = splitPolygons(innerPolygons, splits);
 
   println("setup done");
@@ -87,22 +87,49 @@ void setup() {
 
 
 void draw() {
-  background(#0D1321);
+
+  println("outer polygons...");
+  // --- Draw outerPolygons (no emboss) ---
   buffer.beginDraw();
   buffer.clear();
   buffer.colorMode(HSB, 360, 100, 100, 1);
+  buffer.background(#0D1321);
+  for (int i = 0; i < 4; i++) {
+    smoothAndDraw(buffer, outerPolygons, p, 4, 0, false);
+  }
   buffer.endDraw();
 
-  int passes = 4;
-  float displacement = 4;  // Adjust as needed for effect
-  float offset2 = random(100000);
-  for (int i = 0; i < passes; i++) {
-    println("draw pass: " + i);
-    smoothAndDraw(buffer, outerPolygons, p, displacement, 0);
-    smoothAndDraw(buffer, innerPolygons, p1, displacement, offset2);
-  }
+  println("inner polygons");
+  // --- Draw innerPolygons to embossBuffer ---
+  embossBuffer.beginDraw();
+  embossBuffer.clear();  // clears to transparent
+  embossBuffer.colorMode(HSB, 360, 100, 100, 1);
+  embossBuffer.noStroke();
+  embossBuffer.noFill(); // Important: nothing opaque by default
 
+  float offset2 = random(100000);
+  for (int i = 0; i < 4; i++) {
+    smoothAndDraw(embossBuffer, innerPolygons, p1, 4, offset2, true);
+  }
+  embossBuffer.endDraw();
+
+  println("embossing...");
+  // --- Apply emboss shader to embossBuffer ---
+  PShader emboss = loadShader("emboss.frag");
+  emboss.set("u_resolution", float(width), float(height));
+  emboss.set("u_mouse", float(mouseX), float(mouseY));
+  emboss.set("u_time", millis() / 1000.0);
+  emboss.set("texelSize", 1.0 / width, 1.0 / height);
+  emboss.set("direction", 1.0, 1.0);
+
+  // Draw base layer
   image(buffer, 0, 0);
+
+  // Embossed overlay
+  shader(emboss);
+  image(embossBuffer, 0, 0);
+  resetShader();
+
   save(getTemporalName(sketchName, saveFormat));
   println("saved");
   noLoop();
@@ -180,12 +207,17 @@ List<Polygon> splitPolygons(List<Polygon> polygons, List<Polygon> splits) {
   return polygons;
 }
 
-void smoothAndDraw(PGraphics pg, List<Polygon> polygons, color[] palette, float displacement, float offset) {
+void smoothAndDraw(PGraphics pg, List<Polygon> polygons, color[] palette, float displacement, float offset, boolean smooth) {
   for (Polygon poly : polygons) {
     // Convert to PShape and smooth it
     PShape shape = polygonToPShape(poly);
-    PShape smoothed = chaikin(shape, 0.25, 4, true);
-
+    
+    PShape smoothed;
+    if (smooth) {
+      smoothed = chaikin(shape, 0.25, 4, true);
+    } else {
+      smoothed = shape;
+    }
     ArrayList<PVector> smoothedVertices = new ArrayList<PVector>();
     for (int i = 0; i < smoothed.getVertexCount(); i++) {
       smoothedVertices.add(smoothed.getVertex(i));
