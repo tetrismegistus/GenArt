@@ -5,74 +5,109 @@ import java.util.*;
 
 String sketchName = "polySplit";
 String saveFormat = ".png";
-int numLines = 30;  // Number of random lines
-float splitWidth = 2;
+int numLines = 5;  // Number of random lines
+float splitWidth = 3;
+int PACK_ATTEMPTS = 100000;
 color[] p = {#0D1321, #1D2D44};
-color[] p1 = {#3E5C76, #748CAB};
+color[] p1 = {#F08A4B, #F2A541};
 
 float radius = 5; // Adjust the radius as needed
 int k = 30; // Adjust the k parameter as needed
 ArrayList<PVector> points;
-
+PGraphics buffer;
 int calls = 0;
 long lastTime;
+
+OpenSimplexNoise noise = new OpenSimplexNoise();
 
 GeometryFactory geometryFactory = new GeometryFactory();
 List<Polygon> outerPolygons = new ArrayList<>();
 List<Polygon> innerPolygons = new ArrayList<>();
 
 void setup() {
-  size(1000, 1000);
+  size(1500, 1500);
   colorMode(HSB, 360, 100, 100, 1);
-  
-  // Generate points using Poisson disk sampling
+  buffer = createGraphics(width, height);
+
+  // Poisson disk sample points if needed elsewhere
   points = poissonDiskSampling(radius, k);
 
-  // Adjust margins based on canvas size
   float margin = 0.1 * width; // 10% margin on each side
 
-  // 1. Create outer square
+  // 1. Create the outer square polygon
   Coordinate[] outerSquareCoords = {
     new Coordinate(margin, margin),
     new Coordinate(width - margin, margin),
     new Coordinate(width - margin, height - margin),
     new Coordinate(margin, height - margin),
-    new Coordinate(margin, margin)  // Closing the loop
+    new Coordinate(margin, margin)
   };
   LinearRing outerSquareRing = geometryFactory.createLinearRing(outerSquareCoords);
+  Polygon outerSquare = geometryFactory.createPolygon(outerSquareRing);
 
-  // 2. Create inner circle
-  float circleRadius = 0.25 * Math.min(width, height);  // 25% of the smallest dimension
-  Geometry circle = createCircle(width / 2.0, height / 2.0, circleRadius);
+  // 2. Pack circles inside the outer square
+  List<Circle> packed = packCirclesInPolygon(outerSquare, 5, 200, PACK_ATTEMPTS);
+  float shrinkFactor = 0.92;  // Shrink only for drawing
 
-  // 3. Subtract the inner circle from the outer square to get a square with a hole.
-  Geometry squareWithHole = geometryFactory.createPolygon(outerSquareRing).difference(circle);
-  outerPolygons.add((Polygon) squareWithHole);
+  // 3. Carve full-radius circles as holes from the outer square
+  List<Polygon> holePolygons = new ArrayList<>();
+  for (Circle c : packed) {
+    Polygon fullCircle = (Polygon) createCircle(c.center.x, c.center.y, c.radius);
+    holePolygons.add(fullCircle);
+  }
 
-  // 4. Add the inner circle as a separate polygon.
-  circleRadius = 0.245 * Math.min(width, height);  // Slightly smaller to ensure a gap
-  circle = createCircle(width / 2.0, height / 2.0, circleRadius);
-  innerPolygons.add((Polygon) circle);
+  Geometry holesUnion = geometryFactory.buildGeometry(holePolygons).union();
+  Geometry squareWithHoles = outerSquare.difference(holesUnion);
 
-  // 5. Split the polygons
-  int numLines = 10; // Example number of lines for splitting
-  float splitWidth = 10; // Example split width
+  // 4. Store result polygons
+  outerPolygons.clear();
+  if (squareWithHoles instanceof Polygon) {
+    outerPolygons.add((Polygon) squareWithHoles);
+  } else if (squareWithHoles instanceof MultiPolygon) {
+    MultiPolygon multi = (MultiPolygon) squareWithHoles;
+    for (int i = 0; i < multi.getNumGeometries(); i++) {
+      outerPolygons.add((Polygon) multi.getGeometryN(i));
+    }
+  }
+
+  // 5. Shrink circle geometries for rendering and store in innerPolygons
+  innerPolygons.clear();
+  for (Circle c : packed) {
+    Polygon shrunk = (Polygon) createCircle(c.center.x, c.center.y, c.radius * shrinkFactor);
+    innerPolygons.add(shrunk);
+  }
+
+  // 6. Split polygons with random buffered lines
   List<Polygon> splits = createSplits(numLines, splitWidth);
   outerPolygons = splitPolygons(outerPolygons, splits);
   innerPolygons = splitPolygons(innerPolygons, splits);
+
+  println("setup done");
 }
 
-void draw() {
-  background(#F0EBD8);
 
-  // Draw all polygons
-  noStroke();
-  smoothAndDraw(outerPolygons, p1);
-  smoothAndDraw(innerPolygons, p);
+void draw() {
+  background(#0D1321);
+  buffer.beginDraw();
+  buffer.clear();
+  buffer.colorMode(HSB, 360, 100, 100, 1);
+  buffer.endDraw();
+
+  int passes = 4;
+  float displacement = 4;  // Adjust as needed for effect
+  float offset2 = random(100000);
+  for (int i = 0; i < passes; i++) {
+    println("draw pass: " + i);
+    smoothAndDraw(buffer, outerPolygons, p, displacement, 0);
+    smoothAndDraw(buffer, innerPolygons, p1, displacement, offset2);
+  }
+
+  image(buffer, 0, 0);
   save(getTemporalName(sketchName, saveFormat));
   println("saved");
   noLoop();
 }
+
 
 Coordinate generateRandomCoordinate(int side) {
   float x = 0, y = 0;
@@ -145,29 +180,25 @@ List<Polygon> splitPolygons(List<Polygon> polygons, List<Polygon> splits) {
   return polygons;
 }
 
-void smoothAndDraw(List<Polygon> polygons, color[] p) {
+void smoothAndDraw(PGraphics pg, List<Polygon> polygons, color[] palette, float displacement, float offset) {
   for (Polygon poly : polygons) {
-    PShape shape = polygonToPShape(poly); // Convert JTS Polygon to PShape
-    PShape smoothed = chaikin(shape, .25, 4, true); // Apply Chaikin smoothing
+    // Convert to PShape and smooth it
+    PShape shape = polygonToPShape(poly);
+    PShape smoothed = chaikin(shape, 0.25, 4, true);
 
-    // Extract vertices from the smoothed shape
     ArrayList<PVector> smoothedVertices = new ArrayList<PVector>();
     for (int i = 0; i < smoothed.getVertexCount(); i++) {
-      PVector v = smoothed.getVertex(i);
-      smoothedVertices.add(v);
+      smoothedVertices.add(smoothed.getVertex(i));
     }
 
-    // Check if smoothedVertices is not empty before accessing
-    if (smoothedVertices.size() == 0) {
-      continue; // Skip the current polygon if there are no vertices
-    }
+    if (smoothedVertices.isEmpty()) continue;
 
-    // Ensure the LinearRing is closed by adding the first vertex at the end if necessary
+    // Ensure closed ring
     if (!smoothedVertices.get(0).equals(smoothedVertices.get(smoothedVertices.size() - 1))) {
       smoothedVertices.add(smoothedVertices.get(0));
     }
 
-    // Create a new JTS polygon from the smoothed vertices
+    // Convert smoothed vertices to JTS Coordinates
     Coordinate[] coords = new Coordinate[smoothedVertices.size()];
     for (int i = 0; i < smoothedVertices.size(); i++) {
       PVector v = smoothedVertices.get(i);
@@ -177,11 +208,28 @@ void smoothAndDraw(List<Polygon> polygons, color[] p) {
     LinearRing ring = geometryFactory.createLinearRing(coords);
     Polygon smoothedPoly = geometryFactory.createPolygon(ring);
 
-    // Create a TexturedPoly and display it
-    TexturedPoly texturedPoly = new TexturedPoly(smoothedPoly, p[(int) random(p.length)]);
-    texturedPoly.display();
+    // Apply Gaussian displacement
+    float dx = randomGaussian() * displacement;
+    float dy = randomGaussian() * displacement;
+
+    // Translate smoothed polygon coordinates
+    Coordinate[] displacedCoords = new Coordinate[coords.length];
+    for (int i = 0; i < coords.length; i++) {
+      displacedCoords[i] = new Coordinate(coords[i].x + dx, coords[i].y + dy);
+    }
+
+    LinearRing displacedRing = geometryFactory.createLinearRing(displacedCoords);
+    Polygon displacedPoly = geometryFactory.createPolygon(displacedRing);
+
+    // Create and display the textured polygon
+    color clr1 = palette[(int) random(palette.length)];
+    color clr2 = palette[(int) random(palette.length)];
+    TexturedPoly tp = new TexturedPoly(displacedPoly, clr1);
+    tp.display(pg, clr1, clr2, offset);
   }
 }
+
+
 
 
 List<Polygon> createSplits(int numLines, float bufferDistance) {
@@ -224,9 +272,9 @@ float constrainedGaussian(float center, float min, float max) {
   return constrain(value, min, max);
 }
 
-void gaussianStrokeWeight(float center, float min, float max) {
+void gaussianStrokeWeight(float center, float min, float max, PGraphics pg) {
   float sw = constrainedGaussian(center, min, max);
-  strokeWeight(sw);
+  pg.strokeWeight(sw);
 }
 
 color gaussianColor(color baseColor, float minBright, float maxBright) {

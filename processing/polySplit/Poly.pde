@@ -49,38 +49,26 @@ class TexturedPoly {
     return nearestEdge;
   }
 
-  void display() {
-    int baseLineLength = 5;
-
-    for (int px = int(min.x); px <= int(max.x); px++) {
-      for (int py = int(min.y); py <= int(max.y); py++) {
-        if (isInsidePolygon(px, py)) {
-          if (random(1) < 0.85) { // Adjust the probability as needed
-            float lineLength = constrainedGaussian(baseLineLength, 1, 10); // Adjust min and max as needed
-            float noiseValue = noiseWithOctaves(px * 0.025, py * 0.025, 6, .8);
-            float brightness = map(noiseValue, 0, 1, 40, 60);
-            PVector nearestEdge = findNearestEdge(px, py);
-            PVector edgeDirection = PVector.sub(nearestEdge, new PVector(px, py)).normalize();
-            PVector perpendicularDirection;
-
-            // Ensure a proper perpendicular direction for horizontal and vertical edges
-            if (abs(edgeDirection.x) > abs(edgeDirection.y)) {
-              perpendicularDirection = new PVector(1, 0).normalize(); // Horizontal line              
-            } else {
-              perpendicularDirection = new PVector(0, 1).normalize(); // Vertical line              
-            }
-
-            gaussianStrokeWeight(.5, 0.3, .8);
-            stroke(gaussianColor(clr, brightness, brightness + 10)); // Adjust base color and range as needed
-            line(px - perpendicularDirection.x * lineLength / 2, py - perpendicularDirection.y * lineLength / 2,
-                 px + perpendicularDirection.x * lineLength / 2, py + perpendicularDirection.y * lineLength / 2);
-          }
+  void display(PGraphics pg, color ref, color ref2, float offset) {
+    pg.beginDraw();
+    pg.strokeWeight(.8);
+    for (float x = min.x; x <= max.x; x+=1) {
+      for (float y = min.y; y <= max.y; y+=1) {
+        if (isInsidePolygon(x, y)) {
+          float n = fbm_warp(x + offset, y + offset, 3, 0.2, 0.9);  // Use your existing function
+          color curColor = (n > 0) ? ref2 : ref;
+          float brt = map(n, -1, 1, 50, 100);
+          //pg.strokeWeight(map(n, -1, 1, .1, .8));
+          pg.stroke(hue(curColor), saturation(curColor), brt);
+          pg.point(x, y);
         }
       }
     }
+    
+    pg.endDraw();
   }
-  
-  void discDisplay() {
+
+  void discDisplay(PGraphics pg) {
     float radius = 5; // Adjust the radius as needed
     int k = 30; // Adjust the k parameter as needed
 
@@ -94,9 +82,9 @@ class TexturedPoly {
             
                 float noiseValue = noiseWithOctaves(px * 0.025, py * 0.025, 6, .8);
                 float brightness = map(noiseValue, 0, 1, 40, 60);
-                gaussianStrokeWeight(4, 2, 6);
-                stroke(gaussianColor(clr, brightness, brightness + 10)); // Adjust base color and range as needed
-                point(px, py);
+                gaussianStrokeWeight(4, 2, 6, pg);
+                pg.stroke(gaussianColor(clr, brightness, brightness + 10)); // Adjust base color and range as needed
+                pg.point(px, py);
             
         }
     }

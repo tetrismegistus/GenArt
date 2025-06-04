@@ -744,7 +744,7 @@
       "window": {
         "posX": 264.0,
         "posY": 22.0,
-        "closed": false,
+        "closed": true,
         "windowSizeX": 198.0
       },
       "className": "FolderNode",
@@ -829,7 +829,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.0010000000474974513,
+      "valueFloat": 1.0,
       "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "NOISE_SCALE",
@@ -857,7 +857,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.20000001788139343,
+      "valueFloat": 0.13999998569488525,
       "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "PADDING",
@@ -878,43 +878,95 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 101.0,
+      "valueFloat": 20.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MAX_TILE_WIDTH",
       "type": "VALUE"
     },
     {
-      "valueFloat": 97.0,
+      "valueFloat": 18.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MAX_TILE_HEIGHT",
       "type": "VALUE"
     },
     {
-      "valueFloat": 11.0,
+      "valueFloat": 1.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MIN_TILE_WIDTH",
       "type": "VALUE"
     },
     {
-      "valueFloat": 6.0,
+      "valueFloat": 1.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "MIN_TILE_HEIGHT",
       "type": "VALUE"
     },
     {
-      "valueFloat": 6.100000381469727,
+      "valueFloat": 0.10000000149011612,
       "valueFloatPrecision": 1.0,
       "className": "SliderNode",
       "path": "jitter",
       "type": "VALUE"
     },
     {
+      "valueString": "Noise Fill",
+      "children": [
+        {
+          "valueBoolean": false,
+          "className": "RadioItemNode",
+          "path": "Render Mode/Solid Fill",
+          "type": "TRANSIENT"
+        },
+        {
+          "valueBoolean": true,
+          "className": "RadioItemNode",
+          "path": "Render Mode/Noise Fill",
+          "type": "TRANSIENT"
+        },
+        {
+          "valueBoolean": false,
+          "className": "RadioItemNode",
+          "path": "Render Mode/Thread Fill",
+          "type": "TRANSIENT"
+        }
+      ],
+      "window": {
+        "posX": 264.0,
+        "posY": 22.0,
+        "closed": false,
+        "windowSizeX": 176.0
+      },
+      "className": "RadioFolderNode",
+      "path": "Render Mode",
+      "type": "FOLDER"
+    },
+    {
+      "className": "ButtonNode",
+      "path": "Save Selected Variant",
+      "type": "TRANSIENT"
+    },
+    {
       "className": "ButtonNode",
       "path": "rerender",
+      "type": "TRANSIENT"
+    },
+    {
+      "className": "ButtonNode",
+      "path": "Accumulate Thread Layer",
+      "type": "TRANSIENT"
+    },
+    {
+      "className": "ButtonNode",
+      "path": "Clear Accumulated Threads",
+      "type": "TRANSIENT"
+    },
+    {
+      "className": "ButtonNode",
+      "path": "Save Accumulated Threads",
       "type": "TRANSIENT"
     }
   ],
