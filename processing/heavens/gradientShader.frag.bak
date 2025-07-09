@@ -1,0 +1,31 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform vec2 resolution;
+uniform sampler2D texture;
+uniform vec2 direction;
+
+void main() {
+    vec2 st = gl_FragCoord.xy / resolution.xy;
+
+    // Normalize the direction vector
+    vec2 dir = normalize(direction);
+
+    // Calculate the angle between the original gradient direction and the new direction
+    float angle = atan(dir.y, dir.x) - atan(1.0, 0.0);
+
+    // Rotate the texture coordinates by the calculated angle
+    float cosAngle = cos(angle);
+    float sinAngle = sin(angle);
+    vec2 rotated_st = vec2(
+        cosAngle * (st.x - 0.5) + sinAngle * (st.y - 0.5) + 0.5,
+        -sinAngle * (st.x - 0.5) + cosAngle * (st.y - 0.5) + 0.5
+    );
+
+    // Create the gradient using the rotated texture coordinates
+    vec3 color = vec3(rotated_st.x);
+
+    vec4 originalImage = texture2D(texture, st);
+    gl_FragColor = vec4(color + originalImage.rgb, 1.0);
+}
