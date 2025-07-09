@@ -9,3 +9,6 @@
 - 3d
 - chaos
 - animation
+
+🖼️ Sample Output:  
+<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
