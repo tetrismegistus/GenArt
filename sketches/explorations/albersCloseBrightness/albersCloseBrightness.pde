@@ -11,7 +11,7 @@ float xDivisor = 2.5;
 float offset;
 
 void setup() {
-  size(600, 600);
+  size(800, 600);
   colorMode(HSB);
   rectMode(CENTER);
   offset = height/4;
@@ -33,6 +33,10 @@ void keyPressed() {
   }
   if (key == 'r') {
     reverseTest();
+  }
+  
+  if (key == 's') {
+    saveFrame("output.png");
   }
 }
 

@@ -1,5 +1,12 @@
 # bitField
 
 🧪 Status: Exploration
-📎 Description: (Add your notes here)
+
+📎 Description: A bitfield
+
 🎨 Tags: 
+- bitfield
+- 2d
+
+🖼️ Sample Output:  
+<img src="test.webp" alt="bitField Sample Output" width="800" />

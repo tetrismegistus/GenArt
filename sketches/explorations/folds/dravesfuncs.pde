@@ -201,13 +201,70 @@ PVector fisheye(PVector v, float amount) {
   return new PVector(amount * x, amount * y);
 }
 
-float rings_c = 0.5;
+PVector exponential(PVector v, float amount) {
+  float factor = exp(v.x - 1.0);
+  float x = factor * cos(PI * v.y);
+  float y = factor * sin(PI * v.y);
+  return new PVector(amount * x, amount * y);
+}
 
+
+PVector power(PVector v, float amount) {
+  float r = getR(v);
+  float theta = getTheta(v);
+  float powR = pow(r, sin(theta));
+  float x = cos(theta) * powR;
+  float y = sin(theta) * powR;
+  return new PVector(amount * x, amount * y);
+}
+
+PVector COS(PVector v, float amount)  {
+      float x = cos(PI * v.x) * (float) Math.cosh(v.y);
+      float y = -sin(PI * v.x) * (float) Math.sinh(v.y);
+      return new PVector(amount * x, amount * y);
+}
+
+float rings_c = .5;
 PVector rings(PVector v, float amount) {
   float r = getR(v);
   float theta = getTheta(v);
-  float scaled_r = ((r + rings_c) % (2.0 * rings_c)) - rings_c + r * (1.0 - rings_c);
-  float x = cos(theta) * scaled_r;
-  float y = sin(theta) * scaled_r;
+  float cSquare = pow(rings_c, 2);
+  float factor = ((r + cSquare) % (2 * cSquare) - cSquare + r * (1 - cSquare));
+  float x = cos(theta) * factor;
+  float y = sin(theta) * factor;
+  return new PVector(amount * x, amount * y);
+  
+}
+
+
+float fan_c = .1;
+float fan_f = .8;
+PVector fan(PVector v, float amount) {
+  float t = PI * pow(fan_c, 2);
+  float theta = getTheta(v);
+  float r = getR(v);
+  float x = 0;
+  float y = 0;
+  if ((theta + fan_f) % t > t / 2) {
+    x = r * (cos(theta - t/2));
+    y = sin(theta - t/2);    
+  } else if ((theta + fan_f) % t <= t / 2) {
+    x = r * (cos(theta + t/2));
+    y = sin(theta + t/2);   
+  }
+
+  return new PVector(amount * x, amount * y);
+}
+
+
+float blob_high = .9;
+float blob_low = .1;
+float blob_waves = 5;
+PVector blob(PVector v, float amount) {
+  float theta = getTheta(v);
+  float r = getR(v);
+  float factor = blob_low + ((blob_high - blob_low)/2) * (sin(blob_waves * theta) + 1);
+  float x = r * factor * cos(theta);
+  float y = r * factor * sin(theta);
   return new PVector(x * amount, y * amount);
 }

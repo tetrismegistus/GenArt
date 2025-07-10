@@ -11,4 +11,4 @@
 - animation
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="test.webp" alt="3DLorenzAnimation Sample Output" width="800" />

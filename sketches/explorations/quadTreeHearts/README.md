@@ -1,5 +1,14 @@
 # quadTreeHearts
 
 🧪 Status: Exploration
-📎 Description: (Add your notes here)
+
+📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+
 🎨 Tags: 
+- lorenz
+- 3d
+- chaos
+- animation
+
+🖼️ Sample Output:  
+<img src="test.webp" alt="quadTreeHearts Sample Output" width="800" />

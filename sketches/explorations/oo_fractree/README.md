@@ -1,5 +1,14 @@
 # oo_fractree
 
 🧪 Status: Exploration
-📎 Description: (Add your notes here)
+
+📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+
 🎨 Tags: 
+- lorenz
+- 3d
+- chaos
+- animation
+
+🖼️ Sample Output:  
+<img src="render.webp" alt="oo_fractree Sample Output" width="800" />

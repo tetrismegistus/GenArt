@@ -61,3 +61,9 @@ void draw() {
   }
 
 }
+
+void keyPressed() {  
+  if (key == 's') {
+    saveFrame("output.png");
+  }
+}

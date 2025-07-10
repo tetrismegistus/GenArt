@@ -32,7 +32,7 @@ void setup() {
   pg.beginDraw();
   pg.blendMode(MULTIPLY);
   pg.background(#EFEDE8);
-  
+
   pg.noFill();
 
   pg.endDraw();
@@ -59,11 +59,11 @@ void draw() {
 
   if (go) {
     pg.beginDraw();
-    //for (int i = 0; (i < 40) & go; i++) { // Draw 20 lines at once
+    for (int i = 0; (i < 40) & go; i++) { // Draw 20 lines at once
       for (float x = x1; x <= x2; x += step) {
-          pg.stroke(c1);
+        pg.stroke(c1);
         //float n = map(noise(x, y), 0, 1, .0, .5);
-        drawVariationFPJ(pg, x, y);
+        drawVariationFP(pg, x, y);
       }
       y += step;
       if (y > y2) {
@@ -71,7 +71,7 @@ void draw() {
         println("done");
         pg.save(getTemporalName(sketchName, saveFormat));
       }
-    //}
+    }
     pg.endDraw();
   }
 
@@ -92,40 +92,22 @@ void stipple(PGraphics pg, int k, float rad, color col) {
   println("stippled... whew");
 }
 
-int n = 3;
+int n = 1;
 void drawVariationFP(PGraphics pg, float x, float y) {
   PVector v = new PVector(x, y);
   float margin = outputWidth * .95;
   for (int i = 0; i < n; i++) {
- 
-    v = fisheye(rectt(v, 1.0), 1.0);
 
+    v = dejongsCurtains(blob(v, 1.0), 1.0);
+
+    PVector newV = sinusoidal(v, (x2 - x1) / 2);
+    v.set(newV);
     float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
     float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);
     pg.point(xx, yy);
   }
 }
 
-
-int octaves = 3;
-void drawVariationFPJ(PGraphics pg, float x, float y) {
-  PVector base = new PVector(x, y);
-  float margin = outputWidth * .95;
-
-  for (int i = 0; i < octaves; i++) {
-    float freq = pow(2, i);      // 1, 2, 4...
-    float amp = pow(0.5, i);     // 1.0, 0.5, 0.25...
-
-    PVector v = PVector.mult(base, freq);  // Scale up input
-    v = addF(rings(v, 1.0), fisheye(rectt(v, 1.0), 1.0));        // Apply your variation stack
-    v.mult(amp);                            // Scale result down
-
-    // Add noise and draw
-    float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
-    float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);
-    pg.point(xx, yy);
-  }
-}
 
 
 

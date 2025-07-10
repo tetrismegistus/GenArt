@@ -1,5 +1,9 @@
 # genuary2021
 
 🧪 Status: Exploration
-📎 Description: (Add your notes here)
+
+📎 Description: various genuary outputs
+
 🎨 Tags: 
+- genuary
+
