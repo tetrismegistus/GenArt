@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a crude map generator inspired by Moraff's World 
 
 🎨 Tags: 
-- lorenz
 - 3d
-- chaos
-- animation
+- noise
+- maps
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="####.webp" alt="3DLorenzAnimation sample output" width="800" />

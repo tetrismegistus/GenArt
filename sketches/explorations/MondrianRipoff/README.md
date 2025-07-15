@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: An irregular grid implementation with Mondrian inspiration. 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- irregular grid
+- 2d
 
 🖼️ Sample Output:  
-<img src="mySketch1656967282790.webp" alt="MondrianRipoff Sample Output" width="800" />
+<img src="mySketch1657415738528.webp" alt="MondrianRipoff Sample Output" width="800" />
