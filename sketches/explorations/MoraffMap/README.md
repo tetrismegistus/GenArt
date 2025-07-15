@@ -10,4 +10,4 @@
 - maps
 
 🖼️ Sample Output:  
-<img src="####.webp" alt="3DLorenzAnimation sample output" width="800" />
+<img src="0.webp" alt="MoraffMap sample output" width="800" />
