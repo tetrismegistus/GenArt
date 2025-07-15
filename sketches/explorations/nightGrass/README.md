@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: flowers in the night 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- texture 
 
 🖼️ Sample Output:  
 <img src="flowerField1676049105588.webp" alt="nightGrass Sample Output" width="800" />

@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a primitive mandelbrot zoom 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- fractal 
+- 2d
+- mandelbrot
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="mzoom Sample Output" width="800" />
