@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a wordcloud generator 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- font
+- wordcloud
+- irregular grid
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="mySketch1681586831487.webp" alt="wordcloudsample output" width="800" />
