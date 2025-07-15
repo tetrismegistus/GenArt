@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: multiscale truchet tiling 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- truchet
+- 2d
+- interactive
 
 🖼️ Sample Output:  
 <img src="mySketch1694299374525.webp" alt="QuadTreeTruchet Sample Output" width="800" />
