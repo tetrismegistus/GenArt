@@ -2,12 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: prime numbers plotted on polar coords 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
+- spiral
+- 2d
 - animation
 
 🖼️ Sample Output:  
