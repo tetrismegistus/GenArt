@@ -1,5 +1,13 @@
-# deJong
+# dejong
 
 🧪 Status: Exploration
-📎 Description: (Add your notes here)
+
+📎 Description: dejong attractors laid out in a grid 
+
 🎨 Tags: 
+- 2d
+- dejong 
+- attractors
+
+🖼️ Sample Output:  
+<img src="output.webp" alt="dejong Sample Output" width="800" />

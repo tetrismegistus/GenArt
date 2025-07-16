@@ -10,4 +10,4 @@
 - simplex noise
 
 🖼️ Sample Output:  
-<img src="mySketch1747195960738.png" alt="fbm sample output" width="800" />
+<img src="mySketch1747195960738.webp" alt="fbm sample output" width="800" />
