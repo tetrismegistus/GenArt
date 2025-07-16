@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: maze generation 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- mazes
+- 2d
 
 🖼️ Sample Output:  
 <img src="1.webp" alt="mazes Sample Output" width="800" />

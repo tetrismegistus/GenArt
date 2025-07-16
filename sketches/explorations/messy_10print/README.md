@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: textured 10print 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- texture
+- 10print
 
 🖼️ Sample Output:  
 <img src="lineStudy_1657075566748.webp" alt="messy_10print Sample Output" width="800" />
