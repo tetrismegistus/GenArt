@@ -2,13 +2,13 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: animation filter 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- animation 
+- tiles
+- filter
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="bm.gif" alt="pictureComplexModuleFilter sample output" width="800" />
