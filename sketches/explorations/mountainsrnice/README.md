@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: mountains arranaged in a grid 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- perlin noise
 
 🖼️ Sample Output:  
 <img src="mountains.webp" alt="mountainsrnice Sample Output" width="800" />

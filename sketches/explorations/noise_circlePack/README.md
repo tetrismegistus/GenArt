@@ -2,13 +2,13 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a textured circle pack that divides paths drawn using noise 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- texture 
+- 2d
+- noise
+- circle packing
 
 🖼️ Sample Output:  
 <img src="render.webp" alt="noise_circlePack Sample Output" width="800" />
