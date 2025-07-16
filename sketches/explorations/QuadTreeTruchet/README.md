@@ -2,7 +2,7 @@
 
 🧪 Status: Exploration
 
-📎 Description: multiscale truchet tiling 
+📎 Description: multiscale truchet tiling, no quadtree involved 
 
 🎨 Tags: 
 - truchet

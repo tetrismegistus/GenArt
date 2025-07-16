@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: honestly it's really just dumping a lot of shapes around a roughly grid like arrangement 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- irregular grid 
+- 2d
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="mySketch1676514823381.webp" alt="recursiveIrregularGrid sample output" width="800" />

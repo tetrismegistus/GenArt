@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: reaction diffusion simulation 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- reaction diffusion 
 
 🖼️ Sample Output:  
 <img src="11193728.webp" alt="reactionDiffusion Sample Output" width="800" />

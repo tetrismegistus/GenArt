@@ -2,12 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a fake radar animation 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
+- shaders 
+- 2d
 - animation
 
 🖼️ Sample Output:  
