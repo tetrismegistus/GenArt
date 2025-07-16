@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: flame fractal implementation
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- flame fractal
+- IFS
 
 🖼️ Sample Output:  
-<img src="mySketch1749862499039.webp" alt="folds Sample Output" width="800" />
+<img src="output.webp" alt="folds Sample Output" width="800" />
