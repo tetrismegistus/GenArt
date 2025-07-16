@@ -35,6 +35,7 @@ void draw() {
     
     line.render();
   }
+  save("out.png");
   noLoop();
 
 
