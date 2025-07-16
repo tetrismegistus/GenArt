@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a wave or flying effect at perspective 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
 - animation
+- 3d
+- simplex noise
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="gif-166.webp" alt="perlin_flying sample output" width="800" />

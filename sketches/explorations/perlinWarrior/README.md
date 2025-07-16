@@ -2,12 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: dragon warrior that changes with noise and time 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
+- simplex noise
+- 2d
+- map 
 - animation
 
 🖼️ Sample Output:  
