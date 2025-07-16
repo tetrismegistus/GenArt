@@ -2,13 +2,13 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: iterate on the micro and the macro ;) 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- grid 
+- 2d
+- texture
 
 🖼️ Sample Output:  
-<img src="ghostgrid.webp" alt="patchwork Sample Output" width="800" />
+<img src="grid-threadbox.webp" alt="patchwork Sample Output" width="800" />
+
