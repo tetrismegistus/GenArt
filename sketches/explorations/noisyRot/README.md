@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a shader texture test 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- shader
+- noise
 
 🖼️ Sample Output:  
 <img src="bubbleChamber1719602235688.webp" alt="noisyRot Sample Output" width="800" />

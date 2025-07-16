@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: one of many early sketches using sebissay's noise technique 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- noise 
+- 2d
 
 🖼️ Sample Output:  
 <img src="render.webp" alt="oo_fractree Sample Output" width="800" />
