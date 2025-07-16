@@ -2,13 +2,13 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: moody waves / mountains 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- waves
+- mountains
+- simplex noise
 
 🖼️ Sample Output:  
 <img src="mySketch1657833994827.webp" alt="mountainsagain Sample Output" width="800" />
