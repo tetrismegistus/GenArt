@@ -2,12 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: lorenz animation from one side 
 
 🎨 Tags: 
 - lorenz
-- 3d
-- chaos
+- 2d
+- attractor
 - animation
 
 🖼️ Sample Output:  
