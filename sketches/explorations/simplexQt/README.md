@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a quadtree implementation for reference 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- quadtree
+- simplex noise
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="output.webp" alt="simplexQT sample output" width="800" />
