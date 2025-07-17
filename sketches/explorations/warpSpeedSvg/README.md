@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: Lines radiate from along the path of a circle 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- polar coordinates 
+- 2d
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="warpSpeedSvg Sample Output" width="800" />

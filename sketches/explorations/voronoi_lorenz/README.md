@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: an attractor path that make vornoi maps  
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- lorenz attractor
+- 2d
+- voronoi neighbors
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="voronoi_lorenz Sample Output" width="800" />

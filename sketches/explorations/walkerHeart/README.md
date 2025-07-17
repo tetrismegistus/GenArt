@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: agents start from heart coordinates 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- agents
+- 2d
+- heart
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="walkerHeart Sample Output" width="800" />

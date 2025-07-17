@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: uniform sampling on a triangle
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- sampling
+- 2d
+- triangles
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="uniformTriangle Sample Output" width="800" />
