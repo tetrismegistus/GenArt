@@ -2,12 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: words blown in the wind 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
+- physics
+- 2d
+- typography
 - animation
 
 🖼️ Sample Output:  
