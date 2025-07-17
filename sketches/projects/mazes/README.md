@@ -1,6 +1,6 @@
 # mazes
 
-🧪 Status: Exploration
+🧪 Status: Project
 
 📎 Description: maze generation 
 
