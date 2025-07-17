@@ -1,6 +1,6 @@
 # cubistFilter
 
-🧪 Status: Exploration
+🧪 Status: Project
 
 📎 Description: decomposes a raster images into vectorized polygons 
 
