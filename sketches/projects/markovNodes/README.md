@@ -1,6 +1,6 @@
 # markovNodes
 
-🧪 Status: Exploration
+🧪 Status: Project
 
 📎 Description: markov graphs arranged like stars 
 
