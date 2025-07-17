@@ -1,6 +1,6 @@
 # gentlePrison
 
-🧪 Status: Exploration
+🧪 Status: Project
 
 📎 Description: a detailed irregular grid 
 
@@ -10,4 +10,4 @@
 - texture
 
 🖼️ Sample Output:  
-<img src="thread_fillmySketch1748914073901.webp" alt="gentlePrison Sample Output" width="800" />
+<img src="\mySketch1748914072030.webp" alt="gentlePrison Sample Output" width="800" />
