@@ -1,6 +1,6 @@
 # crepuscular
 
-🧪 Status: Exploration
+🧪 Status: Project
 
 📎 Description: a textured line bisects a textured circle 
 
