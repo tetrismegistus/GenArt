@@ -2,13 +2,13 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: simple line texture POC
 
-🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+🎨 Tags:
+
+- 2d
+- texture
+- 10print
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="pulsing10Print Sample Output" width="800" />
