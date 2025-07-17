@@ -2,12 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: conway's game of life rendered in cubes, history over the z axis 
 
 🎨 Tags: 
-- lorenz
 - 3d
-- chaos
+- conway's game of life
 - animation
 
 🖼️ Sample Output:  
