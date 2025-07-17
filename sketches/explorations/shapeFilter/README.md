@@ -2,13 +2,10 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a simple filter that I'm keeping just because of the line + circle shaping 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- filter
 
 🖼️ Sample Output:  
-<img src="pic4.webp" alt="shapeFilter Sample Output" width="800" />
+<img src="test.webp" alt="shapeFilter Sample Output" width="800" />
