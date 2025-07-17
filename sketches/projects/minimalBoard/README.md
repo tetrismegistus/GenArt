@@ -1,14 +1,11 @@
 # minimalBoard
 
-🧪 Status: Exploration
+🧪 Status: Project
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: Irregular grid
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- irregular grid
 
 🖼️ Sample Output:  
 <img src="bg1.webp" alt="minimalBoard Sample Output" width="800" />
