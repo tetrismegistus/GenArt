@@ -1,6 +1,6 @@
 # heavens
 
-🧪 Status: Exploration
+🧪 Status: Project
 
 📎 Description: an animation mimicking a geocentric map of the cosmos 
 
