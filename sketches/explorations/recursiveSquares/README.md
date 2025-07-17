@@ -2,13 +2,13 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: squares tilted in a grid.  I don't know, it kinda looks okay I guess
 
-🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+🎨 Tags:
+- irregular grid
+- 2d
+- texture
+
 
 🖼️ Sample Output:  
 <img src="mySketch1653525609388.webp" alt="recursiveSquares Sample Output" width="800" />
