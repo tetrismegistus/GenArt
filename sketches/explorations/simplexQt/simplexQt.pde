@@ -6,26 +6,27 @@ float zoff = 0;
 long seedValue = (long) random(0, 10293801);
 
 void setup() {
-  size(512, 512);
-
+  size(800, 800);
+  colorMode(HSB, 360, 100, 100, 1);
 
   noise = new OpenSimplex2S(seedValue);
+  stroke(#000000);
 }
 
 void draw() {
-  Rectangle boundary = new Rectangle(0, 0, 512, 512);  
+  Rectangle boundary = new Rectangle(0, 0, width, height);  
   qt = new QuadTree(boundary,3, 0);
     
-  noStroke();
-  background(0);
+  
+  background(#faefae);
   float xoff = 0;
   for (int x = 0; x < width; x++) {
     float yoff = 0;
     for (int y = 0; y < height; y++) {
-      float n = noise(xoff, yoff, zoff);
+      float n = noise(xoff * .03, yoff * .03, zoff);
 
       if (n > 0.1 && n < 0.3) {
-        stroke(255);
+
         qt.insert(new Point(x, y));
       }
       yoff += inc;
@@ -34,8 +35,6 @@ void draw() {
   }
   qt.show();
   zoff += 0.001;
-
-
 }
 
 
@@ -137,10 +136,9 @@ class QuadTree {
   }
   
   void show() {
-    int colr = (int) map(depth, 0, 8, 0, 255); 
-    stroke(0, 10, colr);
-    strokeWeight(1);
-    fill(colr, 10, 0);
+    int sat = (int) map(depth, 0, 8, 0, 50); 
+
+    fill(200, sat, sat);
     rectMode(CENTER);
     rect(boundary.x, boundary.y, boundary.w*2, boundary.h*2);
     if (divided) {

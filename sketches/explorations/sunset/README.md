@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: sunset, textured 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- texture
+- 2d
 
 🖼️ Sample Output:  
-<img src="mySketch1655250411950.webp" alt="sunset Sample Output" width="800" />
+<img src="sunset1655252818175.webp" alt="sunset Sample Output" width="800" />

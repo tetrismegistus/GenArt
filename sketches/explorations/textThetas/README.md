@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: A flowfield made of letters from a text 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- flowfield 
 
 🖼️ Sample Output:  
 <img src="8.webp" alt="textThetas Sample Output" width="800" />

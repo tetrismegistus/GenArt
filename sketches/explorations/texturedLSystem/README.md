@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a textured l-system 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- l-system
+- 2d
+- texture 
 
 🖼️ Sample Output:  
 <img src="mySketch1655844253079.webp" alt="texturedLSystem Sample Output" width="800" />

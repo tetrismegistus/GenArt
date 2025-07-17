@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a poem set to the path of a self avoiding walk 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- typography
+- self avoiding walk
 
 🖼️ Sample Output:  
 <img src="mySketch1680912620472.webp" alt="thoughtAvoidingWalk Sample Output" width="800" />

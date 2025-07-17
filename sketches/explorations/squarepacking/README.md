@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: square packing with a fun texture
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- texture
+- 2d
+- square packing 
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="squarepacking Sample Output" width="800" />

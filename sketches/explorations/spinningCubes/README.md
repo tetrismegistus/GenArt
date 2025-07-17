@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: noise over a 3d grid of cubes 
 
 🎨 Tags: 
-- lorenz
 - 3d
-- chaos
+- simplex noise
 - animation
 
 🖼️ Sample Output:  
-<img src="test.png" alt="3DLorenzAnimation sample output" width="800" />
+<img src="gif-000.webp" alt="spinningCubes sample output" width="800" />

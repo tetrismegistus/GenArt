@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: a textured circle pack 
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- circle pack
+- texture 
 
 🖼️ Sample Output:  
 <img src="test.webp" alt="texturePack Sample Output" width="800" />
