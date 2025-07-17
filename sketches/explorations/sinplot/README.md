@@ -2,13 +2,11 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: pixels to sin waves
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- sin waves
+- filter
 
 🖼️ Sample Output:  
-<img src="Untitled.webp" alt="sinplot Sample Output" width="800" />
+<img src="mySketch1751756209065.webp" alt="sinplot Sample Output" width="800" />
