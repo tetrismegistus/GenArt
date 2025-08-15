@@ -101,5 +101,22 @@ def main():
     proj_root = base / "projects"
 
     explorations = collect_section(expl_root)
-    projects     = collect_s_
+    projects     = collect_section(proj_root)
+
+    toc = []
+    if explorations: toc.append("- [Explorations](#explorations)")
+    if projects:     toc.append("- [Projects](#projects)")
+    toc_md = ("\n".join(toc) + "\n\n") if toc else ""
+
+    sections = []
+    if explorations:
+        sections.append(make_table("Explorations", explorations, rel_to=base, cols=args.cols, thumb_px=args.thumb))
+    if projects:
+        sections.append(make_table("Projects", projects, rel_to=base, cols=args.cols, thumb_px=args.thumb))
+
+    body = args.title + "\n\n" + toc_md + ("".join(sections) if sections else "_No images found._\n")
+    upsert_block(dest, body)
+
+if __name__ == "__main__":
+    main()
 
