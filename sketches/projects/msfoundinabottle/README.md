@@ -1,4 +1,4 @@
-# pollockRipOff
+# msfoundinabottle
 
 🧪 Status: Exploration
 
@@ -12,4 +12,4 @@
 - grid
 
 🖼️ Sample Output:  
-<img src="mySketch1718498422681.webp" alt="pollockRipOff Sample Output" width="800" />
+<img src="mySketch1718498422681.webp" alt="msfoundinabottle Sample Output" width="800" />
