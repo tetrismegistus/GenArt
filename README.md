@@ -11,6 +11,6 @@ Pull requests, comments, issues, and suggestions are welcome — whether you’r
 ## Browse the Gallery
 The full visual index of sketches is available here:
 
-➡️ **[View the Gallery](sketches/Gallery.md)**
+➡️ **[View the Gallery](sketches/README.md)**
 
 Each entry links to its source folder so you can explore the code, assets, and outputs in more detail.
