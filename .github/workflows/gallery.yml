@@ -1,0 +1,43 @@
+name: Build sketches gallery
+
+on:
+  push:
+    branches: [ main ]
+    # Only rebuild when relevant stuff changes
+    paths:
+      - 'sketches/**'
+      - 'tools/galgen.py'
+      - '.github/workflows/gallery.yml'
+  workflow_dispatch: {}
+
+# Needed so the workflow can commit README changes back to the repo
+permissions:
+  contents: write
+
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate gallery
+        run: |
+          python3 --version
+          python3 tools/galgen.py \
+            --dest sketches/README.md \
+            --cols 5 \
+            --thumb 500 \
+            --github-tree-base "https://github.com/tetrismegistus/GenArt/tree/main/sketches"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update sketches gallery"
+          file_pattern: "sketches/README.md"
+
