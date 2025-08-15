@@ -2,13 +2,12 @@
 
 🧪 Status: Exploration
 
-📎 Description: A lorenz attractor set at an offset viewed in 3 dimensions
+📎 Description: sebs stem lean approximation
 
 🎨 Tags: 
-- lorenz
-- 3d
-- chaos
-- animation
+- 2d
+- texture
+- seb
 
 🖼️ Sample Output:  
 <img src="sebStem1676079326197.webp" alt="sebStem Sample Output" width="800" />
