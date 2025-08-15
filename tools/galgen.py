@@ -1,14 +1,11 @@
+
 #!/usr/bin/env python3
 from pathlib import Path
-import re
-import argparse
-from typing import List, Tuple
+import argparse, re
+from typing import List, Tuple, Optional
 
 START = "<!-- GALLERY:START -->"
-END = "<!-- GALLERY:END -->"
-
-EXPL_ROOT = Path("sketches/explorations")
-PROJ_ROOT  = Path("sketches/projects")
+END   = "<!-- GALLERY:END -->"
 
 def slugify(s: str) -> str:
     return re.sub(r"[^a-z0-9\-]+","-", s.strip().lower())
@@ -16,21 +13,19 @@ def slugify(s: str) -> str:
 def nice_label(s: str) -> str:
     return " ".join(w.capitalize() for w in re.sub(r"[_-]+", " ", s).split())
 
-def pick_webp(folder: Path) -> Path | None:
-    """Prefer output.webp (case-insensitive). Otherwise first *.webp by name."""
+def pick_webp(folder: Path) -> Optional[Path]:
+    """Prefer output.webp (any case), else first *.webp in the folder."""
     if not folder.is_dir():
         return None
-    # prefer output.webp
     for name in ("output.webp", "Output.webp", "OUTPUT.WEBP"):
         p = folder / name
-        if p.exists() and p.is_file():
+        if p.is_file():
             return p
-    # else first .webp
-    candidates = sorted(folder.glob("*.webp"))
-    return candidates[0] if candidates else None
+    cands = sorted(folder.glob("*.webp"))
+    return cands[0] if cands else None
 
 def collect_section(root: Path) -> List[Tuple[str, Path]]:
-    """Return list of (folder_name, image_path) for each immediate subfolder with a webp."""
+    """Return (folder_name, image_path) for each immediate subfolder that has a webp."""
     items: List[Tuple[str, Path]] = []
     if not root.exists():
         return items
@@ -40,70 +35,100 @@ def collect_section(root: Path) -> List[Tuple[str, Path]]:
             items.append((child.name, img))
     return items
 
-def make_html_grid(title: str, items: List[Tuple[str, Path]], thumb_width=220, gap=10) -> str:
+def make_table(title: str, items: List[Tuple[str, Path]], rel_to: Path,
+               cols: int, thumb_px: int, github_tree_base: str) -> str:
+    """
+    Build an HTML table gallery where each image links to its folder on GitHub.
+    - github_tree_base example:
+        https://github.com/tetrismegistus/GenArt/tree/main/sketches
+      We'll append 'explorations/<name>' or 'projects/<name>'.
+    """
     if not items:
         return f"### {title}\n\n<em>No images found.</em>\n"
-    cards = []
+    cols = max(1, cols)
+    thumb_px = min(int(thumb_px), 500)  # hard cap
+
+    tds = []
     for folder_name, img_path in items:
-        rel = img_path.as_posix()
+        rel_path = img_path.relative_to(rel_to)     # e.g., explorations/Foo/output.webp
+        folder_rel = rel_path.parent.as_posix()     # e.g., explorations/Foo
+        folder_url = f"{github_tree_base.rstrip('/')}/{folder_rel}"
         label = nice_label(folder_name)
         anchor = slugify(folder_name)
-        card = (
-            f'<a id="{anchor}"></a>'
-            f'<a href="{rel}" style="text-decoration:none;">'
-            f'<img src="{rel}" alt="{label}" loading="lazy" '
-            f'style="width:{thumb_width}px;height:auto;display:block;border-radius:10px;" />'
-            f'</a>'
-            f'<div style="font-size:0.9em;margin-top:6px;text-align:center;">{label}</div>'
+
+        tds.append(
+            f'<td align="center" valign="top" style="padding:6px;">'
+            f'  <a id="{anchor}"></a>'
+            f'  <a href="{folder_url}">'
+            f'    <img src="{rel_path}" alt="{label}" width="{thumb_px}">'
+            f'  </a><br>'
+            f'  <sub>{label}</sub>'
+            f'</td>'
         )
-        cards.append(f'<div style="flex:0 0 auto">{card}</div>')
-    return (
-        f"### {title}\n\n"
-        f'<div style="display:flex;flex-wrap:wrap;gap:{gap}px;align-items:flex-start;">'
-        + "".join(cards)
-        + "</div>\n"
-    )
+
+    rows = []
+    for i in range(0, len(tds), cols):
+        chunk = tds[i:i+cols]
+        while len(chunk) < cols:
+            chunk.append('<td></td>')
+        rows.append("<tr>\n" + "\n".join(chunk) + "\n</tr>")
+
+    return f"### {title}\n\n<table>\n<tbody>\n" + "\n".join(rows) + "\n</tbody>\n</table>\n"
 
 def upsert_block(doc: Path, content: str) -> None:
-    start_re = re.escape(START)
-    end_re = re.escape(END)
     block = f"{START}\n{content}\n{END}\n"
     if doc.exists():
         txt = doc.read_text(encoding="utf-8")
-        pat = re.compile(f"{start_re}.*?{end_re}", re.DOTALL)
-        if pat.search(txt):
-            txt = pat.sub(block, txt)
-        else:
-            txt = txt.rstrip() + "\n\n" + block
+        pat = re.compile(re.escape(START) + r".*?" + re.escape(END), re.DOTALL)
+        txt = pat.sub(block, txt) if pat.search(txt) else txt.rstrip() + "\n\n" + block
     else:
         txt = block
     doc.write_text(txt, encoding="utf-8")
 
 def main():
-    ap = argparse.ArgumentParser(description="Generate gallery for explorations & projects.")
-    ap.add_argument("--dest", default="Gallery.md", help="File to update (Gallery.md or README.md)")
-    ap.add_argument("--thumb-width", type=int, default=220, help="Thumbnail width in px")
-    ap.add_argument("--gap", type=int, default=10, help="Gap between thumbnails in px")
+    ap = argparse.ArgumentParser(description="Generate a GitHub-friendly WEBP gallery as an HTML table with folder links.")
+    ap.add_argument("--dest", default="sketches/Gallery.md",
+                    help="Output Markdown file (e.g., sketches/Gallery.md or sketches/README.md)")
+    ap.add_argument("--cols", type=int, default=4,
+                    help="Number of columns in the table")
+    ap.add_argument("--thumb", type=int, default=220,
+                    help="Thumbnail width in px (max 500)")
+    ap.add_argument("--title", default="## Gallery",
+                    help="Top-level section title")
+    ap.add_argument("--github-tree-base", required=True,
+                    help="GitHub base tree URL for the sketches folder, e.g. "
+                         "'https://github.com/tetrismegistus/GenArt/tree/main/sketches'")
     args = ap.parse_args()
 
-    explorations = collect_section(EXPL_ROOT)
-    projects = collect_section(PROJ_ROOT)
+    dest = Path(args.dest)
+    dest.parent.mkdir(parents=True, exist_ok=True)
 
-    header = "## Gallery\n\n"
+    base = dest.parent  # -> sketches/
+    expl_root = base / "explorations"
+    proj_root = base / "projects"
+
+    explorations = collect_section(expl_root)
+    projects     = collect_section(proj_root)
+
     toc = []
     if explorations: toc.append("- [Explorations](#explorations)")
     if projects:     toc.append("- [Projects](#projects)")
-    toc_md = "\n".join(toc) + ("\n\n" if toc else "")
+    toc_md = ("\n".join(toc) + "\n\n") if toc else ""
 
-    body = []
+    sections = []
     if explorations:
-        body.append(make_html_grid("Explorations", explorations, args.thumb_width, args.gap))
+        sections.append(
+            make_table("Explorations", explorations, rel_to=base, cols=args.cols,
+                       thumb_px=args.thumb, github_tree_base=args.github_tree_base)
+        )
     if projects:
-        body.append(make_html_grid("Projects", projects, args.thumb_width, args.gap))
+        sections.append(
+            make_table("Projects", projects, rel_to=base, cols=args.cols,
+                       thumb_px=args.thumb, github_tree_base=args.github_tree_base)
+        )
 
-    final = header + toc_md + "\n".join(body) if body else header + "_No images found._\n"
-    upsert_block(Path(args.dest), final)
+    body = args.title + "\n\n" + toc_md + ("".join(sections) if sections else "_No images found._\n")
+    upsert_block(dest, body)
 
 if __name__ == "__main__":
     main()
-
