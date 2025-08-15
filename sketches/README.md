@@ -129,6 +129,7 @@
 </tr>
 </tbody>
 </table>
+
 ### Projects
 
 <table>
@@ -164,5 +165,7 @@
 </tbody>
 </table>
 
+
 <!-- GALLERY:END -->
+
 

@@ -72,8 +72,13 @@ def make_table(title: str, items: List[Tuple[str, Path]], rel_to: Path,
         while len(chunk) < cols:
             chunk.append('<td></td>')
         rows.append("<tr>\n" + "\n".join(chunk) + "\n</tr>")
+    return (
+            f"### {title}\n\n"
+            f"<table>\n<tbody>\n" +
+            "\n".join(rows) +
+            "\n</tbody>\n</table>\n\n"
+            )
 
-    return f"### {title}\n\n<table>\n<tbody>\n" + "\n".join(rows) + "\n</tbody>\n</table>\n"
 
 def upsert_block(doc: Path, content: str) -> None:
     block = f"{START}\n{content}\n{END}\n"
