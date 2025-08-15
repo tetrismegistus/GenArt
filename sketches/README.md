@@ -145,27 +145,28 @@
 <td align="center" valign="top" style="padding:6px;">  <a id="markovnodes"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/markovNodes">    <img src="projects/markovNodes/big_text.webp" alt="Markovnodes" width="500">  </a><br>  <sub>Markovnodes</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="mazes"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/mazes">    <img src="projects/mazes/1.webp" alt="Mazes" width="500">  </a><br>  <sub>Mazes</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="minimalboard"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/minimalBoard">    <img src="projects/minimalBoard/bg1.webp" alt="Minimalboard" width="500">  </a><br>  <sub>Minimalboard</sub></td>
+<td align="center" valign="top" style="padding:6px;">  <a id="palimpsest"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/palimpsest">    <img src="projects/palimpsest/output.webp" alt="Palimpsest" width="500">  </a><br>  <sub>Palimpsest</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="patchwork"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/patchwork">    <img src="projects/patchwork/grid-threadbox.webp" alt="Patchwork" width="500">  </a><br>  <sub>Patchwork</sub></td>
-<td align="center" valign="top" style="padding:6px;">  <a id="perlincontours"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/perlinContours">    <img src="projects/perlinContours/mySketch1655507791217.webp" alt="Perlincontours" width="500">  </a><br>  <sub>Perlincontours</sub></td>
 </tr>
 <tr>
+<td align="center" valign="top" style="padding:6px;">  <a id="perlincontours"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/perlinContours">    <img src="projects/perlinContours/mySketch1655507791217.webp" alt="Perlincontours" width="500">  </a><br>  <sub>Perlincontours</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="pollockripoff"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/pollockRipOff">    <img src="projects/pollockRipOff/mySketch1718498422681.webp" alt="Pollockripoff" width="500">  </a><br>  <sub>Pollockripoff</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="polyfilter"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/polyFilter">    <img src="projects/polyFilter/mySketch1715026032835.webp" alt="Polyfilter" width="500">  </a><br>  <sub>Polyfilter</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="polysplit"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/polySplit">    <img src="projects/polySplit/polySplit1749056986330.webp" alt="Polysplit" width="500">  </a><br>  <sub>Polysplit</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="radar"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/radar">    <img src="projects/radar/mySketch1656930885907.webp" alt="Radar" width="500">  </a><br>  <sub>Radar</sub></td>
-<td align="center" valign="top" style="padding:6px;">  <a id="ribbons"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/ribbons">    <img src="projects/ribbons/mySketch1717691553940.webp" alt="Ribbons" width="500">  </a><br>  <sub>Ribbons</sub></td>
 </tr>
 <tr>
+<td align="center" valign="top" style="padding:6px;">  <a id="ribbons"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/ribbons">    <img src="projects/ribbons/mySketch1717691553940.webp" alt="Ribbons" width="500">  </a><br>  <sub>Ribbons</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="spiralagent"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/spiralAgent">    <img src="projects/spiralAgent/output.webp" alt="Spiralagent" width="500">  </a><br>  <sub>Spiralagent</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="symmetrymath"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/symmetryMath">    <img src="projects/symmetryMath/2.webp" alt="Symmetrymath" width="500">  </a><br>  <sub>Symmetrymath</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="thoughtavoidingwalk"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/thoughtAvoidingWalk">    <img src="projects/thoughtAvoidingWalk/mySketch1680912620472.webp" alt="Thoughtavoidingwalk" width="500">  </a><br>  <sub>Thoughtavoidingwalk</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="wordcloud"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/wordcloud">    <img src="projects/wordcloud/mySketch1681586831487.webp" alt="Wordcloud" width="500">  </a><br>  <sub>Wordcloud</sub></td>
-<td></td>
 </tr>
 </tbody>
 </table>
 
 
 <!-- GALLERY:END -->
+
 
 
