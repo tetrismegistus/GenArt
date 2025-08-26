@@ -16,9 +16,9 @@ long lastTime;
 ArrayList<Flower> flowers = new ArrayList<Flower>();
 
 void setup() {
-  size(800, 800);
+  size(2500, 1500);
   colorMode(HSB, 360, 100, 100, 1);
-  float numFlowers = random(25, 50);
+  float numFlowers = random(50, 150);
   for (float f = 0; f < numFlowers; f++) {
     int stemCInt = (int) random(stemC.length); 
     int budCInt = (int) random(budC.length);    

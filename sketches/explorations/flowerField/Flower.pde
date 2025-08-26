@@ -7,13 +7,13 @@ class Flower {
   // Thanks Sebastian
   Flower(float r, float x, color bc, color sc) {
     budSize = r;    
-    float endy2 = random(100, 600);
+    float endy2 = random(100, height);
     float curveAdj = map(endy2, 100, 600, 0, 10);    
     curveFactor = r * curveAdj;    
     x0 = x;
     y0 = height;
     x1 = x + 0.25 * curveFactor;
-    y1 = height - 100;
+    y1 = height - 200;
     x2 = x + curveFactor;    
     y2 = height - endy2;
     x3 = x + 3 * curveFactor;

@@ -31,13 +31,13 @@ int calls = 0;
 long lastTime;
 
 // play with these
-String filename = "PXL_20240629_191351485.MP.jpg";
+String filename = "screenshot4.png";
 int islandSizeThreshold = 4; 
-boolean fillPolygons = false;
+boolean fillPolygons = true;
 float polyAlpha = 127;
 boolean furtherReduce = false;
-int remainingSz = 10;
-float autoPalDistance = 10.0;    // low is slow but more colors 
+int remainingSz = 8;
+float autoPalDistance = 8.0;    // low is slow but more colors 
 
 
 void settings() { 
@@ -184,8 +184,9 @@ void findGroups() {
 
 void displayAllGroups() {    
     strokeWeight(1); // Thicker line for visibility
-    stroke(0); // Black color for the stroke
+    //stroke(0); // Black color for the stroke
     // Iterate over all color groups
+    //noStroke();
     for (int colorIndex = 0; colorIndex < colorGroups.size(); colorIndex++) {
         ArrayList<ArrayList<Point>> groups = colorGroups.get(colorIndex);
         if (groups.isEmpty()) {
@@ -193,6 +194,7 @@ void displayAllGroups() {
             continue; // Skip to next color if no groups are available
         }  
         if (fillPolygons) {
+          stroke(CGAPal[colorIndex]);
           fill(CGAPal[colorIndex], polyAlpha); // Set fill to semi-transparent color
         } else {
           noFill(); // No fill for shapes

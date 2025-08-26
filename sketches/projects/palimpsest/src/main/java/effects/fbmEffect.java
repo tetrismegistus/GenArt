@@ -26,23 +26,21 @@ public class fbmEffect implements Effect {
         float time = canvas.parent.millis() / 1000.0f;
 
         // GUI-controlled noise parameters
-        float scale = gui.slider("scale", 5f, 0.1f, 1000.0f);
-        float gain = gui.slider("gain", 0.45f, 0.1f, 1.0f);
-        float lacunarity = gui.slider("lacunarity", 1.7f, 1.0f, 3.0f);
-        int octaves = gui.sliderInt("octaves", 4, 1, 16);
-        float warpScale = gui.slider("warp scale", 100f, 0.1f, 500f);
-        float warpFreqX = gui.slider("warp freq X", 0.01f, 0.0001f, 1f);
-        float warpFreqY = gui.slider("warp freq Y", 0.01f, 0.0001f, 1f);
-        float warpOffsetX = gui.slider("warp offset X", 1000f, 0f, 5000f);
-        float warpOffsetY = gui.slider("warp offset Y", 1000f, 0f, 5000f);
-        float warpFreqDX = gui.slider("warp freq DX", 0.001f, 0.01f, 0.9f);
-        float warpFreqDY = gui.slider("warp freq DY", 0.001f, 0.01f, 0.9f);
-        int warpIterations = gui.sliderInt("warp iterations", 4, 1, 10);
+        float scale = gui.slider("scale", 5f);
+        float gain = gui.slider("gain", 0.45f);
+        float lacunarity = gui.slider("lacunarity", 1.7f);
+        int octaves = gui.sliderInt("octaves", 4);
+        float warpScale = gui.slider("warp scale", 100f, 0.1f, 2000);
+        float warpFreqX = gui.slider("freq X", 0.01f);
+        float warpFreqY = gui.slider("freq Y", 0.01f);
+        float warpFreqDX = gui.slider("freq DX", 0.001f);
+        float warpFreqDY = gui.slider("freq DY", 0.001f);
+        int warpIterations = gui.sliderInt("warp iterations", 4);
 
         // Per-channel brightness minimums
-        float brightMinR = gui.slider("brightness min R", 0.2f, 0f, 1f);
-        float brightMinG = gui.slider("brightness min G", 0.2f, 0f, 1f);
-        float brightMinB = gui.slider("brightness min B", 0.2f, 0f, 1f);
+        float brightMinR = gui.slider("min R", 0.2f);
+        float brightMinG = gui.slider("min G", 0.2f);
+        float brightMinB = gui.slider("min B", 0.2f);
 
         // RGB conversion of background color
         canvas.beginDraw();
@@ -64,8 +62,8 @@ public class fbmEffect implements Effect {
         shader.set("u_warp_scale", warpScale);
         shader.set("u_warp_freq_x", warpFreqX);
         shader.set("u_warp_freq_y", warpFreqY);
-        shader.set("u_warp_offset_x", warpOffsetX);
-        shader.set("u_warp_offset_y", warpOffsetY);
+        shader.set("u_warp_offset_x", 0);
+        shader.set("u_warp_offset_y", 0);
         shader.set("u_warp_freq_dx", warpFreqDX);
         shader.set("u_warp_freq_dy", warpFreqDY);
         shader.set("u_warp_iterations", warpIterations);

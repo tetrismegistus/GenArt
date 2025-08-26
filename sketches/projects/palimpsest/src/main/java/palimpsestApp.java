@@ -63,7 +63,7 @@ public class palimpsestApp extends PApplet {
 
     @Override
     public void settings() {
-        size(1600, 2200, P2D);  // 8x11 @ 200DPI
+        size(1527, 2000, P2D);  // 8x11 @ 200DPI
         randomSeed(SEED);
         noiseSeed(floor(random(MAX_INT)));
     }
