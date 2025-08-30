@@ -1,3 +1,5 @@
+import com.krab.lazy.*;
+
 String sketchName = "mySketch";
 String saveFormat = ".png";
 
@@ -7,131 +9,323 @@ long lastTime;
 float off = 0.01;   // spatial scale for field sampling
 float PL  = 2;      // contour march step length
 
-float border = .1;  // current iso target at seed
+float border = .5;  // current iso target at seed
 float ix, iy;
 
+PShader sh;
+LazyGui gui;
 OpenSimplexNoise noise;
 
-// ---- fBM params (tweak these for “trippy” contours) ----
-int   FBM_OCTAVES    = 4;
-float FBM_LACUNARITY = 2.0;
-float FBM_GAIN       = 0.5;
+PGraphics pgPreview;   // downsampled paper shader preview
+PGraphics mapLayer;    // cached map layer (built once)
+boolean mapBuilt = false;
+
+// fBM toggle (press F or use GUI)
+boolean fbmEnabled = true;
+
+// 1) final/world size for shader continuity (preview is downsampled)
+int TARGET_W = 1500, TARGET_H = 1500;
+int DS = 3; // preview downsample factor (preview buffer = TARGET/DS)
+
+// paper color controls (0..1)
+float baseR, baseG, baseB;
+float brightMinR, brightMinG, brightMinB;
+
+// shader uniforms
+float u_warp_scale, u_warp_freq_x, u_warp_freq_y, u_warp_offset_x, u_warp_offset_y, u_warp_freq_dx, u_warp_freq_dy;
+int   u_warp_iterations;
+float u_fbm_scale, u_fbm_lacunarity, u_fbm_gain;
+int   u_fbm_octaves;
+
+// ---- fBM params for contours (you can tweak) ----
+int   FBM_OCTAVES    = 3;
+float FBM_LACUNARITY = 0.2;
+float FBM_GAIN       = 0.9;
 
 void setup() {
-  size(1500, 1500);
+  size(1000, 1000, P2D);
   colorMode(HSB, 360, 100, 100, 1);
+
+  gui = new LazyGui(this);
   noise = new OpenSimplexNoise((long) random(0, 255));
+
+  // shader + preview buffer
+  sh = loadShader("glsl.frag");
+  pgPreview = createGraphics(TARGET_W/DS, TARGET_H/DS, P2D);
+  pgPreview.noSmooth();
+
+  // cached map layer matches the window size
+  mapLayer = createGraphics(width, height, P2D);
+  mapLayer.noSmooth();
+
+  // --- paper ---
+  gui.pushFolder("paper");
+  gui.colorPicker("baseColor", color(255));
+  gui.sliderSet("brightMin/r", 0.15);
+  gui.sliderSet("brightMin/g", 0.15);
+  gui.sliderSet("brightMin/b", 0.15);
+  gui.popFolder();
+
+  // --- warp ---
+  gui.pushFolder("warp");
+  gui.sliderSet("scale",     100);
+  gui.sliderSet("freq_x",    0.01);
+  gui.sliderSet("freq_y",    0.01);
+  gui.sliderSet("offset_x",  1000);
+  gui.sliderSet("offset_y",  1000);
+  gui.sliderSet("freq_dx",   0.001);
+  gui.sliderSet("freq_dy",   0.001);
+  gui.sliderIntSet("iterations", 4);
+  gui.popFolder();
+
+  gui.pushFolder("fbm");
+  gui.toggleSet("enabled", true);   // the actual fbm on/off switch
+  gui.button("rebuild_now");        // one-shot button
+  gui.sliderSet("scale",       1.0);
+  gui.sliderSet("lacunarity",  2.0);
+  gui.sliderSet("gain",        0.5);
+  gui.sliderIntSet("octaves",  5);
+  gui.popFolder();
+
 }
 
 void draw() {
-  background(#c2f2f2);
+  // 1) PAPER SHADER PREVIEW (downsampled)
+  renderShaderPreview();
+
+  // draw the preview behind everything
+  background(0);
+  image(pgPreview, 0, 0, width, height);
+
+  // 2) MAP LAYER (build once, then blit)
+  if (!mapBuilt) buildMapLayer(mapLayer);
+  image(mapLayer, 0, 0);
+}
+
+// -----------------------------------------------------------------------------
+// Build the expensive map layer ONCE into the provided PGraphics
+// -----------------------------------------------------------------------------
+void buildMapLayer(PGraphics g) {
+  g.beginDraw();
+  g.colorMode(HSB, 360, 100, 100, 1);
 
   println("parachutes");
-  for (int i = 50; i < width - 50; i += 10) {
-    dropAgent(i, height - 50);
+  for (int i = 50; i < g.width - 50; i += 10) {
+    dropAgent(g, random(g.width), random(g.height));
   }
   println("deployed");
 
   // margins
-  fill(#E0E1E4); noStroke();
-  rect(0, 0, width, 50);
-  rect(0, height - 50, width, 50);
-  rect(0, 0, 50, height);
-  rect(width - 50, 0, 50, height);
+  g.fill(#E0E1E4); g.noStroke();
+  g.rect(0, 0, g.width, 50);
+  g.rect(0, g.height - 50, g.width, 50);
+  g.rect(0, 0, 50, g.height);
+  g.rect(g.width - 50, 0, 50, g.height);
 
   // grid (draftsman outlines)
-  stroke(0, 0, 0, .5); strokeWeight(.1); noFill();
-  for (int x = 50; x < width - 50; x += 50) {
-    for (int y = 50; y < height - 50; y += 50) {
-      rectOutline(x, y, 50, 50, color(0, 0, 0));
+  g.noFill();
+  for (int x = 50; x < g.width - 50; x += 50) {
+    for (int y = 50; y < g.height - 50; y += 50) {
+      rectOutline(g, x, y, 50, 50, color(0, 0, 0));
     }
   }
 
   // labels
-  textSize(10); fill(0);
+  g.textSize(10); g.fill(0);
   int degreesLabel = (int) random(70);
-  for (int x = 50; x < width - 50; x += 50) text(degreesLabel++ + "°", x, 48);
+  for (int x = 50; x < g.width - 50; x += 50) g.text(degreesLabel++ + "°", x, 48);
 
   degreesLabel = (int) random(70);
-  pushMatrix(); translate(47, 950); rotate(radians(270));
-  for (int x = 0; x < 900; x += 50) text(degreesLabel++ + "°", x, 0);
-  popMatrix();
+  g.pushMatrix(); g.translate(47, 950); g.rotate(radians(270));
+  for (int x = 0; x < 900; x += 50) g.text(degreesLabel++ + "°", x, 0);
+  g.popMatrix();
 
-  // corner tick borders
-  pushMatrix(); translate(50, 50);  drawBorder(); popMatrix();
-  pushMatrix(); translate(50, 950); drawBorder(); popMatrix();
-  pushMatrix(); translate(50, 50);  rotate(radians(90)); drawBorder(); popMatrix();
-  pushMatrix(); translate(950, 50); rotate(radians(90)); drawBorder(); popMatrix();
+  // corner tick borders (with jitter)
+  g.pushMatrix(); g.translate(50, 50);             drawBorder(g); g.popMatrix();
+  g.pushMatrix(); g.translate(50, g.height - 50);  drawBorder(g); g.popMatrix();
+  g.pushMatrix(); g.translate(50, 50);             g.rotate(radians(90)); drawBorder(g); g.popMatrix();
+  g.pushMatrix(); g.translate(g.width - 50, 50);   g.rotate(radians(90)); drawBorder(g); g.popMatrix();
 
-  noLoop();
+  g.endDraw();
+  mapBuilt = true;
 }
 
-void drawBorder() {
-  for (int x = 0; x < 900; x += 50) {
-    fill(#ad776d); stroke(#ad776d); rect(x, 0, 25, 2);
-    fill(0);       stroke(0);       rect(x + 25, 0, 25, 2);
+// -----------------------------------------------------------------------------
+// Preview pass: reads GUI, updates uniforms, draws shader to pgPreview
+// -----------------------------------------------------------------------------
+void renderShaderPreview() {
+  pgPreview.beginDraw();
+  pgPreview.background(#c2f2f2);
+
+  // ---- PAPER ----
+  gui.pushFolder("paper");
+  int baseHex = gui.colorPicker("baseColor", color(255)).hex;
+  float[] rgb01 = hexToRGB01(baseHex);
+  baseR = rgb01[0]; baseG = rgb01[1]; baseB = rgb01[2];
+  brightMinR = gui.slider("brightMin/r", 0.15);
+  brightMinG = gui.slider("brightMin/g", 0.15);
+  brightMinB = gui.slider("brightMin/b", 0.15);
+  gui.popFolder();
+
+  // ---- WARP ----
+  gui.pushFolder("warp");
+  u_warp_scale      = gui.slider("scale",     u_warp_scale);
+  u_warp_freq_x     = gui.slider("freq_x",    u_warp_freq_x);
+  u_warp_freq_y     = gui.slider("freq_y",    u_warp_freq_y);
+  u_warp_offset_x   = gui.slider("offset_x",  u_warp_offset_x);
+  u_warp_offset_y   = gui.slider("offset_y",  u_warp_offset_y);
+  u_warp_freq_dx    = gui.slider("freq_dx",   u_warp_freq_dx);
+  u_warp_freq_dy    = gui.slider("freq_dy",   u_warp_freq_dy);
+  u_warp_iterations = gui.sliderInt("iterations", u_warp_iterations);
+  gui.popFolder();
+
+  // ---- fBM (keep state; rebuild only on demand) ----
+  // inside renderShaderPreview()
+  gui.pushFolder("fbm");
+  
+  // keep GUI and variable in sync
+  boolean prev = fbmEnabled;
+  boolean now  = gui.toggle("enabled", prev);
+  if (now != prev) {
+    fbmEnabled = now; 
+    gui.toggleSet("enabled", fbmEnabled); // avoid snapback
+  }
+  
+  // one-shot rebuild button
+  if (gui.button("rebuild_now")) {
+    mapBuilt = false;
+  }
+  
+  u_fbm_scale      = gui.slider("scale",      u_fbm_scale);
+  u_fbm_lacunarity = gui.slider("lacunarity", u_fbm_lacunarity);
+  u_fbm_gain       = gui.slider("gain",       u_fbm_gain);
+  u_fbm_octaves    = gui.sliderInt("octaves", u_fbm_octaves);
+  
+  gui.popFolder();
+
+
+
+
+  // ---- Shader uniforms ----
+  if (sh != null) {
+    sh.set("u_time", millis()/1000.0);
+    sh.set("u_resolution", (float)TARGET_W, (float)TARGET_H);
+
+    sh.set("u_warp_scale", u_warp_scale);
+    sh.set("u_warp_freq_x", u_warp_freq_x);
+    sh.set("u_warp_freq_y", u_warp_freq_y);
+    sh.set("u_warp_offset_x", u_warp_offset_x);
+    sh.set("u_warp_offset_y", u_warp_offset_y);
+    sh.set("u_warp_freq_dx", u_warp_freq_dx);
+    sh.set("u_warp_freq_dy", u_warp_freq_dy);
+    sh.set("u_warp_iterations", (float)u_warp_iterations);
+
+    sh.set("u_fbm_scale", u_fbm_scale);
+    sh.set("u_fbm_lacunarity", u_fbm_lacunarity);
+    sh.set("u_fbm_gain", u_fbm_gain);
+    sh.set("u_fbm_octaves", (float)u_fbm_octaves);
+
+    sh.set("u_baseColor", baseR, baseG, baseB);
+    sh.set("u_fbm_bright_min", brightMinR, brightMinG, brightMinB);
+
+    pgPreview.shader(sh);
+    pgPreview.noStroke();
+    pgPreview.rect(0, 0, pgPreview.width, pgPreview.height);
+    pgPreview.resetShader();
+  }
+  pgPreview.endDraw();
+}
+
+// -----------------------------------------------------------------------------
+// Toggle helper (used by key press). This one DOES rebuild.
+// -----------------------------------------------------------------------------
+// toggle helper
+void setFbmEnabled(boolean val) {
+  fbmEnabled = val;
+  gui.pushFolder("fbm");
+  gui.toggleSet("enabled", fbmEnabled);
+  gui.popFolder();
+  mapBuilt = false;              // flipping via key should rebuild
+  println("fBM " + (fbmEnabled ? "ENABLED" : "DISABLED"));
+}
+
+
+// -----------------------------------------------------------------------------
+// Border ticks (jittered), now writing into PGraphics
+// -----------------------------------------------------------------------------
+void drawBorder(PGraphics g) {
+  for (int x = 0; x < g.width - 100; x += 50) {
+    for (int i = 0; i < 3; i++) {
+      float jx  = x + randomGaussian();
+      float jy  = randomGaussian();
+      rectOutline(g, jx, jy, 25, 2, #12776d);
+
+      float jx2 = (x + 25) + randomGaussian() * 2;
+      float jy2 = randomGaussian();
+      rectOutline(g, jx2, jy2, 25, 2, 0);
+    }
   }
 }
 
-void dropAgent(float x, float y) {
+// -----------------------------------------------------------------------------
+// Agent drop + contour marching — now rendering into PGraphics
+// -----------------------------------------------------------------------------
+void dropAgent(PGraphics g, float x, float y) {
   float agentX = x;
   float agentY = y;
 
-  // rise until we enter the iso band vicinity (using fBM)
   float ISO = 0.5;
-  while (fbm01(agentX * off, agentY * off) < ISO - 0.01 && noContourNear(agentX, agentY)) {
+  while (fbm01(agentX * off, agentY * off) < ISO - 0.01 && noContourNear(g, agentX, agentY)) {
     agentY--;
     if (agentY <= 50) break;
   }
 
-  // seed and render the contour at the landing point
-  fill(#f5f3dc);
-  strokeWeight(.1);
-  if (noContourNear(agentX, agentY)) {
-    stroke(#ad776d);
-    renderContour(agentX, agentY);
+  g.fill(#f5f3dc);
+  g.strokeWeight(.1);
+  if (noContourNear(g, agentX, agentY)) {
+    g.stroke(#ad776d);
+    renderContour(g, agentX, agentY);
   }
 
-  // vertical trace (read pixels once for speed)
-  noFill();
-  loadPixels();
+  // vertical trace using g.pixels
+  g.noFill();
+  g.loadPixels();
   float lastY = agentY;
   for (float ny = agentY; ny > 50; ny--) {
     int ixp = (int) agentX;
     int iyp = (int) ny;
-    if (ixp < 0 || ixp >= width || iyp < 0 || iyp >= height) continue;
-    int idx = ixp + iyp * width; // fixed: use width, not height
-    if (pixels[idx] == #f5f3dc && noContourNear(agentX, ny)) {
+    if (ixp < 0 || ixp >= g.width || iyp < 0 || iyp >= g.height) continue;
+    int idx = ixp + iyp * g.width;
+    if (g.pixels[idx] == #f5f3dc && noContourNear(g, agentX, ny)) {
       lastY = ny;
     } else {
-      draftsmanLine(agentX, lastY, agentX, ny, color(0, 0, 0));
+      draftsmanLine(g, agentX, lastY, agentX, ny, color(0, 0, 0));
       lastY = ny;
     }
   }
 }
 
-boolean noContourNear(float x, float y) {
+boolean noContourNear(PGraphics g, float x, float y) {
   boolean valid = true;
-  loadPixels();
+  g.loadPixels();
   for (int j = 1; j < 15; j++) {
     for (int nA = 0; nA < 360; nA += 1) {
       float nX = j * cos(radians(nA)) + x;
       float nY = j * sin(radians(nA)) + y;
       int ixp = (int) nX, iyp = (int) nY;
-      if (ixp < 0 || ixp >= width || iyp < 0 || iyp >= height) continue;
-      int idx = ixp + iyp * width;
-      if (pixels[idx] == #ad776d) { valid = false; break; }
+      if (ixp < 0 || ixp >= g.width || iyp < 0 || iyp >= g.height) continue;
+      int idx = ixp + iyp * g.width;
+      if (g.pixels[idx] == #ad776d) { valid = false; break; }
     }
     if (!valid) break;
   }
   return valid;
 }
 
-void renderContour(float nx, float ny) {
+void renderContour(PGraphics g, float nx, float ny) {
   ix = nx;
   iy = ny;
 
-  // target iso value at seed (normalized fBM)
   border = fbm01(ix * off, iy * off);
 
   float d  = 0;
@@ -147,18 +341,33 @@ void renderContour(float nx, float ny) {
       iy = oy - PL * sin(d);
     }
 
-    draftsmanLine(ox, oy, ix, iy, color(#ad776d));
+    draftsmanLine(g, ox, oy, ix, iy, color(#08220d));
 
     if (dist(ix, iy, sx, sy) < PL && i > 1) {
-      if (i > 4) draftsmanLine(ix, iy, sx, sy, color(#ad776d)); // close loop
+      if (i > 4) draftsmanLine(g, ix, iy, sx, sy, color(#08220d)); // close loop
       break;
     }
   }
-  noLoop();
+
 }
 
+
+// -----------------------------------------------------------------------------
+// Misc
+// -----------------------------------------------------------------------------
 void keyReleased() {
   if (key == 's' || key == 'S') saveFrame(getTemporalName(sketchName, saveFormat));
+
+  // in keyReleased()
+  if (key == 'f' || key == 'F') {
+    setFbmEnabled(!fbmEnabled);   // this flips state AND rebuilds
+  }
+  
+  if (key == 'r' || key == 'R') {
+    mapBuilt = false;             // manual rebuild shortcut
+  }
+
+
 }
 
 String getTemporalName(String prefix, String suffix) {
@@ -168,7 +377,7 @@ String getTemporalName(String prefix, String suffix) {
 }
 
 boolean nn() {
-  // compare normalized fBM at current point to the seed iso-value “border”
+  // compare normalized field at current point to the seed iso-value “border”
   return abs(fbm01(ix * off, iy * off) - border) < 0.02;
 }
 
@@ -176,9 +385,26 @@ boolean nn() {
    Helpers
    ------------------------- */
 
-// Map your fbm_warp output to [0,1] for stable iso tests.
-// For octaves=4, gain=0.5 the max amplitude ~ 1.875.
+// geometric amplitude sum for classic fBM
+float amplitudeSum(int octaves, float gain) {
+  if (abs(gain - 1.0) < 1e-9) return octaves; // edge case
+  return (1.0 - pow(gain, octaves)) / (1.0 - gain);
+}
+
+// Field mapped to [0,1]; uses fBM when enabled, else plain OpenSimplex
 float fbm01(float x, float y) {
+  if (!fbmEnabled) {
+    float n = (float) noise.eval(x, y, 0.0);
+    return n * 0.5f + 0.5f;
+  }
   float raw = fbm_warp(x, y, FBM_OCTAVES, FBM_LACUNARITY, FBM_GAIN);
-  return (raw * 0.5 / 1.875) + 0.5;
+  float A = amplitudeSum(FBM_OCTAVES, FBM_GAIN);
+  return constrain(raw / (2.0*A) + 0.5, 0, 1);  // [-A,+A] -> [0,1]
+}
+
+float[] hexToRGB01(int hex) {
+  float r = ((hex >> 16) & 0xFF) / 255.0;
+  float g = ((hex >>  8) & 0xFF) / 255.0;
+  float b = ((hex      ) & 0xFF) / 255.0;
+  return new float[]{r, g, b};
 }

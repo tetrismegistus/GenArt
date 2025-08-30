@@ -1,4 +1,8 @@
-void draftsmanLine(float x1, float y1, float x2, float y2, color baseColor) {
+
+// -----------------------------------------------------------------------------
+// draftsman linework (PGraphics version) + rect outline helper
+// -----------------------------------------------------------------------------
+void draftsmanLine(PGraphics g, float x1, float y1, float x2, float y2, color baseColor) {
   float distance = dist(x1, y1, x2, y2);
   int steps = max(1, int(distance * 1.5));
 
@@ -24,17 +28,16 @@ void draftsmanLine(float x1, float y1, float x2, float y2, color baseColor) {
       float b = constrain(baseBrt + map(noise(x * brtScale, n), 0, 1, -20, 20), 0, 100);
       float w = map(noise(x * weightScale, n), 0, 1, .1, 2);
 
-      stroke(h, s, b, .2);
-      strokeWeight(w);
-      point(x + randomGaussian() * .1, y + randomGaussian() * .1);
+      g.stroke(h, s, b, .2);
+      g.strokeWeight(w);
+      g.point(x + randomGaussian() * .1, y + randomGaussian() * .1);
     }
   }
 }
 
-/* helper: draw a rectangle outline using draftsmanLine */
-void rectOutline(float x, float y, float w, float h, color c) {
-  draftsmanLine(x, y, x + w, y, c);
-  draftsmanLine(x + w, y, x + w, y + h, c);
-  draftsmanLine(x + w, y + h, x, y + h, c);
-  draftsmanLine(x, y + h, x, y, c);
+void rectOutline(PGraphics g, float x, float y, float w, float h, color c) {
+  draftsmanLine(g, x, y, x + w, y, c);
+  draftsmanLine(g, x + w, y, x + w, y + h, c);
+  draftsmanLine(g, x + w, y + h, x, y + h, c);
+  draftsmanLine(g, x, y + h, x, y, c);
 }
