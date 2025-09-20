@@ -72,7 +72,7 @@ public class MetaShape {
 
     void drawCircles(PVector[] vertices, float diameter) {
         for (PVector v : vertices) {
-            pg.circle(v.x, v.y, diameter);
+            pg.circle(v.x, v.y, diameter/2);
         }
     }
 }

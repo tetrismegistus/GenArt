@@ -1,29 +1,9 @@
 <component name="libraryTable">
   <library name="core">
     <CLASSES>
-      <root url="jar://D:/processing-4.2/core/library/core.jar!/" />
-      <root url="jar://D:/processing-4.2/core/library/gluegen-rt.jar!/" />
-      <root url="jar://D:/processing-4.2/core/library/jogl-all.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/processing-4.3.3/core/library/core.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <NATIVE>
-      <root url="file://D:/processing-4.2/core/library/windows-amd64" />
-    </NATIVE>
-    <SOURCES>
-      <root url="file://$USER_HOME$/source/repos/processing4/app/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/build/macos/appbundler/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/build/shared/tools/MovieMaker/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/core/methods/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/core/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/core/test" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/libraries/dxf/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/libraries/io/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/libraries/net/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/libraries/pdf/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/libraries/serial/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/libraries/svg/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/src" />
-      <root url="file://$USER_HOME$/source/repos/processing4/java/test" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

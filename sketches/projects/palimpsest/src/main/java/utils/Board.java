@@ -7,10 +7,6 @@ import processing.core.PGraphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import utils.LineUtils;
-import utils.LineStyle;
-
-import static processing.core.PApplet.println;
 
 public class Board {
     float x, y, tileSize;

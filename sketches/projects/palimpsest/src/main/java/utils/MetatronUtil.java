@@ -60,11 +60,11 @@ public class MetatronUtil {
         ringStyle.strokeColor = refColorHSB; // rings respect the ring picker color
 
         // Draw vertex rings
-        drawRings(g, baseV1, rSmall * 2f, useDraftsman, ringStyle, radiusJitterSigma);
-        drawRings(g, baseV2, rSmall * 2f, useDraftsman, ringStyle, radiusJitterSigma);
+        drawRings(g, baseV1, rSmall, useDraftsman, ringStyle, radiusJitterSigma);
+        drawRings(g, baseV2, rSmall, useDraftsman, ringStyle, radiusJitterSigma);
 
         // Center ring
-        drawSingleRing(g, x, cy, rSmall * 2f, useDraftsman, ringStyle, radiusJitterSigma);
+        drawSingleRing(g, x, cy, rSmall, useDraftsman, ringStyle, radiusJitterSigma);
 
         // Webs (vertex connections), with per-endpoint jitter
         drawPolyConnections(g, baseV1, useDraftsman, style, endpointJitterSigma);

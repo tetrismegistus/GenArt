@@ -4,12 +4,6 @@ import java.util.*;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-// These types already exist in your codebase per the snippet:
-import utils.PoissonDiscSampler;
-import utils.Board;
-import utils.TileRect;
-import utils.TileCircle;
-import utils.MetaShape;
 
 /** Strict extraction of functions from the provided snippet. No new behavior. */
 public final class AsemicUtil {

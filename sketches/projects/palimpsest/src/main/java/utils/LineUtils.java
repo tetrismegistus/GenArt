@@ -193,4 +193,11 @@ public class LineUtils {
         if (y < ymin) code |= 4; else if (y > ymax) code |= 8;
         return code;
     }
+
+    void rectOutline(PGraphics g, float x, float y, float w, float h, LineStyle style) {
+        draftsmanLine(g, x, y, x + w, y, style);
+        draftsmanLine(g, x + w, y, x + w, y + h, style);
+        draftsmanLine(g, x + w, y + h, x, y + h, style);
+        draftsmanLine(g, x, y + h, x, y, style);
+    }
 }
