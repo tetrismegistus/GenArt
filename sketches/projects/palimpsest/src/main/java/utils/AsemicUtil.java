@@ -5,12 +5,10 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 
-/** Strict extraction of functions from the provided snippet. No new behavior. */
 public final class AsemicUtil {
 
     private AsemicUtil() {} // utility class
 
-    /** Moved from Main.generateAsciiMap(). Populates asciiMap in-place. */
     public static void generateAsciiMap(HashMap<Character, ArrayList<PVector>> asciiMap, PApplet app) {
         float radius = 50;
         int k = 30;
@@ -44,7 +42,6 @@ public final class AsemicUtil {
         }
     }
 
-    /** Moved unchanged from Main.computeCentroid(). */
     private static PVector computeCentroid(ArrayList<PVector> points) {
         float cx = 0;
         float cy = 0;
@@ -55,8 +52,7 @@ public final class AsemicUtil {
         return new PVector(cx / points.size(), cy / points.size());
     }
 
-    /** Moved unchanged from Main.placeAndDrawWord(). */
-    public static boolean placeAndDrawWord(String word, int startX, int startY, float tileSize, float gap, Board page) {
+    public static boolean placeWord(String word, int startX, int startY, float tileSize, float gap, Board page) {
         TileRect tr = page.tryPlaceWord(word, startX, startY, tileSize, gap);
         if (tr != null) {
             tr.word = word;
@@ -92,7 +88,4 @@ public final class AsemicUtil {
             page.circles.add(tc);
         }
     }
-
-
-
 }

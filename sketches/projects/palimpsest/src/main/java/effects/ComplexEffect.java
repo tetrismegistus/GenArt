@@ -63,15 +63,15 @@ public class ComplexEffect implements Effect {
 
         // UI params
         gui.pushFolder("complex");
-        float range = gui.slider("range", 30.0f, 0.0f, 30.0f);
-        float aReal = gui.slider("aReal", 2.0f, -30f, 30f);
-        float aImag = gui.slider("aImag", -0.2f, -30f, 30f);
-        float bReal = gui.slider("bReal", 0.0f, -30f, 30f);
-        float bImag = gui.slider("bImag", -0.7f, -30f, 30f);
-        float cReal = gui.slider("cReal", 2.0f, -30f, 30f);
-        float cImag = gui.slider("cImag", -0.2f, -30f, 30f);
-        float dReal = gui.slider("dReal", 0.0f, -30f, 30f);
-        float dImag = gui.slider("dImag", -0.7f, -30f, 30f);
+        float range = gui.slider("range", 30.0f);
+        float aReal = gui.slider("aReal", 2.0f);
+        float aImag = gui.slider("aImag", -0.2f);
+        float bReal = gui.slider("bReal", 0.0f);
+        float bImag = gui.slider("bImag", -0.7f);
+        float cReal = gui.slider("cReal", 2.0f);
+        float cImag = gui.slider("cImag", -0.2f);
+        float dReal = gui.slider("dReal", 0.0f);
+        float dImag = gui.slider("dImag", -0.7f);
         gui.popFolder();
 
         // Extract RGB without touching colorMode

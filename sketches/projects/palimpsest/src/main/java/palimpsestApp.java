@@ -68,6 +68,11 @@ public class palimpsestApp extends PApplet {
     final ColorPalette PAL_A = new ColorPalette(new int[]{0xD64045, 0x1D3354});
     final ColorPalette PAL_B = new ColorPalette(new int[]{0x9ED8DB, 0x467599});
 
+    private boolean drawAllContours = true;
+    private boolean drawAllGraphPaper = true;
+    private boolean drawAllMetatron = true;
+    private boolean drawAllAsemic = true;
+
     // Graph paper UI
     private boolean gpPreviewEnabled = true;
     private float gpX = 100, gpY = 100, gpW = 1000, gpH = 1000, gpSpacing = 10;
@@ -82,6 +87,12 @@ public class palimpsestApp extends PApplet {
     private boolean mtDraftsman = true;
     private float mtRotDeg = 1.0f, mtDX = 0f, mtDY = 0f, mtEndpointJit = 2f, mtRadiusJit = 1f;
     private int mtPreviewColor;
+
+    // Asemic preview
+    private boolean asPreviewEnabled = true;
+    private int asPreviewColor;
+    private float asPreviewX = 50, asPreviewY = 50;  // top-left of text area
+    private float asPreviewW = 1000, asPreviewH = 800; // text area dimensions
 
     // Contours UI
     private boolean ctPreviewEnabled = true;
@@ -161,8 +172,25 @@ public class palimpsestApp extends PApplet {
         if (img == null || edited == null) initCanvas();
 
         // --- One-shots ---
-        if (gui.button("save/export image")) { exportImage(); return; }
+        if (gui.button("export image")) { exportImage(); return; }
         if (gui.button("init/regenerate canvas")) { initCanvas(); }
+
+        if (gui.button("layout/auto arrange tools")) {
+            autoLayoutTools();
+        }
+
+        if (gui.button("layout/compact grid layout")) {
+            autoLayoutToolsCompact();
+        }
+
+        if (gui.button("layout/text heavy")) {
+            layoutTextHeavy();
+        }
+
+        if (gui.button("layout/geometric focus")) {
+            layoutGeometricFocus();
+        }
+
 
         // --- Image bake controls (base image -> edited) ---
         handleBaseImageBakeUI();
@@ -176,6 +204,8 @@ public class palimpsestApp extends PApplet {
         handleMetatronTool();
         handleContourTool();
 
+        handleDrawAllUI();
+
         // --- Asemic (bake when clicked) ---
         handleAsemicUIAndBake();
 
@@ -185,6 +215,204 @@ public class palimpsestApp extends PApplet {
         // --- Preview ---
         previewToScreen();
     }
+
+    private void drawAllLayout() {
+        println("Drawing complete layout...");
+
+        // Clear canvas to background first
+        edited.beginDraw();
+        edited.background(bg);
+        edited.endDraw();
+
+        // Draw in optimal layering order (back to front):
+        // 1. Contours (background texture)
+        // 2. Graph paper (structural layer)
+        // 3. Metatron (geometric focus)
+        // 4. Asemic text (foreground content)
+
+        if (drawAllContours) {
+            drawContoursLayer();
+        }
+
+        if (drawAllGraphPaper) {
+            drawGraphPaperLayer();
+        }
+
+        if (drawAllMetatron) {
+            drawMetatronLayer();
+        }
+
+        if (drawAllAsemic) {
+            drawAsemicLayer();
+        }
+
+        println("Layout drawing complete!");
+    }
+
+    private void drawContoursLayer() {
+        println("  Drawing contours...");
+
+        // Get current contour settings from GUI
+        gui.pushFolder("tools/contours");
+        boolean fbmEnabled = gui.toggle("fbm enabled", false);
+        int oct = 4;
+        float lac = gui.slider("lacunarity", 2.0f, 1.0f, 4.0f);
+        float gain = 2.3f;
+        float off = gui.slider("field scale (off)", 0.01f, 0.001f, 0.05f);
+        float step = gui.slider("step length", 2.0f, 0.5f, 5.0f);
+        gui.popFolder();
+
+        // Draw contours using current settings
+        ContourMap cm = new ContourMap(
+                this,
+                contourNoise,
+                oct, lac, gain,
+                false,
+                off, step,
+                lines
+        );
+
+        cm.buildMapLayer(edited, contourStyle, ctPos.x, ctPos.y, ctW, ctH);
+        edited.endDraw();
+    }
+
+    private void drawGraphPaperLayer() {
+        println("  Drawing graph paper...");
+
+        // Get current graph paper spacing
+        float spacing = gui.slider("tools/graphpaper/spacing", gpSpacing, 1, 200);
+
+        edited.beginDraw();
+        drawGraphPaperSketch(gpX, gpY, gpW, gpH, spacing);
+        edited.endDraw();
+    }
+
+    private void drawMetatronLayer() {
+        println("  Drawing metatron...");
+
+        // Get current metatron settings
+        int sides = gui.sliderInt("tools/metatron/sides", mtSides, 3, 24);
+        int ringColor = gui.colorPicker("tools/metatron/ring color",
+                (mtRingColor == 0 ? color(0, 0, 0) : mtRingColor)).hex;
+        boolean draftsman = gui.toggle("tools/metatron/use draftsman", mtDraftsman);
+
+        gui.pushFolder("tools/metatron/jitter");
+        float rotDeg = gui.slider("angle (deg)", mtRotDeg, -5f, 5f);
+        float dx = gui.slider("offset x", mtDX, -20f, 20f);
+        float dy = gui.slider("offset y", mtDY, -20f, 20f);
+        float endpointJit = gui.slider("endpoint σ (px)", mtEndpointJit, 0f, 10f);
+        float radiusJit = gui.slider("radius σ (px)", mtRadiusJit, 0f, 10f);
+        gui.popFolder();
+
+        float x = mtCenter.x;
+        float y = mtCenter.y - mtH * 0.5f; // util expects top-left Y
+
+        edited.beginDraw();
+        metatron.metaShape(
+                edited,
+                x, y, mtH,
+                sides, ringColor,
+                draftsman, metatronStyle,
+                rotDeg, dx, dy,
+                endpointJit, radiusJit
+        );
+        edited.endDraw();
+    }
+
+    private void drawAsemicLayer() {
+        println("  Drawing asemic text...");
+
+        // Get current asemic settings
+        float charTileSize = gui.slider("tools/asemic/params/char tile size", max(8f, tileSize), 6f, 64f);
+        float charGap = gui.slider("tools/asemic/params/char gap (tiles)", 1.0f, 0f, 4f);
+
+        // Calculate board dimensions based on preview area
+        int boardCols = (int)(asPreviewW / charTileSize);
+        int boardRows = (int)(asPreviewH / charTileSize);
+
+        // Create board with current layout
+        Board tempPage = new Board(asPreviewX, asPreviewY, boardRows, boardCols,
+                charTileSize, PAL_A, PAL_B, 10, 10, this);
+
+        // Apply current style settings
+        editAsemicStyleFromGUI();
+        handleAsemicTool(tempPage);
+
+        // Layout words
+        int wordIndex = 0;
+        for (int row = 0; row < boardRows; row++) {
+            for (int col = 0; col < boardCols; ) {
+                if (wordIndex >= asemicWords.size()) break;
+                String currentWord = asemicWords.get(wordIndex);
+
+                if (currentWord.equals(newlineMarker)) {
+                    row++; col = 0; wordIndex++; continue;
+                }
+
+                boolean wasPlaced = AsemicUtil.placeWord(currentWord, col, row, charTileSize, charGap, tempPage);
+
+                if (wasPlaced) {
+                    int advance = tempPage.calculateWordTileLength(currentWord, charTileSize, charGap);
+                    col += max(1, advance);
+                    wordIndex++;
+                } else {
+                    col++;
+                }
+            }
+            if (wordIndex >= asemicWords.size()) break;
+        }
+
+        edited.beginDraw();
+        tempPage.renderTo(edited, this, 0, asciiMap);
+        edited.endDraw();
+    }
+
+    // UI for the draw all feature
+    private void handleDrawAllUI() {
+        gui.pushFolder("layout/draw all");
+
+        // Layer toggles
+        drawAllContours = gui.toggle("include contours", drawAllContours);
+        drawAllGraphPaper = gui.toggle("include graph paper", drawAllGraphPaper);
+        drawAllMetatron = gui.toggle("include metatron", drawAllMetatron);
+        drawAllAsemic = gui.toggle("include asemic text", drawAllAsemic);
+
+        // Drawing order info (read-only display)
+        gui.text("Draw order: Contours → Graph → Metatron → Asemic");
+
+        // Main button
+        if (gui.button("DRAW ALL LAYOUT")) {
+            drawAllLayout();
+        }
+
+        // Convenience buttons for common combinations
+        if (gui.button("quick: geometric only")) {
+            drawAllContours = true;
+            drawAllGraphPaper = true;
+            drawAllMetatron = true;
+            drawAllAsemic = false;
+            drawAllLayout();
+        }
+
+        if (gui.button("quick: text + structure")) {
+            drawAllContours = false;
+            drawAllGraphPaper = true;
+            drawAllMetatron = false;
+            drawAllAsemic = true;
+            drawAllLayout();
+        }
+
+        if (gui.button("quick: everything")) {
+            drawAllContours = true;
+            drawAllGraphPaper = true;
+            drawAllMetatron = true;
+            drawAllAsemic = true;
+            drawAllLayout();
+        }
+
+        gui.popFolder();
+    }
+
 
     /* ============================ Helpers ============================ */
 
@@ -402,6 +630,25 @@ public class palimpsestApp extends PApplet {
         }
     }
 
+    private void handleAsemicPreviewUI() {
+        gui.pushFolder("tools/asemic/preview");
+
+        // Position and size controls for preview
+        PVector pos = gui.plotXY("text area/top-left", new PVector(asPreviewX, asPreviewY));
+        asPreviewX = pos.x;
+        asPreviewY = pos.y;
+        asPreviewW = gui.slider("text area/width", asPreviewW, 100, width);
+        asPreviewH = gui.slider("text area/height", asPreviewH, 100, height);
+
+        // Preview controls
+        asPreviewEnabled = gui.toggle("outline enabled", asPreviewEnabled);
+        asPreviewColor = gui.colorPicker("outline color",
+                (asPreviewColor == 0 ? color(200, 100, 100) : asPreviewColor)).hex;
+
+        gui.popFolder();
+    }
+
+
     private void editMetatronStyleFromGUI() {
         gui.pushFolder("tools/metatron/style");
         metatronStyle.strokeColor = gui.colorPicker("stroke color", metatronStyle.strokeColor).hex;
@@ -456,33 +703,32 @@ public class palimpsestApp extends PApplet {
         gui.popFolder();
     }
 
-    /* ---------- Asemic ---------- */
+
     private void handleAsemicUIAndBake() {
         gui.pushFolder("tools/asemic/params");
         float charTileSize = gui.slider("char tile size", max(8f, tileSize), 6f, 64f);
         float charGap = gui.slider("char gap (tiles)", 1.0f, 0f, 4f);
         gui.popFolder();
 
-        gui.pushFolder("tools/asemic/metashape");
-        int mBlock = gui.sliderInt("block width", 250, 50, 800);
-        int mSides = gui.sliderInt("sides", 6, 3, 24);
-        int mCx = gui.sliderInt("center x (px)", 300, 0, width);
-        int mCy = gui.sliderInt("center y (px)", 300, 0, height);
-        gui.popFolder();
+        // Add the preview UI here
+        handleAsemicPreviewUI();
 
+        // add arm01
         if (gui.button("tools/asemic/build+render (one shot)")) {
-            page = new Board(50, 50, rows, cols, charTileSize, PAL_A, PAL_B, 10, 10, this);
+            // Calculate board dimensions based on preview area and tile size
+            int boardCols = (int)(asPreviewW / charTileSize);
+            int boardRows = (int)(asPreviewH / charTileSize);
+
+            page = new Board(asPreviewX, asPreviewY, boardRows, boardCols, charTileSize, PAL_A, PAL_B, 10, 10, this);
 
             editAsemicStyleFromGUI();
             handleAsemicTool(page);
 
-            AsemicUtil.addMetaShape(this, page, mBlock, mCx, mCy, mSides);
-
             int wordIndex = 0;
             int startRow = 0;
-            for (int row = startRow; row < rows; row++) {
+            for (int row = startRow; row < boardRows; row++) {
                 int startCol = 0;
-                int endCol = cols;
+                int endCol = boardCols;
 
                 for (int col = startCol; col < endCol; ) {
                     if (wordIndex >= asemicWords.size()) break;
@@ -492,7 +738,7 @@ public class palimpsestApp extends PApplet {
                         row++; col = startCol; wordIndex++; continue;
                     }
 
-                    boolean wasPlaced = AsemicUtil.placeAndDrawWord(currentWord, col, row, charTileSize, charGap, page);
+                    boolean wasPlaced = AsemicUtil.placeWord(currentWord, col, row, charTileSize, charGap, page);
 
                     if (wasPlaced) {
                         int advance = page.calculateWordTileLength(currentWord, charTileSize, charGap);
@@ -543,6 +789,7 @@ public class palimpsestApp extends PApplet {
 
     private void handleAsemicTool(Board page) {
         gui.pushFolder("tools/asemic");
+
         boolean useDraftsman = gui.toggle("use draftsman for words", true);
         gui.popFolder();
         page.setAsemicPen(lines, asemicStyle, useDraftsman);
@@ -664,6 +911,42 @@ public class palimpsestApp extends PApplet {
             popMatrix(); popStyle();
         }
 
+        if (asPreviewEnabled) {
+            pushStyle(); pushMatrix();
+            translate(-edited.width / 2f, -edited.height / 2f);
+
+            noFill();
+            stroke(asPreviewColor == 0 ? color(200, 100, 100) : asPreviewColor);
+            strokeWeight(3);
+            rectMode(CORNER);
+
+            // Draw the text area boundary
+            rect(asPreviewX, asPreviewY, asPreviewW, asPreviewH);
+
+            // Optionally, draw a grid to show character tile layout
+            float charTileSize = gui.slider("tools/asemic/params/char tile size", max(8f, tileSize), 6f, 64f);
+            if (charTileSize > 0) {
+                stroke(asPreviewColor == 0 ? color(200, 100, 100, 0.3f) : color(red(asPreviewColor), green(asPreviewColor), blue(asPreviewColor), 0.3f));
+                strokeWeight(1);
+
+                // Vertical grid lines
+                for (float x = asPreviewX; x <= asPreviewX + asPreviewW; x += charTileSize) {
+                    if (x > asPreviewX && x < asPreviewX + asPreviewW) {
+                        line(x, asPreviewY, x, asPreviewY + asPreviewH);
+                    }
+                }
+
+                // Horizontal grid lines
+                for (float y = asPreviewY; y <= asPreviewY + asPreviewH; y += charTileSize) {
+                    if (y > asPreviewY && y < asPreviewY + asPreviewH) {
+                        line(asPreviewX, y, asPreviewX + asPreviewW, y);
+                    }
+                }
+            }
+
+            popMatrix(); popStyle();
+        }
+
         popMatrix();
     }
 
@@ -697,6 +980,216 @@ public class palimpsestApp extends PApplet {
                 gui.sliderSet("image/scale", fitScale);
             }
         }
+    }
+
+
+    private void autoLayoutTools() {
+        // Canvas dimensions with margins
+        float margin = 50f;
+        float workWidth = width - 2 * margin;
+        float workHeight = height - 2 * margin;
+
+        // Calculate optimal sizes based on canvas proportions
+        float canvasAspect = workWidth / workHeight;
+
+        // Define relative sizes (these can be tweaked)
+        float asemicWidthRatio = 0.45f;   // Asemic takes about 45% width
+        float asemicHeightRatio = 0.6f;   // and 60% height
+
+        float metatronSizeRatio = 0.3f;   // Metatron is 30% of canvas height
+        float contourSizeRatio = 0.35f;   // Contours are 35% of canvas dimensions
+        float graphSizeRatio = 0.25f;     // Graph paper is 25% of canvas dimensions
+
+        // Calculate actual sizes
+        float asemicW = workWidth * asemicWidthRatio;
+        float asemicH = workHeight * asemicHeightRatio;
+        float metatronSize = workHeight * metatronSizeRatio;
+        float contourW = workWidth * contourSizeRatio;
+        float contourH = workHeight * contourSizeRatio;
+        float graphW = workWidth * graphSizeRatio;
+        float graphH = workHeight * graphSizeRatio;
+
+        // Layout strategy:
+        // - Asemic text in top-left (largest area)
+        // - Metatron in top-right
+        // - Contours in bottom-left
+        // - Graph paper in bottom-right
+
+        // Asemic (top-left corner)
+        asPreviewX = margin;
+        asPreviewY = margin;
+        asPreviewW = asemicW;
+        asPreviewH = asemicH;
+
+        // Metatron (top-right, centered in available space)
+        float metatronAreaX = margin + asemicW + 20; // 20px gap
+        float metatronAreaW = workWidth - asemicW - 20;
+        float metatronAreaY = margin;
+        float metatronAreaH = asemicH; // Same height as asemic
+
+        mtCenter.set(
+                metatronAreaX + metatronAreaW * 0.5f,
+                metatronAreaY + metatronAreaH * 0.5f
+        );
+        mtH = min(metatronSize, min(metatronAreaW * 0.8f, metatronAreaH * 0.8f));
+
+        // Contours (bottom-left)
+        float bottomAreaY = margin + asemicH + 20; // 20px gap
+        float bottomAreaH = workHeight - asemicH - 20;
+
+        ctPos.set(margin, bottomAreaY);
+        ctW = contourW;
+        ctH = min(contourH, bottomAreaH);
+
+        // Graph paper (bottom-right, in remaining space)
+        float graphAreaX = margin + contourW + 20; // 20px gap
+        float graphAreaW = workWidth - contourW - 20;
+
+        gpX = graphAreaX;
+        gpY = bottomAreaY;
+        gpW = min(graphW, graphAreaW);
+        gpH = min(graphH, bottomAreaH);
+
+        // Update GUI sliders to reflect new positions
+        gui.plotSet("tools/asemic/preview/text area/top-left", asPreviewX, asPreviewY);
+        gui.sliderSet("tools/asemic/preview/text area/width", asPreviewW);
+        gui.sliderSet("tools/asemic/preview/text area/height", asPreviewH);
+
+        gui.plotSet("tools/metatron/center", mtCenter.x, mtCenter.y);
+        gui.sliderSet("tools/metatron/height", mtH);
+
+        gui.plotSet("tools/contours/region/top-left", ctPos.x, ctPos.y);
+        gui.sliderSet("tools/contours/region/width", ctW);
+        gui.sliderSet("tools/contours/region/height", ctH);
+
+        gui.plotSet("tools/graphpaper/position", gpX, gpY);
+        gui.sliderSet("tools/graphpaper/width", gpW);
+        gui.sliderSet("tools/graphpaper/height", gpH);
+    }
+
+    // Add this method for a more compact layout option
+    private void autoLayoutToolsCompact() {
+        float margin = 30f;
+        float gap = 15f;
+        float workWidth = width - 2 * margin;
+        float workHeight = height - 2 * margin;
+
+        // Divide canvas into a 2x2 grid with gaps
+        float cellW = (workWidth - gap) * 0.5f;
+        float cellH = (workHeight - gap) * 0.5f;
+
+        // Asemic (top-left, takes most of its cell)
+        asPreviewX = margin;
+        asPreviewY = margin;
+        asPreviewW = cellW * 0.9f;
+        asPreviewH = cellH * 0.85f;
+
+        // Metatron (top-right, centered in cell)
+        float metatronCellX = margin + cellW + gap;
+        float metatronCellY = margin;
+        mtCenter.set(
+                metatronCellX + cellW * 0.5f,
+                metatronCellY + cellH * 0.5f
+        );
+        mtH = min(cellW, cellH) * 0.7f;
+
+        // Contours (bottom-left)
+        ctPos.set(margin, margin + cellH + gap);
+        ctW = cellW * 0.8f;
+        ctH = cellH * 0.8f;
+
+        // Graph paper (bottom-right)
+        gpX = metatronCellX;
+        gpY = margin + cellH + gap;
+        gpW = cellW * 0.75f;
+        gpH = cellH * 0.75f;
+
+        // Update GUI
+        updateGUIFromLayout();
+    }
+
+    // Helper method to update GUI sliders after layout changes
+    private void updateGUIFromLayout() {
+        // Check if GUI elements exist before trying to update them
+        try {
+            gui.plotSet("tools/asemic/preview/text area/top-left", asPreviewX, asPreviewY);
+            gui.sliderSet("tools/asemic/preview/text area/width", asPreviewW);
+            gui.sliderSet("tools/asemic/preview/text area/height", asPreviewH);
+
+            gui.plotSet("tools/metatron/center", mtCenter.x, mtCenter.y);
+            gui.sliderSet("tools/metatron/height", mtH);
+
+            gui.plotSet("tools/contours/region/top-left", ctPos.x, ctPos.y);
+            gui.sliderSet("tools/contours/region/width", ctW);
+            gui.sliderSet("tools/contours/region/height", ctH);
+
+            gui.plotSet("tools/graphpaper/position", gpX, gpY);
+            gui.sliderSet("tools/graphpaper/width", gpW);
+            gui.sliderSet("tools/graphpaper/height", gpH);
+        } catch (Exception e) {
+            // GUI elements might not exist yet, ignore silently
+        }
+    }
+
+    private void layoutTextHeavy() {
+        float margin = 40f;
+        // Asemic gets 70% of width, full height minus margin for other tools
+        asPreviewX = margin;
+        asPreviewY = margin;
+        asPreviewW = width * 0.7f;
+        asPreviewH = height - 200;
+
+        // Other tools arranged vertically on the right
+        float rightX = asPreviewX + asPreviewW + 20;
+        float rightW = width - rightX - margin;
+        float toolHeight = 150f;
+
+        // Metatron at top right
+        mtCenter.set(rightX + rightW * 0.5f, margin + toolHeight * 0.5f);
+        mtH = min(rightW, toolHeight) * 0.8f;
+
+        // Contours middle right
+        ctPos.set(rightX, margin + toolHeight + 20);
+        ctW = rightW;
+        ctH = toolHeight;
+
+        // Graph paper bottom right
+        gpX = rightX;
+        gpY = margin + toolHeight * 2 + 40;
+        gpW = rightW;
+        gpH = toolHeight;
+
+        updateGUIFromLayout();
+    }
+
+    private void layoutGeometricFocus() {
+        float margin = 50f;
+        float centerX = width * 0.5f;
+        float centerY = height * 0.5f;
+
+        // Large metatron in center
+        mtCenter.set(centerX, centerY);
+        mtH = min(width, height) * 0.4f;
+
+        // Contours as background layer (full canvas minus margins)
+        ctPos.set(margin, margin);
+        ctW = width - 2 * margin;
+        ctH = height - 2 * margin;
+
+        // Graph paper in corners
+        float cornerSize = 200f;
+        gpX = margin;
+        gpY = margin;
+        gpW = cornerSize;
+        gpH = cornerSize;
+
+        // Asemic as side panel
+        asPreviewX = width - margin - 300;
+        asPreviewY = margin;
+        asPreviewW = 250;
+        asPreviewH = height - 2 * margin;
+
+        updateGUIFromLayout();
     }
 
     private String timestamp() {

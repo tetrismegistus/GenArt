@@ -126,24 +126,11 @@ public class TileRect {
             float centeredX  = pixelX + (rectWidth - wordWidth) / 2;
 
             // draftsman path
-            if (useDraftsman && linesPen != null && lineStyle != null) {
-                float xPos = centeredX;
-                for (char c : word.toCharArray()) {
-                    ArrayList<PVector> vectors = getTranslatedVectorsForChar(c, xPos, pixelY, this.tileSize, asciiMap);
-                    if (vectors != null && vectors.size() >= 2) {
-                        PVector prev = vectors.get(0);
-                        for (int i = 1; i < vectors.size(); i++) {
-                            PVector curr = vectors.get(i);
-                            linesPen.draftsmanLine(target, prev.x, prev.y, curr.x, curr.y, lineStyle);
-                            prev = curr;
-                        }
-                    }
-                    xPos += tileSize + gap;
-                }
-            } else {
+            if (pa.random(1) < .8) {
+
                 target.noFill();
                 target.stroke(0);
-                target.strokeWeight(pa.random(1) > .9f ? 1.5f : 1f);
+                target.strokeWeight(pa.random(1) > .7f ? 1.5f : 1f);
 
                 float xPos = centeredX;
                 for (char c : word.toCharArray()) {
@@ -157,6 +144,20 @@ public class TileRect {
                     xPos += tileSize + gap;
                 }
                 target.endShape();
+            } else {
+                target.beginShape();
+                float xPos = centeredX;
+                for (char c : word.toCharArray()) {
+                    ArrayList<PVector> vectors = getTranslatedVectorsForChar(c, xPos, pixelY, tileSize, asciiMap);
+                    for (PVector vec : vectors) {
+                        // Rotate around (xPos, y) instead of (0,0)
+                        PVector rotated = rotatePVectorAroundOrigin(vec, radians(pa.random(20, 30)), new PVector(xPos, pixelY));
+                        target.curveVertex(rotated.x, rotated.y);
+                    }
+                    xPos += tileSize + gap;
+                }
+
+                target.endShape();
             }
         }
 
@@ -168,36 +169,7 @@ public class TileRect {
 
 
     private void drawWord(String word, float x, float y, float tileSize, float gap, PApplet pa, HashMap<Character, ArrayList<PVector>> asciiMap) {
-        // draftsman mode (preferred if wired)
-        if (useDraftsman && linesPen != null && lineStyle != null) {
-            float xPos = x;
-            for (char c : word.toCharArray()) {
-                ArrayList<PVector> vectors = getTranslatedVectorsForChar(c, xPos, y, tileSize, asciiMap);
-                if (vectors != null && vectors.size() >= 2) {
-                    // connect successive points in the glyph
-                    PVector prev = vectors.get(0);
-                    for (int i = 1; i < vectors.size(); i++) {
-                        PVector curr = vectors.get(i);
-                        linesPen.draftsmanLine(pa.g, prev.x, prev.y, curr.x, curr.y, lineStyle);
-                        prev = curr;
-                    }
-                }
-                xPos += tileSize + gap;
-            }
-            return;
-        }
-
-        // fallback: your original curve-based stroke
-        pa.noFill();
-        pa.stroke(0);
-        if (pa.random(1) > .9f) {
-            pa.strokeWeight(1.5f);
-        } else {
-            pa.strokeWeight(1f);
-        }
-
-
-
+        pa.println("it's a trap!!");
     }
 
 
