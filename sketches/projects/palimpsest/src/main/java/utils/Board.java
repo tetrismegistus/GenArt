@@ -100,19 +100,6 @@ public class Board {
         return (int) Math.ceil((word.length() * tileSize + (word.length() - 1) * gap) / tileSize);
     }
 
-    public void render(float padding, HashMap<Character, ArrayList<PVector>> asciiMap) {
-        pa.pushMatrix();
-        pa.translate(x, y);
-        for (TileCircle tc : circles) {
-            tc.render(padding, pa, asciiMap);
-        }
-        for (TileRect tr : rects) {
-            tr.setAsemicPen(asemicLines, asemicStyle, asemicUseDraftsman);  // <-- add this line
-            tr.render(padding, pa, asciiMap);
-
-        }
-        pa.popMatrix();
-    }
 
     public void renderTo(PGraphics target, PApplet pa, float padding, HashMap<Character, ArrayList<PVector>> asciiMap) {
         target.pushMatrix();

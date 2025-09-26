@@ -271,25 +271,28 @@ vec3 snoise3( vec4 x ){
 
 #define PI 3.14159265358979323846
 
-precision highp float;
 uniform float u_time;
 uniform vec2 u_resolution;
 
-uniform float u_warp_scale;       // e.g., 100.0
-uniform float u_warp_freq_x;      // e.g., 0.01
-uniform float u_warp_freq_y;      // e.g., 0.01
-uniform float u_warp_offset_x;    // e.g., 1000.0
-uniform float u_warp_offset_y;    // e.g., 1000.0
-uniform float u_warp_freq_dx;     // e.g., 0.001
-uniform float u_warp_freq_dy;     // e.g., 0.001
-    uniform vec3 u_fbm_bright_min;
-
-uniform int u_warp_iterations;    // number of warp steps (e.g. 4)
+uniform float u_warp_scale;
+uniform float u_warp_freq_x;
+uniform float u_warp_freq_y;
+uniform float u_warp_offset_x;
+uniform float u_warp_offset_y;
+uniform float u_warp_freq_dx;
+uniform float u_warp_freq_dy;
+uniform vec3 u_fbm_bright_min;
+uniform sampler2D inputTexture;        // <- match the host's expected name
+uniform int u_warp_iterations;
 uniform float u_fbm_scale;
 uniform float u_fbm_lacunarity;
 uniform float u_fbm_gain;
 uniform float u_fbm_octaves;
 uniform vec3 u_baseColor;
+
+const int MAX_WARP_ITER = 10;
+const int MAX_FBM_OCTAVES = 8;
+
 
 // 2D Random
 float random (in vec2 st) {
@@ -298,14 +301,15 @@ float random (in vec2 st) {
                  * 43758.5453123);
 }
 
+
 float fbm_warp(vec2 p, float z, int octaves, float lacunarity, float gain) {
     vec2 warp = p;
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < MAX_WARP_ITER; i++) {
         if (i >= u_warp_iterations) break;
         float dx = snoise(vec3(warp.x * u_warp_freq_x, warp.y * u_warp_freq_y, z));
         float dy = snoise(vec3((warp.x + u_warp_offset_x) * u_warp_freq_dx,
-                               (warp.y + u_warp_offset_y) * u_warp_freq_dy, z));
+        (warp.y + u_warp_offset_y) * u_warp_freq_dy, z));
         warp += vec2(dx, dy) * u_warp_scale;
     }
 
@@ -313,7 +317,7 @@ float fbm_warp(vec2 p, float z, int octaves, float lacunarity, float gain) {
     float amplitude = 1.0;
     float frequency = 0.1;
 
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < MAX_FBM_OCTAVES; i++) {
         if (i >= octaves) break;
         float n = snoise(vec3(warp * frequency, z));
         sum += amplitude * n;
@@ -324,18 +328,31 @@ float fbm_warp(vec2 p, float z, int octaves, float lacunarity, float gain) {
     return sum;
 }
 
-
 void main() {
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     float z = u_time * 0.5;
 
-    float n = fbm_warp(uv * u_fbm_scale, z, int(u_fbm_octaves), u_fbm_lacunarity, u_fbm_gain);
-    n = n * 0.5 + 0.5;  // remap from [-1,1] to [0,1]
+    int octs = int(clamp(u_fbm_octaves, 1.0, float(MAX_FBM_OCTAVES)));
+    float n = fbm_warp(uv * u_fbm_scale, z, octs, u_fbm_lacunarity, u_fbm_gain);
+    n = n * 0.5 + 0.5;
 
-    vec3 baseColor = u_baseColor;
-    vec3 brightness = mix(u_fbm_bright_min, vec3(1.0), vec3(n));
 
-    vec3 col = baseColor * brightness;
+    float u_mask_threshold = .5;
+    float u_mask_smoothness = .5;
+    int   u_mask_invert = 0;
 
-    gl_FragColor = vec4(col, 1.0);
+    vec4 tex = texture2D(inputTexture, uv);
+
+    float mask = smoothstep(u_mask_threshold - u_mask_smoothness,
+    u_mask_threshold + u_mask_smoothness,
+    n);
+
+    if (u_mask_invert == 1) mask = 1.0 - mask;
+
+
+    vec3 genColor = mix(u_fbm_bright_min, tex.rgb, mask);
+
+    gl_FragColor = vec4(genColor, 1.0);
 }
+
+

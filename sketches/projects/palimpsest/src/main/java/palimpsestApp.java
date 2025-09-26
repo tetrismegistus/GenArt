@@ -437,6 +437,10 @@ public class palimpsestApp extends PApplet {
             complexEffect.setCanvas(edited);
         }
 
+        if (fbm != null) {
+            fbm.setCanvas(edited);
+        }
+
         // Reasonable default for base image scale
         gui.sliderSet("image/scale", 1.0f);
     }
@@ -497,7 +501,7 @@ public class palimpsestApp extends PApplet {
                 (gpPreviewColor == 0 ? color(200, 100, 100) : gpPreviewColor)).hex;
 
         // Bake on click
-        if (gui.button("tools/draw graph paper")) {
+        if (gui.button("tools/graphpaper/draw graph paper")) {
             edited.beginDraw();
             drawGraphPaperSketch(gpX, gpY, gpW, gpH, gpSpacing);
             edited.endDraw();
@@ -571,7 +575,7 @@ public class palimpsestApp extends PApplet {
         float jitter = gui.slider("jitterSigma", graphStyleV.jitterSigma, 0, 2);
         int repeats = gui.sliderInt("repeats", graphStyleV.repeats, 1, 12);
         float stepMul = gui.slider("stepMultiplier", graphStyleV.stepMultiplier, 0.1f, 4.0f);
-        int stepsMax = gui.sliderInt("stepsMax (0=none)", graphStyleV.stepsMax, 0, 10000);
+        int stepsMax = gui.sliderInt("stepsMax", graphStyleV.stepsMax, 0, 10000);
         gui.popFolder();
 
         // Mirror into both styles (split later if desired)
@@ -613,7 +617,7 @@ public class palimpsestApp extends PApplet {
         mtPreviewColor   = gui.colorPicker("tools/metatron/preview color",
                 (mtPreviewColor == 0 ? color(200, 100, 100) : mtPreviewColor)).hex;
 
-        if (gui.button("tools/draw metatron (bake)")) {
+        if (gui.button("tools/metatron/draw metatron (bake)")) {
             float x = mtCenter.x;
             float y = mtCenter.y - mtH * 0.5f; // util expects top-left Y
 
@@ -965,9 +969,10 @@ public class palimpsestApp extends PApplet {
                 // Clear to bg so the new buffer has a defined background
                 edited.beginDraw();
                 edited.background(bg);
+                edited.image(img, 0, 0);
                 edited.endDraw();
 
-                // Keep ComplexEffect targeting the current buffer
+                // FIX: Point ComplexEffect at the new output buffer
                 if (complexEffect != null) {
                     complexEffect.setCanvas(edited);
                 }
@@ -977,6 +982,7 @@ public class palimpsestApp extends PApplet {
                 float fitScale = (imgAspect > windowAspect)
                         ? (float) width / img.width
                         : (float) height / img.height;
+
                 gui.sliderSet("image/scale", fitScale);
             }
         }

@@ -44,7 +44,7 @@ public class ContourMap {
 
         // === GRID (region-based, border-aligned) ===
         g.noFill();
-        final int cell = 50;
+        final int cellSize = 50;
 
         // clamp region to graphics bounds
         float rx0 = p.constrain(startX, 0, g.width);
@@ -53,13 +53,13 @@ public class ContourMap {
         float ry1 = p.constrain(startY + regionH, 0, g.height);
 
         // snap inner box to cell grid
-        int left   = (int)(Math.ceil (rx0 / cell) * cell);
-        int top    = (int)(Math.ceil (ry0 / cell) * cell);
-        int right  = (int)(Math.floor(rx1 / cell) * cell);
-        int bottom = (int)(Math.floor(ry1 / cell) * cell);
+        int left   = (int)(Math.ceil (rx0 / cellSize) * cellSize + p.randomGaussian()  * 10);
+        int top    = (int)(Math.ceil (ry0 / cellSize) * cellSize);
+        int right  = (int)(Math.floor(rx1 / cellSize) * cellSize);
+        int bottom = (int)(Math.floor(ry1 / cellSize) * cellSize);
 
         // guard against degenerate region
-        if (right - left < cell || bottom - top < cell) {
+        if (right - left < cellSize || bottom - top < cellSize) {
             g.endDraw();
             return;
         }
@@ -75,9 +75,9 @@ public class ContourMap {
         p.println("deployed");
 
         // grid
-        for (int x = left; x + cell <= right; x += cell) {
-            for (int y = top; y + cell <= bottom; y += cell) {
-                lines.rectOutline(g, x, y, cell, cell, s2);
+        for (int x = left; x + cellSize <= right; x += cellSize) {
+            for (int y = top; y + cellSize <= bottom; y += cellSize) {
+                lines.rectOutline(g, x, y, cellSize, cellSize, s2);
             }
         }
 
@@ -86,7 +86,7 @@ public class ContourMap {
         g.fill(0);
 
         int degTop = (int)p.random(70);
-        for (int x = left; x < right; x += cell) {
+        for (int x = left; x < right; x += cellSize) {
             g.text(degTop++ + "°", x, top - 2);
         }
 
@@ -94,7 +94,7 @@ public class ContourMap {
         g.pushMatrix();
         g.translate(left - 3, bottom);
         g.rotate(p.radians(270));
-        for (int y = 0; y < (bottom - top); y += cell) {
+        for (int y = 0; y < (bottom - top); y += cellSize) {
             g.text(degLeft++ + "°", y, 0);
         }
         g.popMatrix();

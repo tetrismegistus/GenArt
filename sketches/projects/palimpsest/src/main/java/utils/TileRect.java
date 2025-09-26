@@ -78,32 +78,6 @@ public class TileRect {
         return true;
     }
 
-    void render(float paddingPercentage, PApplet pa, HashMap<Character, ArrayList<PVector>> asciiMap) {
-        float ts = (boardTileSize > 0 ? boardTileSize : tileSize); // position uses board tile size
-        float lX = x * ts;
-        float lY = y * ts;
-        float lW = w * ts;
-        float lH = h * ts;
-
-        float actualPadding = Math.min(lW, lH) * paddingPercentage;
-        if (lW - 2 * actualPadding <= 1 || lH - 2 * actualPadding <= 1) return;
-
-        if (this.word != null) {
-            float pixelX = this.x * ts;
-            float pixelY = this.y * ts;
-
-            int wordLength = this.word.length();
-            float wordWidth  = wordLength * this.tileSize + (wordLength - 1) * this.gap; // glyph scale
-            float rectWidth  = this.w * ts;
-            float centeredX  = pixelX + (rectWidth - wordWidth) / 2;
-
-            drawWord(this.word, centeredX, pixelY, this.tileSize, this.gap, pa, asciiMap); // glyphs use char tile size
-        }
-
-        if (this.pg != null) {
-            pa.image(this.pg, lX, lY);
-        }
-    }
 
 
     public void renderTo(float paddingPercentage, PGraphics target, PApplet pa, HashMap<Character, ArrayList<PVector>> asciiMap) {
@@ -168,9 +142,6 @@ public class TileRect {
 
 
 
-    private void drawWord(String word, float x, float y, float tileSize, float gap, PApplet pa, HashMap<Character, ArrayList<PVector>> asciiMap) {
-        pa.println("it's a trap!!");
-    }
 
 
 
