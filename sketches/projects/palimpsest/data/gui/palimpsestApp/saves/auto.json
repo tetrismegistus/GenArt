@@ -790,8 +790,66 @@
     {
       "children": [
         {
+          "hexString": "FF000000",
+          "children": [
+            {
+              "className": "ColorPreviewNode",
+              "path": "canvas/background_color/preview",
+              "type": "TRANSIENT"
+            },
+            {
+              "valueFloat": 0.0,
+              "valueFloatPrecision": 0.01,
+              "className": "HueNode",
+              "path": "canvas/background_color/hue",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0,
+              "valueFloatPrecision": 0.01,
+              "className": "SaturationNode",
+              "path": "canvas/background_color/sat",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0,
+              "valueFloatPrecision": 0.01,
+              "className": "BrightnessNode",
+              "path": "canvas/background_color/br",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 1.0,
+              "valueFloatPrecision": 0.01,
+              "className": "AlphaNode",
+              "path": "canvas/background_color/alpha",
+              "type": "VALUE"
+            },
+            {
+              "className": "ColorPickerHexNode",
+              "path": "canvas/background_color/hex",
+              "type": "VALUE"
+            }
+          ],
+          "className": "ColorPickerFolderNode",
+          "path": "canvas/background_color",
+          "type": "FOLDER"
+        },
+        {
+          "className": "ButtonNode",
+          "path": "canvas/regenerate canvas",
+          "type": "TRANSIENT"
+        }
+      ],
+      "className": "FolderNode",
+      "path": "canvas",
+      "type": "FOLDER"
+    },
+    {
+      "children": [
+        {
           "valueFloat": 1.0,
-          "valueFloatPrecision": 1.0,
+          "valueFloatPrecision": 0.1,
           "className": "SliderNode",
           "path": "image/scale",
           "type": "VALUE"
@@ -829,9 +887,9 @@
             }
           ],
           "window": {
-            "posX": 616.0,
-            "posY": 726.0,
-            "closed": true,
+            "posX": 396.0,
+            "posY": 902.0,
+            "closed": false,
             "windowSizeX": 154.0
           },
           "className": "FolderNode",
@@ -840,9 +898,9 @@
         }
       ],
       "window": {
-        "posX": 484.0,
-        "posY": 726.0,
-        "closed": true,
+        "posX": 264.0,
+        "posY": 902.0,
+        "closed": false,
         "windowSizeX": 110.0
       },
       "className": "FolderNode",
@@ -850,1537 +908,279 @@
       "type": "FOLDER"
     },
     {
-      "children": [
-        {
-          "hexString": "FF0FB1FF",
-          "children": [
-            {
-              "className": "ColorPreviewNode",
-              "path": "init/background_color/preview",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueFloat": 0.5541666150093079,
-              "valueFloatPrecision": 0.01,
-              "className": "HueNode",
-              "path": "init/background_color/hue",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.9411764740943909,
-              "valueFloatPrecision": 0.01,
-              "className": "SaturationNode",
-              "path": "init/background_color/sat",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 1.0,
-              "valueFloatPrecision": 0.01,
-              "className": "BrightnessNode",
-              "path": "init/background_color/br",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 1.0,
-              "valueFloatPrecision": 0.01,
-              "className": "AlphaNode",
-              "path": "init/background_color/alpha",
-              "type": "VALUE"
-            },
-            {
-              "className": "ColorPickerHexNode",
-              "path": "init/background_color/hex",
-              "type": "VALUE"
-            }
-          ],
-          "window": {
-            "posX": 616.0,
-            "posY": 528.0,
-            "closed": false,
-            "windowSizeX": 154.0
-          },
-          "className": "ColorPickerFolderNode",
-          "path": "init/background_color",
-          "type": "FOLDER"
-        },
-        {
-          "className": "ButtonNode",
-          "path": "init/regenerate canvas",
-          "type": "TRANSIENT"
-        }
-      ],
-      "window": {
-        "posX": 374.0,
-        "posY": 528.0,
-        "closed": false,
-        "windowSizeX": 220.0
-      },
-      "className": "FolderNode",
-      "path": "init",
-      "type": "FOLDER"
-    },
-    {
       "className": "ButtonNode",
-      "path": "export image",
+      "path": "save image",
       "type": "TRANSIENT"
     },
     {
       "children": [
         {
-          "className": "ButtonNode",
-          "path": "layout/auto arrange tools",
-          "type": "TRANSIENT"
-        },
-        {
-          "className": "ButtonNode",
-          "path": "layout/compact grid layout",
-          "type": "TRANSIENT"
-        },
-        {
-          "className": "ButtonNode",
-          "path": "layout/text heavy",
-          "type": "TRANSIENT"
-        },
-        {
-          "className": "ButtonNode",
-          "path": "layout/geometric focus",
-          "type": "TRANSIENT"
-        },
-        {
           "children": [
             {
-              "valueBoolean": true,
+              "valueBoolean": false,
               "className": "ToggleNode",
-              "path": "layout/draw all/include contours",
+              "path": "effects/invert/enabled",
               "type": "VALUE"
-            },
-            {
-              "valueBoolean": true,
-              "className": "ToggleNode",
-              "path": "layout/draw all/include graph paper",
-              "type": "VALUE"
-            },
-            {
-              "valueBoolean": true,
-              "className": "ToggleNode",
-              "path": "layout/draw all/include metatron",
-              "type": "VALUE"
-            },
-            {
-              "valueBoolean": true,
-              "className": "ToggleNode",
-              "path": "layout/draw all/include asemic text",
-              "type": "VALUE"
-            },
-            {
-              "stringValue": "",
-              "className": "TextNode",
-              "path": "layout/draw all/Draw order: Contours → Graph → Metatron → Asemic",
-              "type": "VALUE"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "layout/draw all/DRAW ALL LAYOUT",
-              "type": "TRANSIENT"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "layout/draw all/quick: geometric only",
-              "type": "TRANSIENT"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "layout/draw all/quick: text + structure",
-              "type": "TRANSIENT"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "layout/draw all/quick: everything",
-              "type": "TRANSIENT"
             }
           ],
-          "window": {
-            "posX": 726.0,
-            "posY": 726.0,
-            "closed": true,
-            "windowSizeX": 220.0
-          },
           "className": "FolderNode",
-          "path": "layout/draw all",
+          "path": "effects/invert",
           "type": "FOLDER"
-        }
-      ],
-      "window": {
-        "posX": 484.0,
-        "posY": 726.0,
-        "closed": true,
-        "windowSizeX": 220.0
-      },
-      "className": "FolderNode",
-      "path": "layout",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
+        },
         {
           "children": [
             {
-              "children": [
-                {
-                  "hexString": "FF356AAD",
-                  "children": [
-                    {
-                      "className": "ColorPreviewNode",
-                      "path": "tools/graphpaper/style/stroke color/preview",
-                      "type": "TRANSIENT"
-                    },
-                    {
-                      "valueFloat": 0.5930555462837219,
-                      "valueFloatPrecision": 0.01,
-                      "className": "HueNode",
-                      "path": "tools/graphpaper/style/stroke color/hue",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 0.6936416029930115,
-                      "valueFloatPrecision": 0.01,
-                      "className": "SaturationNode",
-                      "path": "tools/graphpaper/style/stroke color/sat",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 0.6784313917160034,
-                      "valueFloatPrecision": 0.01,
-                      "className": "BrightnessNode",
-                      "path": "tools/graphpaper/style/stroke color/br",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "AlphaNode",
-                      "path": "tools/graphpaper/style/stroke color/alpha",
-                      "type": "VALUE"
-                    },
-                    {
-                      "className": "ColorPickerHexNode",
-                      "path": "tools/graphpaper/style/stroke color/hex",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "window": {
-                    "posX": 924.0,
-                    "posY": 220.0,
-                    "closed": true,
-                    "windowSizeX": 154.0
-                  },
-                  "className": "ColorPickerFolderNode",
-                  "path": "tools/graphpaper/style/stroke color",
-                  "type": "FOLDER"
-                },
-                {
-                  "valueFloat": 0.20000000298023224,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/alpha",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.009999999776482582,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/hueScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.20000000298023224,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/satScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.30000001192092896,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/brtScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.12999999523162842,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/weightScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 10.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/baseNoiseSigma",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.0,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/jitterSigma",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 4.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderIntNode",
-                  "path": "tools/graphpaper/style/repeats",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/style/stepMultiplier",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.0,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderIntNode",
-                  "path": "tools/graphpaper/style/stepsMax",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 682.0,
-                "posY": 220.0,
-                "closed": true,
-                "windowSizeX": 220.0
-              },
-              "className": "FolderNode",
-              "path": "tools/graphpaper/style",
-              "type": "FOLDER"
-            },
-            {
-              "children": [
-                {
-                  "className": "PlotDisplayNode",
-                  "path": "tools/graphpaper/position/_",
-                  "type": "TRANSIENT"
-                },
-                {
-                  "valueFloat": 21.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/position/x",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 824.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/graphpaper/position/y",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 682.0,
-                "posY": 220.0,
-                "closed": true,
-                "windowSizeX": 154.0
-              },
-              "className": "PlotFolderNode",
-              "path": "tools/graphpaper/position",
-              "type": "FOLDER"
-            },
-            {
-              "valueFloat": 310.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "tools/graphpaper/width",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 311.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "tools/graphpaper/height",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 20.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "tools/graphpaper/spacing",
-              "type": "VALUE"
-            },
-            {
-              "valueBoolean": true,
+              "valueBoolean": false,
               "className": "ToggleNode",
-              "path": "tools/graphpaper/preview outline",
+              "path": "effects/fbm/enabled",
               "type": "VALUE"
-            },
-            {
-              "hexString": "FF00A9FF",
-              "children": [
-                {
-                  "className": "ColorPreviewNode",
-                  "path": "tools/graphpaper/preview color/preview",
-                  "type": "TRANSIENT"
-                },
-                {
-                  "valueFloat": 0.556209146976471,
-                  "valueFloatPrecision": 0.01,
-                  "className": "HueNode",
-                  "path": "tools/graphpaper/preview color/hue",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SaturationNode",
-                  "path": "tools/graphpaper/preview color/sat",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 0.01,
-                  "className": "BrightnessNode",
-                  "path": "tools/graphpaper/preview color/br",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 0.01,
-                  "className": "AlphaNode",
-                  "path": "tools/graphpaper/preview color/alpha",
-                  "type": "VALUE"
-                },
-                {
-                  "className": "ColorPickerHexNode",
-                  "path": "tools/graphpaper/preview color/hex",
-                  "type": "VALUE"
-                }
-              ],
-              "className": "ColorPickerFolderNode",
-              "path": "tools/graphpaper/preview color",
-              "type": "FOLDER"
             },
             {
               "className": "ButtonNode",
-              "path": "tools/graphpaper/draw graph paper",
+              "path": "effects/fbm/resample now",
               "type": "TRANSIENT"
+            },
+            {
+              "valueFloat": 5.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderNode",
+              "path": "effects/fbm/scale",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.44999998807907104,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fbm/gain",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 1.7000000476837158,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/lacunarity",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 4.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderIntNode",
+              "path": "effects/fbm/octaves",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 100.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderNode",
+              "path": "effects/fbm/warp scale",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.009999999776482582,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq X",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.009999999776482582,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq Y",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0010000000474974513,
+              "valueFloatPrecision": 0.001,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq DX",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0010000000474974513,
+              "valueFloatPrecision": 0.001,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq DY",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 4.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderIntNode",
+              "path": "effects/fbm/warp iterations",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.20000000298023224,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/min R",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.20000000298023224,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/min G",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.20000000298023224,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/min B",
+              "type": "VALUE"
             }
           ],
           "window": {
-            "posX": 946.0,
-            "posY": 198.0,
+            "posX": 638.0,
+            "posY": 792.0,
             "closed": false,
             "windowSizeX": 154.0
           },
           "className": "FolderNode",
-          "path": "tools/graphpaper",
+          "path": "effects/fbm",
           "type": "FOLDER"
         },
         {
           "children": [
             {
-              "children": [
-                {
-                  "hexString": "FFC1113B",
-                  "children": [
-                    {
-                      "className": "ColorPreviewNode",
-                      "path": "tools/metatron/style/stroke color/preview",
-                      "type": "TRANSIENT"
-                    },
-                    {
-                      "valueFloat": 0.9602272510528564,
-                      "valueFloatPrecision": 0.01,
-                      "className": "HueNode",
-                      "path": "tools/metatron/style/stroke color/hue",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 0.9119170904159546,
-                      "valueFloatPrecision": 0.01,
-                      "className": "SaturationNode",
-                      "path": "tools/metatron/style/stroke color/sat",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 0.7568627595901489,
-                      "valueFloatPrecision": 0.01,
-                      "className": "BrightnessNode",
-                      "path": "tools/metatron/style/stroke color/br",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "AlphaNode",
-                      "path": "tools/metatron/style/stroke color/alpha",
-                      "type": "VALUE"
-                    },
-                    {
-                      "className": "ColorPickerHexNode",
-                      "path": "tools/metatron/style/stroke color/hex",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "window": {
-                    "posX": 1034.0,
-                    "posY": 990.0,
-                    "closed": true,
-                    "windowSizeX": 154.0
-                  },
-                  "className": "ColorPickerFolderNode",
-                  "path": "tools/metatron/style/stroke color",
-                  "type": "FOLDER"
-                },
-                {
-                  "valueFloat": 0.20000000298023224,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/alpha",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.009999999776482582,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/hueScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.20000000298023224,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/satScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.30000001192092896,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/brtScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.11999999731779099,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/weightScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 10.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/baseNoiseSigma",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.9999998211860657,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/jitterSigma",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 8.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderIntNode",
-                  "path": "tools/metatron/style/repeats",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/stepMultiplier",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.0,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderIntNode",
-                  "path": "tools/metatron/style/stepsMax (0\u003dnone)",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/style/fixedWeight (non-draftsman)",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 308.0,
-                "posY": 506.0,
-                "closed": true,
-                "windowSizeX": 220.0
-              },
-              "className": "FolderNode",
-              "path": "tools/metatron/style",
-              "type": "FOLDER"
-            },
-            {
-              "children": [
-                {
-                  "className": "PlotDisplayNode",
-                  "path": "tools/metatron/center/_",
-                  "type": "TRANSIENT"
-                },
-                {
-                  "valueFloat": 206.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/center/x",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1806.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/center/y",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 924.0,
-                "posY": 726.0,
-                "closed": true,
-                "windowSizeX": 154.0
-              },
-              "className": "PlotFolderNode",
-              "path": "tools/metatron/center",
-              "type": "FOLDER"
-            },
-            {
-              "valueFloat": 241.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "tools/metatron/height",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 6.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderIntNode",
-              "path": "tools/metatron/sides",
-              "type": "VALUE"
-            },
-            {
-              "hexString": "FF050A1C",
-              "children": [
-                {
-                  "className": "ColorPreviewNode",
-                  "path": "tools/metatron/ring color/preview",
-                  "type": "TRANSIENT"
-                },
-                {
-                  "valueFloat": 0.6304347515106201,
-                  "valueFloatPrecision": 0.01,
-                  "className": "HueNode",
-                  "path": "tools/metatron/ring color/hue",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.8214285969734192,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SaturationNode",
-                  "path": "tools/metatron/ring color/sat",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.10980392247438431,
-                  "valueFloatPrecision": 0.01,
-                  "className": "BrightnessNode",
-                  "path": "tools/metatron/ring color/br",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 0.01,
-                  "className": "AlphaNode",
-                  "path": "tools/metatron/ring color/alpha",
-                  "type": "VALUE"
-                },
-                {
-                  "className": "ColorPickerHexNode",
-                  "path": "tools/metatron/ring color/hex",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 748.0,
-                "posY": 1144.0,
-                "closed": true,
-                "windowSizeX": 154.0
-              },
-              "className": "ColorPickerFolderNode",
-              "path": "tools/metatron/ring color",
-              "type": "FOLDER"
-            },
-            {
               "valueBoolean": true,
               "className": "ToggleNode",
-              "path": "tools/metatron/use draftsman",
+              "path": "effects/complex/enabled",
               "type": "VALUE"
+            },
+            {
+              "className": "ButtonNode",
+              "path": "effects/complex/resample now",
+              "type": "TRANSIENT"
             },
             {
               "children": [
                 {
-                  "valueFloat": 0.0,
+                  "valueFloat": -1.0,
                   "valueFloatPrecision": 1.0,
                   "className": "SliderNode",
-                  "path": "tools/metatron/jitter/angle (deg)",
+                  "path": "effects/complex/complex/range",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": -6.0,
+                  "valueFloatPrecision": 1.0,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/aReal",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": -0.20000000298023224,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/aImag",
                   "type": "VALUE"
                 },
                 {
                   "valueFloat": 0.0,
                   "valueFloatPrecision": 0.1,
                   "className": "SliderNode",
-                  "path": "tools/metatron/jitter/offset x",
+                  "path": "effects/complex/complex/bReal",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 0.0,
+                  "valueFloat": -0.699999988079071,
                   "valueFloatPrecision": 0.1,
                   "className": "SliderNode",
-                  "path": "tools/metatron/jitter/offset y",
+                  "path": "effects/complex/complex/bImag",
                   "type": "VALUE"
                 },
                 {
                   "valueFloat": 2.0,
                   "valueFloatPrecision": 1.0,
                   "className": "SliderNode",
-                  "path": "tools/metatron/jitter/endpoint σ (px)",
+                  "path": "effects/complex/complex/cReal",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/metatron/jitter/radius σ (px)",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 110.0,
-                "posY": 748.0,
-                "closed": true,
-                "windowSizeX": 198.0
-              },
-              "className": "FolderNode",
-              "path": "tools/metatron/jitter",
-              "type": "FOLDER"
-            },
-            {
-              "valueBoolean": true,
-              "className": "ToggleNode",
-              "path": "tools/metatron/preview outline",
-              "type": "VALUE"
-            },
-            {
-              "hexString": "FFB70700",
-              "children": [
-                {
-                  "className": "ColorPreviewNode",
-                  "path": "tools/metatron/preview color/preview",
-                  "type": "TRANSIENT"
-                },
-                {
-                  "valueFloat": 0.006375223398208618,
-                  "valueFloatPrecision": 0.01,
-                  "className": "HueNode",
-                  "path": "tools/metatron/preview color/hue",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SaturationNode",
-                  "path": "tools/metatron/preview color/sat",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.7176470756530762,
-                  "valueFloatPrecision": 0.01,
-                  "className": "BrightnessNode",
-                  "path": "tools/metatron/preview color/br",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 0.01,
-                  "className": "AlphaNode",
-                  "path": "tools/metatron/preview color/alpha",
-                  "type": "VALUE"
-                },
-                {
-                  "className": "ColorPickerHexNode",
-                  "path": "tools/metatron/preview color/hex",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 792.0,
-                "posY": 990.0,
-                "closed": true,
-                "windowSizeX": 154.0
-              },
-              "className": "ColorPickerFolderNode",
-              "path": "tools/metatron/preview color",
-              "type": "FOLDER"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "tools/metatron/draw metatron (bake)",
-              "type": "TRANSIENT"
-            }
-          ],
-          "window": {
-            "posX": 726.0,
-            "posY": 220.0,
-            "closed": false,
-            "windowSizeX": 198.0
-          },
-          "className": "FolderNode",
-          "path": "tools/metatron",
-          "type": "FOLDER"
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "className": "PlotDisplayNode",
-                      "path": "tools/contours/region/top-left/_",
-                      "type": "TRANSIENT"
-                    },
-                    {
-                      "valueFloat": 1.3000000715255737,
-                      "valueFloatPrecision": 0.1,
-                      "className": "SliderNode",
-                      "path": "tools/contours/region/top-left/x",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.2000000476837158,
-                      "valueFloatPrecision": 0.1,
-                      "className": "SliderNode",
-                      "path": "tools/contours/region/top-left/y",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "window": {
-                    "posX": 1298.0,
-                    "posY": 1012.0,
-                    "closed": false,
-                    "windowSizeX": 154.0
-                  },
-                  "className": "PlotFolderNode",
-                  "path": "tools/contours/region/top-left",
-                  "type": "FOLDER"
-                },
-                {
-                  "valueFloat": 1527.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/contours/region/width",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1960.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/contours/region/height",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 1276.0,
-                "posY": 814.0,
-                "closed": false,
-                "windowSizeX": 176.0
-              },
-              "className": "FolderNode",
-              "path": "tools/contours/region",
-              "type": "FOLDER"
-            },
-            {
-              "valueBoolean": true,
-              "className": "ToggleNode",
-              "path": "tools/contours/fbm enabled",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 2.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderIntNode",
-              "path": "tools/contours/octaves",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 3.1999998092651367,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "tools/contours/lacunarity",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.17000016570091248,
-              "valueFloatPrecision": 0.01,
-              "className": "SliderNode",
-              "path": "tools/contours/gain",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.0010000000474974513,
-              "valueFloatPrecision": 0.01,
-              "className": "SliderNode",
-              "path": "tools/contours/field scale (off)",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 2.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "tools/contours/step length",
-              "type": "VALUE"
-            },
-            {
-              "children": [
-                {
-                  "valueBoolean": true,
-                  "className": "ToggleNode",
-                  "path": "tools/contours/preview/outline enabled",
-                  "type": "VALUE"
-                },
-                {
-                  "hexString": "FF00A9FF",
-                  "children": [
-                    {
-                      "className": "ColorPreviewNode",
-                      "path": "tools/contours/preview/color/preview",
-                      "type": "TRANSIENT"
-                    },
-                    {
-                      "valueFloat": 0.556209146976471,
-                      "valueFloatPrecision": 0.01,
-                      "className": "HueNode",
-                      "path": "tools/contours/preview/color/hue",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "SaturationNode",
-                      "path": "tools/contours/preview/color/sat",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "BrightnessNode",
-                      "path": "tools/contours/preview/color/br",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "AlphaNode",
-                      "path": "tools/contours/preview/color/alpha",
-                      "type": "VALUE"
-                    },
-                    {
-                      "className": "ColorPickerHexNode",
-                      "path": "tools/contours/preview/color/hex",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "className": "ColorPickerFolderNode",
-                  "path": "tools/contours/preview/color",
-                  "type": "FOLDER"
-                }
-              ],
-              "window": {
-                "posX": 1276.0,
-                "posY": 814.0,
-                "closed": false,
-                "windowSizeX": 198.0
-              },
-              "className": "FolderNode",
-              "path": "tools/contours/preview",
-              "type": "FOLDER"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "tools/contours/build contours (bake)",
-              "type": "TRANSIENT"
-            }
-          ],
-          "window": {
-            "posX": 1034.0,
-            "posY": 660.0,
-            "closed": false,
-            "windowSizeX": 220.0
-          },
-          "className": "FolderNode",
-          "path": "tools/contours",
-          "type": "FOLDER"
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "valueFloat": 9.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/params/char tile size",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/params/char gap (tiles)",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 1328.0001,
-                "posY": 484.0,
-                "closed": false,
-                "windowSizeX": 198.0
-              },
-              "className": "FolderNode",
-              "path": "tools/asemic/params",
-              "type": "FOLDER"
-            },
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "className": "PlotDisplayNode",
-                          "path": "tools/asemic/preview/text area/top-left/_",
-                          "type": "TRANSIENT"
-                        },
-                        {
-                          "valueFloat": 405.0,
-                          "valueFloatPrecision": 1.0,
-                          "className": "SliderNode",
-                          "path": "tools/asemic/preview/text area/top-left/x",
-                          "type": "VALUE"
-                        },
-                        {
-                          "valueFloat": 1614.0,
-                          "valueFloatPrecision": 1.0,
-                          "className": "SliderNode",
-                          "path": "tools/asemic/preview/text area/top-left/y",
-                          "type": "VALUE"
-                        }
-                      ],
-                      "window": {
-                        "posX": 660.0,
-                        "posY": 198.0,
-                        "closed": true,
-                        "windowSizeX": 154.0
-                      },
-                      "className": "PlotFolderNode",
-                      "path": "tools/asemic/preview/text area/top-left",
-                      "type": "FOLDER"
-                    },
-                    {
-                      "valueFloat": 762.0,
-                      "valueFloatPrecision": 1.0,
-                      "className": "SliderNode",
-                      "path": "tools/asemic/preview/text area/width",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 349.0,
-                      "valueFloatPrecision": 1.0,
-                      "className": "SliderNode",
-                      "path": "tools/asemic/preview/text area/height",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "window": {
-                    "posX": 1342.0,
-                    "posY": 242.0,
-                    "closed": true,
-                    "windowSizeX": 154.0
-                  },
-                  "className": "FolderNode",
-                  "path": "tools/asemic/preview/text area",
-                  "type": "FOLDER"
-                },
-                {
-                  "valueBoolean": true,
-                  "className": "ToggleNode",
-                  "path": "tools/asemic/preview/outline enabled",
-                  "type": "VALUE"
-                },
-                {
-                  "hexString": "FF00A9FF",
-                  "children": [
-                    {
-                      "className": "ColorPreviewNode",
-                      "path": "tools/asemic/preview/outline color/preview",
-                      "type": "TRANSIENT"
-                    },
-                    {
-                      "valueFloat": 0.556209146976471,
-                      "valueFloatPrecision": 0.01,
-                      "className": "HueNode",
-                      "path": "tools/asemic/preview/outline color/hue",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "SaturationNode",
-                      "path": "tools/asemic/preview/outline color/sat",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "BrightnessNode",
-                      "path": "tools/asemic/preview/outline color/br",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "AlphaNode",
-                      "path": "tools/asemic/preview/outline color/alpha",
-                      "type": "VALUE"
-                    },
-                    {
-                      "className": "ColorPickerHexNode",
-                      "path": "tools/asemic/preview/outline color/hex",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "className": "ColorPickerFolderNode",
-                  "path": "tools/asemic/preview/outline color",
-                  "type": "FOLDER"
-                }
-              ],
-              "window": {
-                "posX": 1122.0,
-                "posY": 242.0,
-                "closed": true,
-                "windowSizeX": 198.0
-              },
-              "className": "FolderNode",
-              "path": "tools/asemic/preview",
-              "type": "FOLDER"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "tools/asemic/build+render (one shot)",
-              "type": "TRANSIENT"
-            },
-            {
-              "children": [
-                {
-                  "hexString": "FF1638BF",
-                  "children": [
-                    {
-                      "className": "ColorPreviewNode",
-                      "path": "tools/asemic/style/stroke color/preview",
-                      "type": "TRANSIENT"
-                    },
-                    {
-                      "valueFloat": 0.6331360936164856,
-                      "valueFloatPrecision": 0.01,
-                      "className": "HueNode",
-                      "path": "tools/asemic/style/stroke color/hue",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 0.8848167657852173,
-                      "valueFloatPrecision": 0.01,
-                      "className": "SaturationNode",
-                      "path": "tools/asemic/style/stroke color/sat",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 0.7490196228027344,
-                      "valueFloatPrecision": 0.01,
-                      "className": "BrightnessNode",
-                      "path": "tools/asemic/style/stroke color/br",
-                      "type": "VALUE"
-                    },
-                    {
-                      "valueFloat": 1.0,
-                      "valueFloatPrecision": 0.01,
-                      "className": "AlphaNode",
-                      "path": "tools/asemic/style/stroke color/alpha",
-                      "type": "VALUE"
-                    },
-                    {
-                      "className": "ColorPickerHexNode",
-                      "path": "tools/asemic/style/stroke color/hex",
-                      "type": "VALUE"
-                    }
-                  ],
-                  "className": "ColorPickerFolderNode",
-                  "path": "tools/asemic/style/stroke color",
-                  "type": "FOLDER"
-                },
-                {
-                  "valueFloat": 0.20000000298023224,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/alpha",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.009999999776482582,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/hueScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.20000000298023224,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/satScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.30000001192092896,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/brtScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.05000000074505806,
-                  "valueFloatPrecision": 0.01,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/weightScale",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 10.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/baseNoiseSigma",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 0.10000000149011612,
+                  "valueFloat": -0.20000000298023224,
                   "valueFloatPrecision": 0.1,
                   "className": "SliderNode",
-                  "path": "tools/asemic/style/jitterSigma",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 4.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderIntNode",
-                  "path": "tools/asemic/style/repeats",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "tools/asemic/style/stepMultiplier",
+                  "path": "effects/complex/complex/cImag",
                   "type": "VALUE"
                 },
                 {
                   "valueFloat": 0.0,
                   "valueFloatPrecision": 0.1,
-                  "className": "SliderIntNode",
-                  "path": "tools/asemic/style/stepsMax (0\u003dnone)",
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/dReal",
                   "type": "VALUE"
                 },
                 {
-                  "valueFloat": 1.0,
-                  "valueFloatPrecision": 1.0,
+                  "valueFloat": -0.699999988079071,
+                  "valueFloatPrecision": 0.1,
                   "className": "SliderNode",
-                  "path": "tools/asemic/style/fixedWeight (non-draftsman)",
+                  "path": "effects/complex/complex/dImag",
                   "type": "VALUE"
                 }
               ],
+              "window": {
+                "posX": 1034.0,
+                "posY": 638.0,
+                "closed": false,
+                "windowSizeX": 132.0
+              },
               "className": "FolderNode",
-              "path": "tools/asemic/style",
+              "path": "effects/complex/complex",
               "type": "FOLDER"
-            },
-            {
-              "valueBoolean": true,
-              "className": "ToggleNode",
-              "path": "tools/asemic/use draftsman for words",
-              "type": "VALUE"
             }
           ],
           "window": {
-            "posX": 1034.0,
-            "posY": 440.0,
+            "posX": 858.0,
+            "posY": 638.0,
             "closed": false,
-            "windowSizeX": 220.0
+            "windowSizeX": 154.0
           },
           "className": "FolderNode",
-          "path": "tools/asemic",
+          "path": "effects/complex",
           "type": "FOLDER"
-        }
-      ],
-      "window": {
-        "posX": 506.0,
-        "posY": 220.0,
-        "closed": false,
-        "windowSizeX": 198.0
-      },
-      "className": "FolderNode",
-      "path": "tools",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
-        {
-          "valueBoolean": false,
-          "className": "ToggleNode",
-          "path": "invert/enabled",
-          "type": "VALUE"
-        }
-      ],
-      "window": {
-        "posX": 484.0,
-        "posY": 924.0,
-        "closed": false,
-        "windowSizeX": 154.0
-      },
-      "className": "FolderNode",
-      "path": "invert",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
-        {
-          "valueBoolean": true,
-          "className": "ToggleNode",
-          "path": "fbm/enabled",
-          "type": "VALUE"
-        },
-        {
-          "className": "ButtonNode",
-          "path": "fbm/resample now",
-          "type": "TRANSIENT"
-        },
-        {
-          "valueFloat": 505.0,
-          "valueFloatPrecision": 1.0,
-          "className": "SliderNode",
-          "path": "fbm/scale",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 1.0999999642372131,
-          "valueFloatPrecision": 0.1,
-          "className": "SliderNode",
-          "path": "fbm/gain",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.5,
-          "valueFloatPrecision": 0.1,
-          "className": "SliderNode",
-          "path": "fbm/lacunarity",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 12.0,
-          "valueFloatPrecision": 1.0,
-          "className": "SliderIntNode",
-          "path": "fbm/octaves",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 15.100000381469727,
-          "valueFloatPrecision": 1.0,
-          "className": "SliderNode",
-          "path": "fbm/warp scale",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.44999998807907104,
-          "valueFloatPrecision": 0.01,
-          "className": "SliderNode",
-          "path": "fbm/freq X",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.009999999776482582,
-          "valueFloatPrecision": 0.01,
-          "className": "SliderNode",
-          "path": "fbm/freq Y",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.05999999865889549,
-          "valueFloatPrecision": 0.01,
-          "className": "SliderNode",
-          "path": "fbm/freq DX",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.054999999701976776,
-          "valueFloatPrecision": 0.001,
-          "className": "SliderNode",
-          "path": "fbm/freq DY",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 2.0,
-          "valueFloatPrecision": 1.0,
-          "className": "SliderIntNode",
-          "path": "fbm/warp iterations",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.09999999403953552,
-          "valueFloatPrecision": 0.01,
-          "className": "SliderNode",
-          "path": "fbm/min R",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.0,
-          "valueFloatPrecision": 1.0,
-          "className": "SliderNode",
-          "path": "fbm/min G",
-          "type": "VALUE"
-        },
-        {
-          "valueFloat": 0.09999999403953552,
-          "valueFloatPrecision": 0.1,
-          "className": "SliderNode",
-          "path": "fbm/min B",
-          "type": "VALUE"
-        }
-      ],
-      "window": {
-        "posX": 484.0,
-        "posY": 726.0,
-        "closed": false,
-        "windowSizeX": 154.0
-      },
-      "className": "FolderNode",
-      "path": "fbm",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
-        {
-          "valueBoolean": false,
-          "className": "ToggleNode",
-          "path": "complex/enabled",
-          "type": "VALUE"
-        },
-        {
-          "className": "ButtonNode",
-          "path": "complex/resample now",
-          "type": "TRANSIENT"
         },
         {
           "children": [
             {
-              "valueFloat": 30.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "complex/complex/range",
+              "valueBoolean": false,
+              "className": "ToggleNode",
+              "path": "effects/static/enabled",
               "type": "VALUE"
             },
             {
-              "valueFloat": 2.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "complex/complex/aReal",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": -0.20000000298023224,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "complex/complex/aImag",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.0,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "complex/complex/bReal",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": -0.699999988079071,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "complex/complex/bImag",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 2.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "complex/complex/cReal",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": -0.20000000298023224,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "complex/complex/cImag",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.0,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "complex/complex/dReal",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": -0.699999988079071,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "complex/complex/dImag",
-              "type": "VALUE"
+              "className": "ButtonNode",
+              "path": "effects/static/resample now",
+              "type": "TRANSIENT"
             }
           ],
+          "window": {
+            "posX": 440.0,
+            "posY": 748.0,
+            "closed": false,
+            "windowSizeX": 154.0
+          },
           "className": "FolderNode",
-          "path": "complex/complex",
+          "path": "effects/static",
           "type": "FOLDER"
         }
       ],
       "window": {
-        "posX": 902.0,
-        "posY": 902.0,
+        "posX": 286.0,
+        "posY": 748.0,
         "closed": false,
-        "windowSizeX": 154.0
+        "windowSizeX": 132.0
       },
       "className": "FolderNode",
-      "path": "complex",
+      "path": "effects",
       "type": "FOLDER"
     }
   ],
   "window": {
-    "posX": 286.0,
-    "posY": 726.0,
+    "posX": 88.0,
+    "posY": 748.0,
     "closed": false,
     "windowSizeX": 176.0
   },

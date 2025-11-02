@@ -3,7 +3,7 @@ package effects;
 import com.krab.lazy.LazyGui;
 import processing.core.PGraphics;
 
-public class InvertEffect implements Effect {
+public class InvertEffect extends BaseEffect {
     @Override
     public void apply(PGraphics canvas, LazyGui gui) {
         gui.pushFolder(label());
@@ -30,6 +30,6 @@ public class InvertEffect implements Effect {
 
     @Override
     public String label() {
-        return "invert";
+        return "effects/invert";
     }
 }
