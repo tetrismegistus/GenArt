@@ -829,7 +829,7 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 1.0,
+      "valueFloat": 0.390000581741333,
       "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "NOISE_SCALE",
@@ -843,14 +843,14 @@
       "type": "VALUE"
     },
     {
-      "valueFloat": 8.0,
+      "valueFloat": 5.0,
       "valueFloatPrecision": 1.0,
       "className": "SliderIntNode",
       "path": "OCTAVES",
       "type": "VALUE"
     },
     {
-      "valueFloat": 0.5,
+      "valueFloat": 0.35000014305114746,
       "valueFloatPrecision": 0.01,
       "className": "SliderNode",
       "path": "PERSISTENCE",

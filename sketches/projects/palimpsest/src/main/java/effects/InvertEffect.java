@@ -1,35 +1,60 @@
 package effects;
 
 import com.krab.lazy.LazyGui;
+import com.krab.lazy.ShaderReloader;
 import processing.core.PGraphics;
+import processing.opengl.PShader;
 
 public class InvertEffect extends BaseEffect {
+    private static final String SHADER_PATH = "shaders/invert.glsl";
+
     @Override
     public void apply(PGraphics canvas, LazyGui gui) {
-        gui.pushFolder(label());
-
-        boolean enabled = gui.toggle("enabled", false);
-        if (!enabled) {
-            gui.popFolder();
-            return; // early exit
+        if (!beginGui(gui)) {
+            endGui(gui);
+            return;
         }
 
-        canvas.loadPixels();
-        for (int i = 0; i < canvas.pixels.length; i++) {
-            int c = canvas.pixels[i];
-            int r = 255 - (c >> 16 & 0xFF);
-            int g = 255 - (c >> 8 & 0xFF);
-            int b = 255 - (c & 0xFF);
-            int a = (c >> 24) & 0xFF;
-            canvas.pixels[i] = canvas.parent.color(r, g, b, a);
+        if (frozenInput == null && liveCanvas != null) {
+            captureSnapshotFromLiveCanvas();
         }
-        canvas.updatePixels();
 
-        gui.popFolder();
+        if (frozenInput == null) {
+            endGui(gui);
+            return;
+        }
+
+        PShader shader = ShaderReloader.getShader(shaderPath());
+        if (shader != null) {
+            shader.set("resolution", (float) canvas.width, (float) canvas.height);
+            shader.set("inputTexture", frozenInput);
+
+
+            canvas.beginDraw();
+            ShaderReloader.shader(shaderPath(), canvas);
+            canvas.endDraw();
+        }
+
+        endGui(gui);
+    }
+
+    @Override
+    public void onEnable() {
+        captureSnapshotFromLiveCanvas();
+    }
+
+    @Override
+    public void onResample() {
+        captureSnapshotFromLiveCanvas();
     }
 
     @Override
     public String label() {
         return "effects/invert";
+    }
+
+    @Override
+    public String shaderPath() {
+        return SHADER_PATH;
     }
 }

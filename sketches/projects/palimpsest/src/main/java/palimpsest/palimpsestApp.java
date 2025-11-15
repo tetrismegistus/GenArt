@@ -48,22 +48,27 @@ public class palimpsestApp extends PApplet {
         effects.add(new fbmEffect());
         effects.add(new ComplexEffect());
         effects.add(new staticEffect());
+        effects.add(new InvertEffect());
     }
 
     /* ============================== Draw ============================== */
 
     @Override
     public void draw() {
+
         bg = gui.colorPicker("canvas/background_color").hex;
 
-        background(color(0, 0, 100));
+        background(bg);
         if (img == null || edited == null) initCanvas();
 
         // --- One-shots ---
         if (gui.button("save image")) { exportImage(); return; }
         if (gui.button("canvas/regenerate canvas")) { initCanvas(); }
 
-        handleBaseImageBakeUI();
+
+        if (gui.button("load image")) {
+            selectImage();
+        }
         applyEffects();
         previewToScreen();
     }
@@ -76,7 +81,6 @@ public class palimpsestApp extends PApplet {
         Arrays.fill(img.pixels, bg);
         img.updatePixels();
         resetCanvas(img, true);
-        gui.sliderSet("image/scale", 1.0f);
     }
 
     private void resetCanvas(PImage baseImage, boolean clearToBg) {
@@ -106,37 +110,6 @@ public class palimpsestApp extends PApplet {
         println("Saved image to: " + filename);
     }
 
-    /* ---------- Base Image (bake-on-click) ---------- */
-
-    private void handleBaseImageBakeUI() {
-        gui.pushFolder("image");
-        float scale = gui.slider("scale", 1.0f, 0.1f, 5.0f);
-        float x     = gui.slider("x", 0, -width, width);
-        float y     = gui.slider("y", 0, -height, height);
-
-        if (gui.button("bake base image")) {
-            edited.beginDraw();
-            edited.imageMode(CENTER);
-            edited.pushMatrix();
-            edited.translate(edited.width / 2f + x, edited.height / 2f + y);
-            edited.scale(scale);
-            edited.image(img, 0, 0);
-            edited.popMatrix();
-            edited.endDraw();
-        }
-
-        if (gui.button("clear edited to bg")) {
-            edited.beginDraw();
-            edited.background(bg);
-            edited.endDraw();
-        }
-
-        if (gui.button("select/load image")) {
-            selectImage();
-        }
-
-        gui.popFolder();
-    }
 
     private void applyEffects() {
         for (Effect fx : effects) fx.apply(edited, gui);
