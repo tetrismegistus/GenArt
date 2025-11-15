@@ -259,12 +259,46 @@ vec3 diamond(vec3 v, float amount) {
 
 
 
+vec3 evolve_particle(vec3 p, float line_iters, bool variantA)
+{
+    for (float i = 0.0; i < line_iters; i++) {
+        float r = hash_f();
+        vec3 direction;
+
+        // --- Choose goal based on random ---
+        if (r < 0.25)
+            direction = vec3( 0.0,  0.5, 1.0) - p;
+        else if (r < 0.5)
+            direction = vec3(-0.5, -0.5, 1.0) - p;
+        else if (r < 0.75)
+            direction = vec3( 0.5, -0.5, 1.0) - p;
+        else
+            direction = vec3( 0.0,  0.0, 1.0) - p;
+
+        // --- Move toward goal ---
+        p += direction * 0.5;
+
+        // --- Rotation and transformations ---
+        float t = sin(fGlobalTime * 0.1);
+        p.xy *= rot(t);
+
+        if (variantA) {
+            p += disc(handkerchief(p, 1.0), 1.0);
+            p = sinusoidal(p, 0.45);
+        } else {
+            p += horseshoe(popcorn(p, 1.0), 1.2) - disc(p, 1.0);
+            p = sinusoidal(p, 0.45);
+        }
+    }
+    return p;
+}
+
 void main(void)
 {
     // --- Coordinate setup ---
-    vec2 uv = gl_FragCoord.xy / v2Resolution.xy;           // [0,1] space for gradients
-    vec2 aspect_uv = uv - 0.5;                             // center around (0,0)
-    aspect_uv.x *= v2Resolution.x / v2Resolution.y;         // maintain aspect ratio
+    vec2 uv = gl_FragCoord.xy / v2Resolution.xy;
+    vec2 aspect_uv = uv - 0.5;
+    aspect_uv.x *= v2Resolution.x / v2Resolution.y;
 
     // --- Palette ---
     vec3 col1 = vec3(0.455, 0.537, 0.753);
@@ -277,117 +311,59 @@ void main(void)
     // --- Random initialization per pixel ---
     ivec2 i_coords = ivec2(gl_FragCoord.xy);
     int id = i_coords.x + i_coords.y * int(v2Resolution.x);
-    seed = id + 1235125u; 
+    seed = id + 1235125u;
+
     vec3 p = vec3(hash_f(), hash_f(), hash_f());
     vec3 v = vec3(hash_f(), hash_f(), hash_f());
-  
-    // --- Target points (3D attractors) ---
-    vec3 goal1 = vec3( 0.0,  0.5, 1.0);
-    vec3 goal2 = vec3(-0.5, -0.5, 1.0);
-    vec3 goal3 = vec3( 0.5, -0.5, 1.0);
-    vec3 goal4 = vec3( 0.0,  0.0, 1.0); 
 
-    // --- Iterative particle movement ---
-    for (float i = 0.0; i < line_iters; i++) {
-        float r = hash_f();
-       
-        vec3 direction;
-        vec3 direction2;
-        if (r < 0.25) {
-            direction = goal1 - p;
-            direction2 = goal1 - v;
-        } else if (r < 0.5) { 
-            direction = goal2 - p;
-            direction2 = goal2 - v;
-        } else if (r < 0.75) {
-            direction = goal3 - p;
-            direction2 = goal3 - v;
-        } else {
-            direction = goal4 - p;
-            direction2 = goal4 - v;
-        }
-        p += direction * 0.5;
-        v += direction2 * 0.5;
-              
-        // Apply rotation & transformations
-        //------------------------------------------------------------------//
-        p.xy *= rot(sin(fGlobalTime * 0.1));                                //
-        v.xy *= rot(sin(fGlobalTime * 0.1));                                //
-        p += disc(handkerchief(p, 1.0), 1.0);
-        v += horseshoe(popcorn(v, 1.0), 1.2) - disc(p, 1.0);
-        
-        //p /= clifford(p, -1.4, 1.0, 1.6, sin(fGlobalTime * .1), 1.0, 1.0);
-        p = sinusoidal(p, .45);   
-        v = sinusoidal(v, .45);   
+    // --- Evolve both particles differently ---
+    p = evolve_particle(p, line_iters, true);
+    v = evolve_particle(v, line_iters, false);
 
-        // -----------------------------------------------------------------//
-        
-        // --- Project and draw particle ---
-        float particle_depth = p.z;
-        vec2 part_uv = project_particle(p);
-        float particle_depth2 = v.z;
-        vec2 part_uv2 = project_particle(v);
+    // --- Project and draw ---
+    vec2 part_uv = project_particle(p);
+    vec2 part_uv2 = project_particle(v);
+    part_uv.x *= v2Resolution.y / v2Resolution.x;
+    part_uv2.x *= v2Resolution.y / v2Resolution.x;
 
-        // Apply aspect correction to projected UVs
-        part_uv.x *= v2Resolution.y / v2Resolution.x;
-        part_uv2.x *= v2Resolution.y / v2Resolution.x;
+    if (p.z > 0.0) {
+        vec2 X = hash_v2() / min(v2Resolution.x, v2Resolution.y);
+        vec2 a = vec2(sin(X.x), cos(X.x)) * sqrt(X.y);
+        vec2 q = part_uv + a * 0.2;
+        vec2 q2 = part_uv2 + a * 0.2;
 
-        if (particle_depth > 0.0) {
-            vec2 X = hash_v2() / min(v2Resolution.x, v2Resolution.y);
-            vec2 a = vec2(sin(X.x), cos(X.x)) * sqrt(X.y);
-            vec2 q = part_uv + a * 0.2;       
-            vec2 q2 = part_uv2 + a * 0.2;                  
-            ivec2 p_screencoords = ivec2((q + 0.5) * v2Resolution);
-            ivec2 v_screencoords = ivec2((q2 + 0.5) * v2Resolution);
-            
-            // Safe write bounds=
-            if (p_screencoords.x >= 0 && p_screencoords.x < int(v2Resolution.x) &&
-                p_screencoords.y >= 0 && p_screencoords.y < int(v2Resolution.y) && 
-                v_screencoords.x >= 0 && v_screencoords.x < int(v2Resolution.x) &&
-                v_screencoords.y >= 0 && v_screencoords.y < int(v2Resolution.y)) {
-                imageAtomicAdd(computeTex[0], p_screencoords, 1);
-                imageAtomicAdd(computeTex[1], v_screencoords, 1);
-            }
+        ivec2 p_screen = ivec2((q + 0.5) * v2Resolution);
+        ivec2 v_screen = ivec2((q2 + 0.5) * v2Resolution);
+
+        if (all(greaterThanEqual(p_screen, ivec2(0))) &&
+            all(lessThan(p_screen, ivec2(v2Resolution))) &&
+            all(greaterThanEqual(v_screen, ivec2(0))) &&
+            all(lessThan(v_screen, ivec2(v2Resolution)))) {
+
+            imageAtomicAdd(computeTex[0], p_screen, 1);
+            imageAtomicAdd(computeTex[1], v_screen, 1);
         }
     }
 
     // --- Read accumulated brightness ---
-    vec4 color = imageLoad(computeTexBack[0], ivec2(gl_FragCoord)).xxxx;
-    color *= 0.05;
-    
-    vec4 color2 = imageLoad(computeTexBack[1], ivec2(gl_FragCoord)).xxxx;
-    
-    color2 *= .05;
-    float brightness = dot(color.rgb, vec3(0.2126, 0.7152, 0.0722));
+    vec4 color1 = imageLoad(computeTexBack[0], ivec2(gl_FragCoord)).xxxx * 0.75;
+    vec4 color2 = imageLoad(computeTexBack[1], ivec2(gl_FragCoord)).xxxx * 0.75;
+
+    float brightness1 = dot(color1.rgb, vec3(0.2126, 0.7152, 0.0722));
     float brightness2 = dot(color2.rgb, vec3(0.2126, 0.7152, 0.0722));
 
-    
     // --- Gradient mixing ---
-    // Use the *uncorrected* uv for smooth vertical blend, 
-    // so aspect ratio doesn't affect color bands.
     vec3 verGrad = mix(col1, col4, aspect_uv.x);
     vec3 horGrad = mix(col1, col3, -aspect_uv.x);
-    vec3 mixGrad = mix(verGrad, horGrad, brightness);
+    vec3 mixGrad = mix(verGrad, horGrad, brightness1);
     vec3 mixGrad2 = mix(verGrad, horGrad, brightness2);
 
-      
-    // --- Tone mapping and output ---
-    vec3 mappedColor = color.rgb;
-    vec3 mappedColor2 = color2.rgb;
-    
-    vec3 tonemappedColor = tonemap(mappedColor);
-    tonemappedColor = clamp(tonemappedColor, 0.0, 1.0);
-    tonemappedColor = pow(tonemappedColor, vec3(10.)); // gamma correction
+    // --- Tone mapping ---
+    vec3 tone1 = pow(clamp(tonemap(color1.rgb), 0.0, 1.0), vec3(1.5));
+    vec3 tone2 = pow(clamp(tonemap(color2.rgb), 0.0, 1.0), vec3(1.5));
 
-    vec3 tonemappedColor2 = tonemap(mappedColor2);
-    
-    tonemappedColor2 = clamp(tonemappedColor2, 0.0, 1.0);
-    tonemappedColor2 = pow(tonemappedColor2, vec3(10.5)); // gamma correction
-
-    vec3 finalColor = mix(tonemappedColor2, vec3(.5), .5);
-
-
-    out_color = vec4(.2 - (finalColor - mixGrad), 1.0);
+    vec3 finalColor = mix(tone2, vec3(0.5), 0.5);
+    out_color = vec4(0.2 - (finalColor - mixGrad), 1.0);
 }
 
 

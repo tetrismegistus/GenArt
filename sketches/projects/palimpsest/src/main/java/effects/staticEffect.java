@@ -26,8 +26,14 @@ public class staticEffect extends BaseEffect {
         // Load shader and skip if unavailable
         PShader shader = ShaderReloader.getShader(shaderPath);
         if (shader != null) {
+            float time = canvas.parent.millis() / 1000.0f;
             shader.set("u_baseColor", bg[0], bg[1], bg[2]);
             shader.set("u_resolution", (float) canvas.width, (float) canvas.height);
+            shader.set("u_time", time);
+            shader.set("inputTexture", frozenInput);
+            boolean invert = gui.toggle("invertMask", false);
+
+            shader.set("invertMask", invert);
 
             canvas.beginDraw();
             ShaderReloader.filter(shaderPath, canvas);
