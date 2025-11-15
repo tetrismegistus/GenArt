@@ -117,22 +117,22 @@
 <td align="center" valign="top" style="padding:6px;">  <a id="sinplot"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/sinplot">    <img src="explorations/sinplot/mySketch1751756209065.webp" alt="Sinplot" width="500">  </a><br>  <sub>Sinplot</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="sketch-3dca"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/sketch_3dCA">    <img src="explorations/sketch_3dCA/test.webp" alt="Sketch 3dca" width="500">  </a><br>  <sub>Sketch 3dca</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="spinningcubes"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/spinningCubes">    <img src="explorations/spinningCubes/gif-000.webp" alt="Spinningcubes" width="500">  </a><br>  <sub>Spinningcubes</sub></td>
+<td align="center" valign="top" style="padding:6px;">  <a id="splitprison"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/splitPrison">    <img src="explorations/splitPrison/output.webp" alt="Splitprison" width="500">  </a><br>  <sub>Splitprison</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="squarepacking"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/squarepacking">    <img src="explorations/squarepacking/test.webp" alt="Squarepacking" width="500">  </a><br>  <sub>Squarepacking</sub></td>
-<td align="center" valign="top" style="padding:6px;">  <a id="sunset"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/sunset">    <img src="explorations/sunset/sunset1655252818175.webp" alt="Sunset" width="500">  </a><br>  <sub>Sunset</sub></td>
 </tr>
 <tr>
+<td align="center" valign="top" style="padding:6px;">  <a id="sunset"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/sunset">    <img src="explorations/sunset/sunset1655252818175.webp" alt="Sunset" width="500">  </a><br>  <sub>Sunset</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="symmetrymath"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/symmetryMath">    <img src="explorations/symmetryMath/2.webp" alt="Symmetrymath" width="500">  </a><br>  <sub>Symmetrymath</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="territory"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/territory">    <img src="explorations/territory/mySketch1657489070391.webp" alt="Territory" width="500">  </a><br>  <sub>Territory</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="textthetas"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/textThetas">    <img src="explorations/textThetas/8.webp" alt="Textthetas" width="500">  </a><br>  <sub>Textthetas</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="texturepack"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/texturePack">    <img src="explorations/texturePack/test.webp" alt="Texturepack" width="500">  </a><br>  <sub>Texturepack</sub></td>
-<td align="center" valign="top" style="padding:6px;">  <a id="texturedlsystem"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/texturedLSystem">    <img src="explorations/texturedLSystem/mySketch1655844253079.webp" alt="Texturedlsystem" width="500">  </a><br>  <sub>Texturedlsystem</sub></td>
 </tr>
 <tr>
+<td align="center" valign="top" style="padding:6px;">  <a id="texturedlsystem"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/texturedLSystem">    <img src="explorations/texturedLSystem/mySketch1655844253079.webp" alt="Texturedlsystem" width="500">  </a><br>  <sub>Texturedlsystem</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="uniformtriangle"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/uniformTriangle">    <img src="explorations/uniformTriangle/test.webp" alt="Uniformtriangle" width="500">  </a><br>  <sub>Uniformtriangle</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="voronoi-lorenz"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/voronoi_lorenz">    <img src="explorations/voronoi_lorenz/test.webp" alt="Voronoi Lorenz" width="500">  </a><br>  <sub>Voronoi Lorenz</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="walkerheart"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/walkerHeart">    <img src="explorations/walkerHeart/test.webp" alt="Walkerheart" width="500">  </a><br>  <sub>Walkerheart</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="warpspeedsvg"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/explorations/warpSpeedSvg">    <img src="explorations/warpSpeedSvg/test.webp" alt="Warpspeedsvg" width="500">  </a><br>  <sub>Warpspeedsvg</sub></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -167,6 +167,7 @@
 
 
 <!-- GALLERY:END -->
+
 
 
 
