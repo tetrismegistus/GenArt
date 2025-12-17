@@ -848,9 +848,9 @@
         }
       ],
       "window": {
-        "posX": 286.0,
-        "posY": 748.0,
-        "closed": true,
+        "posX": 330.0,
+        "posY": 1210.0,
+        "closed": false,
         "windowSizeX": 220.0
       },
       "className": "FolderNode",
@@ -872,21 +872,16 @@
         {
           "children": [
             {
-              "valueBoolean": true,
+              "valueBoolean": false,
               "className": "ToggleNode",
               "path": "effects/invert/enabled",
               "type": "VALUE"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "effects/invert/resample now",
-              "type": "TRANSIENT"
             }
           ],
           "window": {
             "posX": 440.0,
             "posY": 638.0,
-            "closed": false,
+            "closed": true,
             "windowSizeX": 154.0
           },
           "className": "FolderNode",
@@ -900,11 +895,107 @@
               "className": "ToggleNode",
               "path": "effects/fbm/enabled",
               "type": "VALUE"
+            },
+            {
+              "className": "ButtonNode",
+              "path": "effects/fbm/resample now",
+              "type": "TRANSIENT"
+            },
+            {
+              "valueFloat": 666.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderNode",
+              "path": "effects/fbm/scale",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 2.1699999812990427,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fbm/gain",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.7000000476837158,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/lacunarity",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 14.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderIntNode",
+              "path": "effects/fbm/octaves",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 280.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderNode",
+              "path": "effects/fbm/warp scale",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.029999999329447746,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq X",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq Y",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.00800000037997961,
+              "valueFloatPrecision": 0.001,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq DX",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.015000000596046448,
+              "valueFloatPrecision": 0.001,
+              "className": "SliderNode",
+              "path": "effects/fbm/freq DY",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 1.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderIntNode",
+              "path": "effects/fbm/warp iterations",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": -0.4000000059604645,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/min R",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/min G",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.0,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fbm/min B",
+              "type": "VALUE"
             }
           ],
           "window": {
-            "posX": 418.0,
-            "posY": 1012.0,
+            "posX": 1100.0,
+            "posY": 594.0,
             "closed": false,
             "windowSizeX": 154.0
           },
@@ -919,13 +1010,94 @@
               "className": "ToggleNode",
               "path": "effects/complex/enabled",
               "type": "VALUE"
+            },
+            {
+              "className": "ButtonNode",
+              "path": "effects/complex/resample now",
+              "type": "TRANSIENT"
+            },
+            {
+              "children": [
+                {
+                  "valueFloat": 9.0,
+                  "valueFloatPrecision": 1.0,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/range",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 3.0,
+                  "valueFloatPrecision": 1.0,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/aReal",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/aImag",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/bReal",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/bImag",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/cReal",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/cImag",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/dReal",
+                  "type": "VALUE"
+                },
+                {
+                  "valueFloat": 1.5,
+                  "valueFloatPrecision": 0.1,
+                  "className": "SliderNode",
+                  "path": "effects/complex/complex/dImag",
+                  "type": "VALUE"
+                }
+              ],
+              "window": {
+                "posX": 528.0,
+                "posY": 484.0,
+                "closed": false,
+                "windowSizeX": 154.0
+              },
+              "className": "FolderNode",
+              "path": "effects/complex/complex",
+              "type": "FOLDER"
             }
           ],
           "window": {
-            "posX": 638.0,
-            "posY": 704.0,
+            "posX": 374.0,
+            "posY": 506.0,
             "closed": false,
-            "windowSizeX": 154.0
+            "windowSizeX": 132.0
           },
           "className": "FolderNode",
           "path": "effects/complex",
@@ -941,44 +1113,118 @@
             }
           ],
           "window": {
-            "posX": 462.0,
-            "posY": 814.0,
+            "posX": 418.0,
+            "posY": 968.0,
             "closed": false,
             "windowSizeX": 154.0
           },
           "className": "FolderNode",
           "path": "effects/static",
           "type": "FOLDER"
-        }
-      ],
-      "window": {
-        "posX": 264.0,
-        "posY": 1012.0,
-        "closed": false,
-        "windowSizeX": 132.0
-      },
-      "className": "FolderNode",
-      "path": "effects",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
+        },
         {
-          "valueFloat": 1.25,
-          "valueFloatPrecision": 0.1,
-          "className": "SliderNode",
-          "path": "image/scale",
-          "type": "VALUE"
+          "children": [
+            {
+              "valueBoolean": false,
+              "className": "ToggleNode",
+              "path": "effects/fourier/enabled",
+              "type": "VALUE"
+            },
+            {
+              "className": "ButtonNode",
+              "path": "effects/fourier/resample now",
+              "type": "TRANSIENT"
+            },
+            {
+              "valueFloat": 5.0,
+              "valueFloatPrecision": 1.0,
+              "className": "SliderNode",
+              "path": "effects/fourier/scale",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.5,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fourier/time speed",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.800000011920929,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fourier/phase warp",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.44999998807907104,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fourier/band1 amp",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.30000001192092896,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fourier/band2 amp",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.18000000715255737,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fourier/band3 amp",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.07000000029802322,
+              "valueFloatPrecision": 0.01,
+              "className": "SliderNode",
+              "path": "effects/fourier/band4 amp",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.20000000298023224,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fourier/min R",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.20000000298023224,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fourier/min G",
+              "type": "VALUE"
+            },
+            {
+              "valueFloat": 0.20000000298023224,
+              "valueFloatPrecision": 0.1,
+              "className": "SliderNode",
+              "path": "effects/fourier/min B",
+              "type": "VALUE"
+            }
+          ],
+          "window": {
+            "posX": 792.0,
+            "posY": 968.0,
+            "closed": false,
+            "windowSizeX": 154.0
+          },
+          "className": "FolderNode",
+          "path": "effects/fourier",
+          "type": "FOLDER"
         }
       ],
       "window": {
         "posX": 286.0,
         "posY": 748.0,
         "closed": false,
-        "windowSizeX": 110.0
+        "windowSizeX": 132.0
       },
       "className": "FolderNode",
-      "path": "image",
+      "path": "effects",
       "type": "FOLDER"
     }
   ],

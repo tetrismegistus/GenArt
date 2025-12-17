@@ -21,6 +21,9 @@ vec2 complexPow(vec2 a, float n) {
 
 void main() {
   vec2 uv = gl_FragCoord.xy / resolution;
+  uv *= 2.0;
+  uv = fract(uv);
+
   vec2 z = vec2(2.0 * (uv.x - 0.5), 2.0 * (uv.y - 0.5));
 
   vec2 zbar = vec2(z.x, -z.y);

@@ -49,6 +49,7 @@ public class palimpsestApp extends PApplet {
         effects.add(new ComplexEffect());
         effects.add(new staticEffect());
         effects.add(new InvertEffect());
+        effects.add(new fourierEffect());
     }
 
     /* ============================== Draw ============================== */
