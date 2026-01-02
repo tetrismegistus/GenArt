@@ -909,7 +909,7 @@
               "type": "VALUE"
             },
             {
-              "valueFloat": 2.1699999812990427,
+              "valueFloat": 2.1700000762939453,
               "valueFloatPrecision": 0.01,
               "className": "SliderNode",
               "path": "effects/fbm/gain",
@@ -1010,87 +1010,6 @@
               "className": "ToggleNode",
               "path": "effects/complex/enabled",
               "type": "VALUE"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "effects/complex/resample now",
-              "type": "TRANSIENT"
-            },
-            {
-              "children": [
-                {
-                  "valueFloat": 9.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/range",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 3.0,
-                  "valueFloatPrecision": 1.0,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/aReal",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/aImag",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/bReal",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/bImag",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/cReal",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/cImag",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/dReal",
-                  "type": "VALUE"
-                },
-                {
-                  "valueFloat": 1.5,
-                  "valueFloatPrecision": 0.1,
-                  "className": "SliderNode",
-                  "path": "effects/complex/complex/dImag",
-                  "type": "VALUE"
-                }
-              ],
-              "window": {
-                "posX": 528.0,
-                "posY": 484.0,
-                "closed": false,
-                "windowSizeX": 154.0
-              },
-              "className": "FolderNode",
-              "path": "effects/complex/complex",
-              "type": "FOLDER"
             }
           ],
           "window": {
@@ -1128,81 +1047,6 @@
               "valueBoolean": false,
               "className": "ToggleNode",
               "path": "effects/fourier/enabled",
-              "type": "VALUE"
-            },
-            {
-              "className": "ButtonNode",
-              "path": "effects/fourier/resample now",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueFloat": 5.0,
-              "valueFloatPrecision": 1.0,
-              "className": "SliderNode",
-              "path": "effects/fourier/scale",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.5,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "effects/fourier/time speed",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.800000011920929,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "effects/fourier/phase warp",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.44999998807907104,
-              "valueFloatPrecision": 0.01,
-              "className": "SliderNode",
-              "path": "effects/fourier/band1 amp",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.30000001192092896,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "effects/fourier/band2 amp",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.18000000715255737,
-              "valueFloatPrecision": 0.01,
-              "className": "SliderNode",
-              "path": "effects/fourier/band3 amp",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.07000000029802322,
-              "valueFloatPrecision": 0.01,
-              "className": "SliderNode",
-              "path": "effects/fourier/band4 amp",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.20000000298023224,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "effects/fourier/min R",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.20000000298023224,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "effects/fourier/min G",
-              "type": "VALUE"
-            },
-            {
-              "valueFloat": 0.20000000298023224,
-              "valueFloatPrecision": 0.1,
-              "className": "SliderNode",
-              "path": "effects/fourier/min B",
               "type": "VALUE"
             }
           ],
