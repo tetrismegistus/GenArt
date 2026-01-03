@@ -14,10 +14,12 @@ void draw() {
 void parchmentTexture(int numCircles) {
   noFill();
   stroke(23, 17, 3, 5);
+  float radBase = 200;
+  float curveSpread = 100;
   for (int i = 0; i < numCircles; i++) {
-    float x = random(width);
-    float y = random(height);
-    float rad = randomGaussian() * 100 + 200;
+    float x = random(width + radBase);
+    float y = random(height + radBase);
+    float rad = randomGaussian() * curveSpread + radBase;
     circle(x, y, rad);
   }
 }
