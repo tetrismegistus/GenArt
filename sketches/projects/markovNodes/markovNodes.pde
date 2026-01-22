@@ -16,14 +16,14 @@ String fontName = "Orbitron-Regular.ttf";
 PFont font; 
 
 void setup() {
-  size(3500, 3500);
+  size(3000, 3000);
   font = createFont(fontName, 15);
   textFont(font);
   
-  String xmlFilename = "markov_chain.xml"; // Replace with the path to your XML file
+  String xmlFilename = "filtered.xml"; // Replace with the path to your XML file
   XML graphXML = loadXML(xmlFilename);
 
-  XML[] nodeElements = graphXML.getChildren("graph/node");
+  XML[] nodeElements = graphXML.getChildren("node");
   for (XML nodeElement : nodeElements) {
     String id = nodeElement.getString("id");
     
@@ -35,7 +35,7 @@ void setup() {
   }
   
   springs = new ArrayList<>();
-  XML[] springElements = graphXML.getChildren("graph/edge");
+  XML[] springElements = graphXML.getChildren("edge");
   for (XML springElement : springElements) {
     String nodeAId = springElement.getString("source");
     String nodeBId = springElement.getString("target");
@@ -45,8 +45,8 @@ void setup() {
 
     if (nodeA != null && nodeB != null) {
       Spring spring = new Spring(nodeA, nodeB);
-      spring.setLength(100);
-      spring.setStiffness(0.6);
+      spring.setLength(1000);
+      spring.setStiffness(0.5);
       spring.setDamping(0.3);
       springs.add(spring);
     }
@@ -90,7 +90,7 @@ void draw() {
   }
   
   noFill();
-  float padding = 10;  // Adjust this value based on your preferences
+  float padding = 3;  // Adjust this value based on your preferences
   float circleRadius = maxDistance + padding;
   ellipse(width / 2, height / 2, circleRadius * 2, circleRadius * 2);
 }

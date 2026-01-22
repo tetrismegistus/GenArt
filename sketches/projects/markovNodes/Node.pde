@@ -39,7 +39,7 @@ class Node extends PVector {
   // radius of impact
   float radius = 200;
   // strength: positive for attraction, negative for repulsion (default for Nodes)
-  float strength = -1;
+  float strength = -10;
   // parameter that influences the form of the function
   float ramp = 1.0f;
 
