@@ -10,4 +10,4 @@
 - Spirals
 
 🖼️ Sample Output:  
-<img src="mySketch1747195960738.webp" alt="spiralAgent sample output" width="800" />
+<img src=".webp" alt="spiralAgent sample output" width="800" />
