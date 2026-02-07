@@ -159,14 +159,15 @@
 <td align="center" valign="top" style="padding:6px;">  <a id="rastertopolyvectors"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/rasterToPolyVectors">    <img src="projects/rasterToPolyVectors/mySketch1719697687225.webp" alt="Rastertopolyvectors" width="500">  </a><br>  <sub>Rastertopolyvectors</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="ribbons"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/ribbons">    <img src="projects/ribbons/mySketch1717691553940.webp" alt="Ribbons" width="500">  </a><br>  <sub>Ribbons</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="spiralagent"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/spiralAgent">    <img src="projects/spiralAgent/output.webp" alt="Spiralagent" width="500">  </a><br>  <sub>Spiralagent</sub></td>
-<td align="center" valign="top" style="padding:6px;">  <a id="thoughtavoidingwalk"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/thoughtAvoidingWalk">    <img src="projects/thoughtAvoidingWalk/mySketch1680912620472.webp" alt="Thoughtavoidingwalk" width="500">  </a><br>  <sub>Thoughtavoidingwalk</sub></td>
 <td align="center" valign="top" style="padding:6px;">  <a id="wordcloud"></a>  <a href="https://github.com/tetrismegistus/GenArt/tree/main/sketches/projects/wordcloud">    <img src="projects/wordcloud/mySketch1681586831487.webp" alt="Wordcloud" width="500">  </a><br>  <sub>Wordcloud</sub></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 
 
 <!-- GALLERY:END -->
+
 
 
 
