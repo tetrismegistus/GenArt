@@ -1,18 +1,3 @@
-# Ignore image files
-*.jpg
-*.jpeg
-*.png
-*.bmp
-*.tiff
-*.tif
-*.svg
-*.ico
-*.heic
-*.avif
-*.raw
-*.psd
-*.xcf
-
 # Ignore video files
 *.mp4
 *.m4v
