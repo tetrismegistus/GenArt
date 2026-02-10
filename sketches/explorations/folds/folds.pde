@@ -10,10 +10,13 @@ String sketchName = "mySketch";
 String saveFormat = ".png";
 int calls = 0;
 long lastTime;
+Texture sampler = Texture.HALTON;
+public static final int WIDTH = 2000;
+public static final int HEIGHT = 2000;
 
 PGraphics pg;
-int outputWidth = 1000; // Higher resolution for saving
-int outputHeight = 1000; // Higher resolution for saving
+int outputWidth = 2000; // Higher resolution for saving
+int outputHeight = 2000; // Higher resolution for saving
 
 float x1, y1, x2, y2; // Function domain
 float step; // Step within domain
@@ -22,8 +25,13 @@ float y;
 color c1 = #A7C0DB;
 color c2 = #63E06E;
 
+void settings() {
+  size(WIDTH, HEIGHT, P2D);
+  smooth(8);
+}
+
+
 void setup() {
-  size(1000, 1000); // Display resolution
   background(#EFEDE8);
 
   pg = createGraphics(outputWidth, outputHeight);
@@ -46,7 +54,7 @@ void setup() {
   step = sqrt(n) * (x2 - x1) / (2.321 * outputWidth);
 
   // Draw stipple pattern
-  stipple(pg, 300, 1.5, #ACABA9);
+  stipple();
 
   pg.beginDraw();
 
@@ -98,10 +106,10 @@ void drawVariationFP(PGraphics pg, float x, float y) {
   float margin = outputWidth * .95;
   for (int i = 0; i < n; i++) {
 
-    v = dejongsCurtains(blob(v, 1.0), 1.0);
+    v = subF(rings(leviathan(v, .5), 1.0), disc(julia(v, .5), 1.0));
 
-    PVector newV = sinusoidal(v, (x2 - x1) / 2);
-    v.set(newV);
+    //v.set(sinusoidal(v, (x2 - x1) / 2));
+    wrap(v);
     float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
     float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);
     pg.point(xx, yy);

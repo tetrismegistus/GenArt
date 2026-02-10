@@ -1,13 +1,24 @@
-int l = 80;
-int[] colors = {#FAF0CA, #F4D35E, #EE964B, #F95738};
+import ch.bildspur.postfx.builder.*;
+import ch.bildspur.postfx.pass.*;
+import ch.bildspur.postfx.*;
+
+PostFX fx;
+PGraphics pg;
+
+int l = 40;
+int[] colors = {#C9184A,
+#FF4D6D,
+#FFB3C6,
+#FFF4EE};
 
 void setup() {
-  size(1080, 2160);
-}
-
-void draw() {
-  
-  background(#0D3B66);
+  size(2000, 2000, P2D);
+  fx = new PostFX(this);
+ 
+  pg = createGraphics(2000, 2000);
+  pg.beginDraw();
+  pg.background(#000000);
+  //pg.blendMode(SCREEN);
   for (int y = 0; y < height; y += l) {
     for (int x = 0; x < width; x += l) {
     
@@ -20,11 +31,24 @@ void draw() {
     }
     
   }
-  filter(BLUR, 2);
-  save("test.png");
-  noLoop();
-  
+  pg.endDraw();
+}
 
+void draw() {
+  
+  image(pg, 0, 0);
+  filter(BLUR, 2);
+
+  
+    fx.render()
+    .rgbSplit(100)
+    //.bloom(10, 10, 10)
+    .sobel()
+    .compose();
+
+  filter(DILATE);
+  //filter(GRAY);
+  save("out.png");
 }
 
 void variSegLine(float x1, float y1, float x2, float y2) {
@@ -34,9 +58,9 @@ void variSegLine(float x1, float y1, float x2, float y2) {
       float adj = constrain(i + randomGaussian() / 5, i, 1);
       PVector lp1 = PVector.lerp(v1, v2, i);
       PVector lp2 = PVector.lerp(v1, v2, adj);
-      strokeWeight(random(.5, 10)); 
-      stroke(pickColor(), random(100, 255));
-      line(lp1.x, lp1.y, lp2.x, lp2.y);
+      pg.strokeWeight(random(3, 10)); 
+      pg.stroke(pickColor(), random(100, 255));
+      pg.line(lp1.x, lp1.y, lp2.x, lp2.y);
       i = adj;
       
 

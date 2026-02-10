@@ -20,11 +20,11 @@ PImage inImage;
 
 
 void setup() {
-  size(3000, 3000, P3D);
+  size(1640, 1640, P3D);
   //blendMode(SCREEN);
   fx = new PostFX(this);
   //colorMode(HSB, 360, 100, 100, 1);
-  inImage = loadImage("mySketch1770426855759.png");
+  inImage = loadImage("mySketch1770487097820.png");
   
 
 }
@@ -32,7 +32,15 @@ void setup() {
 
 void draw() {
   
-      background(8);
+  background(8);
+
+  postProcess();
+
+  save("out.png");
+}
+
+
+void cpuScanlines(){
 
   inImage.loadPixels();
   float pixelSize = 20;
@@ -48,8 +56,10 @@ void draw() {
       drawPixel((random(1, 3) + x * pixelSize) - 100 * pixelSize, (random(1, 3) + y * pixelSize) - 100 * pixelSize, (int) pixelSize + (int) random(1, 10), r, g, b);
     }
   }
-  
+}
 
+void postProcess() {
+  image(inImage, 0, 0);
   fx.render()
     .bloom(.1, 10, 20)
     .sobel()
@@ -57,8 +67,8 @@ void draw() {
 
   filter(GRAY);
 
+  save("out.png");
 }
-
 
 
 
