@@ -24,6 +24,8 @@ PImage img;
 PGraphics edited;
 String imgPath = null;
 
+final String SAVE_DIR = "saves/";
+
 final String[] BLEND_MODE_NAMES = {
   "BLEND",
   "ADD",
@@ -68,9 +70,14 @@ void setup() {
 void draw() {
   background(0);
 
-  if (gui.button("image/load")) {
+  if (gui.button("load image")) {
     selectInput("Select an image", "fileSelected");
   }
+  
+  if (gui.button("save image")) {
+    saveFrame(SAVE_DIR + getTemporalName(sketchName, saveFormat));
+  }
+
 
   if (img == null) return;
 
