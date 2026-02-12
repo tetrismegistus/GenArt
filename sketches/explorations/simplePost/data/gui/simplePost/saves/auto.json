@@ -784,127 +784,15 @@
     {
       "children": [
         {
-          "className": "ButtonNode",
-          "path": "image/load",
-          "type": "TRANSIENT"
-        },
-        {
-          "valueFloat": 1.0,
-          "valueFloatPrecision": 1.0,
-          "className": "SliderNode",
-          "path": "image/scale",
-          "type": "VALUE"
-        }
-      ],
-      "window": {
-        "posX": 352.0,
-        "posY": 22.0,
-        "closed": false,
-        "windowSizeX": 110.0
-      },
-      "className": "FolderNode",
-      "path": "image",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
-        {
-          "valueString": "SCREEN",
           "children": [
             {
               "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/BLEND",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/ADD",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/SUBTRACT",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/DARKEST",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/LIGHTEST",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/DIFFERENCE",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/EXCLUSION",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/MULTIPLY",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": true,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/SCREEN",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "blendMode/mode/REPLACE",
-              "type": "TRANSIENT"
-            }
-          ],
-          "window": {
-            "posX": 528.0,
-            "posY": 572.0,
-            "closed": false,
-            "windowSizeX": 176.0
-          },
-          "className": "RadioFolderNode",
-          "path": "blendMode/mode",
-          "type": "FOLDER"
-        }
-      ],
-      "window": {
-        "posX": 352.0,
-        "posY": 572.0,
-        "closed": false,
-        "windowSizeX": 154.0
-      },
-      "className": "FolderNode",
-      "path": "blendMode",
-      "type": "FOLDER"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "valueBoolean": true,
               "className": "ToggleNode",
               "path": "postfx/rgbSplit/enabled",
               "type": "VALUE"
             },
             {
-              "valueFloat": 304.0,
+              "valueFloat": 100.0,
               "valueFloatPrecision": 1.0,
               "className": "SliderNode",
               "path": "postfx/rgbSplit/delta",
@@ -912,8 +800,8 @@
             }
           ],
           "window": {
-            "posX": 242.0,
-            "posY": 792.0,
+            "posX": 352.0,
+            "posY": 22.0,
             "closed": false,
             "windowSizeX": 154.0
           },
@@ -931,7 +819,7 @@
             },
             {
               "valueFloat": 0.8999999761581421,
-              "valueFloatPrecision": 0.01,
+              "valueFloatPrecision": 0.001,
               "className": "SliderNode",
               "path": "postfx/bloom/threshold",
               "type": "VALUE"
@@ -951,6 +839,12 @@
               "type": "VALUE"
             }
           ],
+          "window": {
+            "posX": 638.0,
+            "posY": 66.0,
+            "closed": false,
+            "windowSizeX": 154.0
+          },
           "className": "FolderNode",
           "path": "postfx/bloom",
           "type": "FOLDER"
@@ -965,8 +859,8 @@
             }
           ],
           "window": {
-            "posX": 242.0,
-            "posY": 792.0,
+            "posX": 352.0,
+            "posY": 176.0,
             "closed": false,
             "windowSizeX": 154.0
           },
@@ -976,8 +870,8 @@
         }
       ],
       "window": {
-        "posX": 88.0,
-        "posY": 792.0,
+        "posX": 198.0,
+        "posY": 22.0,
         "closed": false,
         "windowSizeX": 132.0
       },
@@ -987,74 +881,6 @@
     },
     {
       "children": [
-        {
-          "valueString": "DILATE",
-          "children": [
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/NONE",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/THRESHOLD",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/GRAY",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/OPAQUE",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/INVERT",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/POSTERIZE",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/BLUR",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": false,
-              "className": "RadioItemNode",
-              "path": "filter/mode/ERODE",
-              "type": "TRANSIENT"
-            },
-            {
-              "valueBoolean": true,
-              "className": "RadioItemNode",
-              "path": "filter/mode/DILATE",
-              "type": "TRANSIENT"
-            }
-          ],
-          "window": {
-            "posX": 154.0,
-            "posY": 286.0,
-            "closed": false,
-            "windowSizeX": 154.0
-          },
-          "className": "RadioFolderNode",
-          "path": "filter/mode",
-          "type": "FOLDER"
-        },
         {
           "valueFloat": 0.5,
           "valueFloatPrecision": 0.01,
@@ -1078,13 +904,31 @@
         }
       ],
       "window": {
-        "posX": 198.0,
-        "posY": 22.0,
+        "posX": 440.0,
+        "posY": 638.0,
         "closed": false,
         "windowSizeX": 110.0
       },
       "className": "FolderNode",
       "path": "filter",
+      "type": "FOLDER"
+    },
+    {
+      "children": [
+        {
+          "className": "ButtonNode",
+          "path": "image/load",
+          "type": "TRANSIENT"
+        }
+      ],
+      "window": {
+        "posX": 220.0,
+        "posY": 176.0,
+        "closed": false,
+        "windowSizeX": 110.0
+      },
+      "className": "FolderNode",
+      "path": "image",
       "type": "FOLDER"
     }
   ],

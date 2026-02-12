@@ -10,9 +10,16 @@ String sketchName = "mySketch";
 String saveFormat = ".png";
 int calls = 0;
 long lastTime;
+
+WrapMode currentMode = WrapMode.SINUSOIDAL_WRAP;
 Texture sampler = Texture.HALTON;
 public static final int WIDTH = 2000;
 public static final int HEIGHT = 2000;
+
+public static final float MIN_X = -2;
+public static final float MAX_X = 2;
+public static final float MIN_Y = -2;
+public static final float MAX_Y = 2;
 
 PGraphics pg;
 int outputWidth = 2000; // Higher resolution for saving
@@ -105,11 +112,12 @@ void drawVariationFP(PGraphics pg, float x, float y) {
   PVector v = new PVector(x, y);
   float margin = outputWidth * .95;
   for (int i = 0; i < n; i++) {
-
-    v = subF(rings(leviathan(v, .5), 1.0), disc(julia(v, .5), 1.0));
+    v = popcorn(blob(v, .5), 1.0);
+    v = addF(swirl(rings(v, 1.5), 1.5), v);
 
     //v.set(sinusoidal(v, (x2 - x1) / 2));
-    wrap(v);
+
+    currentMode.wrap(v); 
     float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
     float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);
     pg.point(xx, yy);

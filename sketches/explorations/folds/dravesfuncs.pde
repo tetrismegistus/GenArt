@@ -1,6 +1,3 @@
-PVector sinusoidal(PVector v, float amount) {
-  return new PVector(amount * sin(v.x), amount * sin(v.y));
-}
 
 PVector linear(PVector v, float amount) {
   return new PVector(amount * v.x, amount * v.y);
@@ -97,15 +94,7 @@ PVector spherical(PVector p, float amount) {
 }
 
 
-float getR(PVector p) {
-  float xsq = p.x * p.x;
-  float ysq = p.y * p.y;
-  return sqrt(xsq + ysq);
-}
 
-float getTheta(PVector v) {
-  return atan2(v.x, v.y);
-}
 
 PVector heart(PVector v, float amount) {
   float theta = getTheta(v);
@@ -224,7 +213,7 @@ PVector COS(PVector v, float amount)  {
       return new PVector(amount * x, amount * y);
 }
 
-float rings_c = .5;
+float rings_c = .9;
 PVector rings(PVector v, float amount) {
   float r = getR(v);
   float theta = getTheta(v);
@@ -259,7 +248,7 @@ PVector fan(PVector v, float amount) {
 
 float blob_high = .9;
 float blob_low = .1;
-float blob_waves = 5;
+float blob_waves = 10;
 PVector blob(PVector v, float amount) {
   float theta = getTheta(v);
   float r = getR(v);
