@@ -11,15 +11,15 @@ String saveFormat = ".png";
 int calls = 0;
 long lastTime;
 
-WrapMode currentMode = WrapMode.SINUSOIDAL_WRAP;
+WrapMode currentMode = WrapMode.NO_WRAP;
 Texture sampler = Texture.HALTON;
 public static final int WIDTH = 2000;
 public static final int HEIGHT = 2000;
 
-public static final float MIN_X = -2;
-public static final float MAX_X = 2;
-public static final float MIN_Y = -2;
-public static final float MAX_Y = 2;
+public static final float MIN_X = -3;
+public static final float MAX_X = 3;
+public static final float MIN_Y = -3;
+public static final float MAX_Y = 3;
 
 PGraphics pg;
 int outputWidth = 2000; // Higher resolution for saving
@@ -47,21 +47,19 @@ void setup() {
   pg.beginDraw();
   pg.blendMode(MULTIPLY);
   pg.background(#EFEDE8);
-
+  stipple(pg);
   pg.noFill();
 
   pg.endDraw();
 
   // Initialize domain variables
-  x1 = y1 = -2;
-  x2 = y2 = 2;
+  x1 = y1 = -3;
+  x2 = y2 = 3;
   y = y1;
 
   // Calculate step for drawing variations
   step = sqrt(n) * (x2 - x1) / (2.321 * outputWidth);
 
-  // Draw stipple pattern
-  stipple();
 
   pg.beginDraw();
 
@@ -71,23 +69,21 @@ void setup() {
 
 boolean go = true;
 void draw() {
-
+  background(#FFFFFF);
   if (go) {
     pg.beginDraw();
-    for (int i = 0; (i < 40) & go; i++) { // Draw 20 lines at once
-      for (float x = x1; x <= x2; x += step) {
-        pg.stroke(c1);
-        //float n = map(noise(x, y), 0, 1, .0, .5);
-        drawVariationFP(pg, x, y);
-      }
-      y += step;
-      if (y > y2) {
-        go = false;
-        println("done");
-        pg.save(getTemporalName(sketchName, saveFormat));
+    pg.stroke(c1);
+   
+    for (float y = MIN_Y; y <= MAX_Y; y+= step) {
+      for (float x = MIN_X; x <= MAX_X; x+=step) {
+        drawVariationFP(pg, x, y);  
       }
     }
+    println("done");
+    go = false;
     pg.endDraw();
+    pg.save("out/" + getTemporalName(sketchName, saveFormat));
+
   }
 
   // Display the PGraphics on the main window
@@ -107,16 +103,15 @@ void stipple(PGraphics pg, int k, float rad, color col) {
   println("stippled... whew");
 }
 
-int n = 1;
+int n = 3;
 void drawVariationFP(PGraphics pg, float x, float y) {
   PVector v = new PVector(x, y);
   float margin = outputWidth * .95;
   for (int i = 0; i < n; i++) {
-    v = popcorn(blob(v, .5), 1.0);
-    v = addF(swirl(rings(v, 1.5), 1.5), v);
 
-    //v.set(sinusoidal(v, (x2 - x1) / 2));
-
+    //v = addF(polar(v, 1.0), julia(horseshoe(v, .5), 1.0));
+    //v = julia(addF(popcorn(v, .5), disc(v, .5)), 1.0);
+    v = blob(diamond(v, .5), .5);
     currentMode.wrap(v); 
     float xx = map(v.x + 0.003 * randomGaussian(), x1, x2, margin, outputWidth - margin);
     float yy = map(v.y + 0.003 * randomGaussian(), y1, y2, margin, outputHeight - margin);

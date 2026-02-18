@@ -137,30 +137,30 @@ class Halton {
 }
 
 
-void stipple() {
+void stipple(PGraphics pg) {
   color stroke = #ACABA9;
-  strokeWeight(.5);
-  stroke(stroke);  
+  pg.strokeWeight(.5);
+  pg.stroke(stroke);  
   if (sampler == Texture.POISSON) {
     PoissonDiscSampler sampler = new PoissonDiscSampler(WIDTH, HEIGHT);
     int k = 300; 
     float rad = 1.5;
     ArrayList<PVector> allSamples = sampler.poissonDiskSampling(rad, k);
     for (PVector point : allSamples) {
-      point(point.x, point.y);
+      pg.point(point.x, point.y);
     }
   } else if (sampler == Texture.HALTON) {
     Halton seqGenerator2 = new Halton();
     Halton seqGenerator3 = new Halton();
     for (int i = 0; i < width * height; i++) {
       float r = (width * height)/500;
-      point(seqGenerator2.generate(2) * r, seqGenerator3.generate(3) * r);
+      pg.point(seqGenerator2.generate(2) * r, seqGenerator3.generate(3) * r);
     }
   } else if (sampler == Texture.GAUSSIAN) {
     float factor = 0.5f;
     for (int i = 0; i < width; i++) {
       for (int j = 0; j < height; j++) {
-       point(i + factor * randomGaussian(), j + factor * randomGaussian());
+       pg.point(i + factor * randomGaussian(), j + factor * randomGaussian());
     }
     }
   }

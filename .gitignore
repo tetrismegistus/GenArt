@@ -14,6 +14,8 @@
 *.mts
 *.m2ts
 *.ts
+*.png
+*.jpg
 
 # But do not ignore them inside the media folder
 !media/

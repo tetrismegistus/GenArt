@@ -25,59 +25,59 @@ long lastTime;
 
 
 Texture sampler = Texture.HALTON;
-public static int SEED = 1317065216;
+public static int SEED = 279273088;
 public static final boolean RNDSEED = false;
 WrapMode currentMode = WrapMode.MOD_WRAP;
-public static final int N = 3;
-public static final int WIDTH = 1440;
-public static final int HEIGHT = 3120;
+public static final int N = 1;
+public static final int WIDTH = 2000;
+public static final int HEIGHT = 2000;
 public static final int MARGIN = 50;
-public static final float MIN_X = -2;
-public static final float MAX_X = 2;
+public static final float MIN_X = -3;
+public static final float MAX_X = 3;
 public static final float MIN_Y = -3;
 public static final float MAX_Y = 3;
 public static final float STEP = sqrt(N) * (MAX_X - MIN_X) / (2.321f * WIDTH);
-public static final int MINIMUM_VARIATIONS = 3;
-public static final int MAXIMUM_VARIATIONS = 3;
-public static final float LINEAR_PARAMETER = 1f;
-public static final float SINUSOIDAL_PARAMETER = 1f;
-public static final float HYPERBOLIC_PARAMETER =1f;
+public static final int MINIMUM_VARIATIONS = 2;
+public static final int MAXIMUM_VARIATIONS = 5;
+public static final float LINEAR_PARAMETER = .25f;
+public static final float SINUSOIDAL_PARAMETER = 1.5f;
+public static final float HYPERBOLIC_PARAMETER = 1.75f;
 public static final float PDJ_A_PARAMETER = 3.1f;
-public static final float PDJ_B_PARAMETER = PI;
-public static final float PDJ_C_PARAMETER = 1.4;
-public static final float PDJ_D_PARAMETER = TWO_PI;
-public static final float PDJ_PARAMETER = 2f;
+public static final float PDJ_B_PARAMETER = TWO_PI;
+public static final float PDJ_C_PARAMETER = PI * 10;
+public static final float PDJ_D_PARAMETER = HALF_PI;
+public static final float PDJ_PARAMETER = .5f;
 public static final float DPDJ_PARAMETER = 1f;
 public static final float JULIA_PARAMETER = 1f;
-public static final float SECH_PARAMETER = 1f;
-public static final float BENT_PARAMETER = 1f;
+public static final float SECH_PARAMETER = .5f;
+public static final float BENT_PARAMETER = 2.0f;
 public static final float EX_PARAMETER = .5f;
-public static final float DIAMOND_PARAMETER = 1f;
-public static final float SPIRAL_PARAMETER = 1f;
-public static final float DEJONG_B = 2.71;
-public static final float DEJONG_D = PI;
-public static final float DEJONG_A = -.47;
-public static final float DEJONG_C = TWO_PI;
+public static final float DIAMOND_PARAMETER = 2.25f;
+public static final float SPIRAL_PARAMETER = .5f;
+public static final float DEJONG_B = 5.71;
+public static final float DEJONG_D = TWO_PI;
+public static final float DEJONG_A = 2.47;
+public static final float DEJONG_C = PI;
 public static final float DEJONG_PARAMETER = .5f;
 public static final float POLAR_PARAMETER = 1f;
-public static final float DISC_PARAMETER =1f;
-public static final float RECT_PARAMETER = .5f;
+public static final float DISC_PARAMETER = 1f;
+public static final float RECT_PARAMETER = 1f;
 public static final float HEART_PARAMETER = 1f;
 public static final float SWIRL_PARAMETER = .5f;
 public static final float HORSESHOE_PARAMETER = .5;
-public static final float POPCORN_C_PARAMETER = .1;
+public static final float POPCORN_C_PARAMETER = .3;
 public static final float POPCORN_F_PARAMETER = 1.0;
-public static final float POPCORN_PARAMETER = .5f;
-public static final float SPHERICAL_PARAMETER = 1f;
-public static final float WAVES_B_PARAMETER = 0.3f;
-public static final float WAVES_C_PARAMETER = .5f;
-public static final float WAVES_E_PARAMETER = 1.0f;
-public static final float WAVES_F_PARAMETER = 1.0f;
-public static final float WAVES_PARAMETER = 1f;
-public static final float FISHEYE_PARAMETER = 1f;
+public static final float POPCORN_PARAMETER = .4f;
+public static final float SPHERICAL_PARAMETER = 1.5f;
+public static final float WAVES_B_PARAMETER = 1.3f;
+public static final float WAVES_C_PARAMETER = 1.5f;
+public static final float WAVES_E_PARAMETER = HALF_PI;
+public static final float WAVES_F_PARAMETER = TWO_PI;
+public static final float WAVES_PARAMETER = .75f;
+public static final float FISHEYE_PARAMETER = 1.5f;
 public static final float EXPONENTIAL_PARAMETER = .5f;
-public static final float HANDKERCHIEF_PARAMETER = 2f;
-public static final float POWER_PARAMETER = 1f;
+public static final float HANDKERCHIEF_PARAMETER = .5f;
+public static final float POWER_PARAMETER = 1.5f;
 PGraphics buffer;
 
 color[] palette = {
@@ -130,7 +130,7 @@ void draw() {
 
   buffer.endDraw();
 
-  image(buffer, 100, 0);  // draw buffer to screen
+  image(buffer, 0, 0);  // draw buffer to screen
 
   buffer.save(getTemporalName(sketchName, saveFormat));
   println("ding");

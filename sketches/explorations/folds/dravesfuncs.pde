@@ -20,6 +20,15 @@ PVector polar(PVector v, float amount) {
     return new PVector(x, y);
 }
 
+PVector disc(PVector v, float amount) {
+  float theta = getTheta(v);
+  float r = getR(v);
+  float x = theta / PI * sin(PI * r);
+  float y = theta / PI * cos(PI * r);
+  return new PVector(amount * x, amount * y);
+}
+
+
 PVector handkerchief(PVector v, float amount) {
   float theta = getTheta(v);
   float r = getR(v);
@@ -76,6 +85,16 @@ PVector julia(PVector v, float amount) {
   return new PVector(x, y);
 }
 
+PVector polar(PVector v) {
+    float theta = getTheta(v);
+    float r = getR(v);
+    float x = theta/PI;
+    float y = r - 1.0;
+    return new PVector(x, y);
+}
+
+
+
 
 
 PVector sech(PVector p, float weight) {
@@ -104,14 +123,6 @@ PVector heart(PVector v, float amount) {
   return new PVector(x * amount, y * amount);
 }
 
-PVector polar(PVector v) {
-    float theta = getTheta(v);
-    float r = getR(v);
-    float x = theta/PI;
-    float y = r - 1.0;
-    return new PVector(x, y);
-}
-
 
 PVector handkerchief(PVector v) {
   float theta = getTheta(v);
@@ -119,14 +130,6 @@ PVector handkerchief(PVector v) {
   float x = r * (sin(theta + r));
   float y = cos(theta - r);
   return new PVector(x, y);
-}
-
-PVector disc(PVector v, float amount) {
-  float theta = getTheta(v);
-  float r = getR(v);
-  float x = theta / PI * sin(PI * r);
-  float y = theta / PI * cos(PI * r);
-  return new PVector(amount * x, amount * y);
 }
 
 PVector spiral(PVector v, float amount) {
@@ -227,7 +230,7 @@ PVector rings(PVector v, float amount) {
 
 
 float fan_c = .1;
-float fan_f = .8;
+float fan_f = .4;
 PVector fan(PVector v, float amount) {
   float t = PI * pow(fan_c, 2);
   float theta = getTheta(v);
