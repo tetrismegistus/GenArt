@@ -859,7 +859,7 @@
             }
           ],
           "window": {
-            "posX": 792.0,
+            "posX": 638.0,
             "posY": 154.0,
             "closed": false,
             "windowSizeX": 154.0
@@ -1070,8 +1070,8 @@
             }
           ],
           "window": {
-            "posX": 484.0,
-            "posY": 418.0,
+            "posX": 792.0,
+            "posY": 550.0,
             "closed": false,
             "windowSizeX": 176.0
           },
