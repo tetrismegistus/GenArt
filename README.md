@@ -8,9 +8,12 @@ Most sketches are written in the [Processing framework](https://processing.org/)
 Originally intended primarily as a backup archive, it’s grown into a public record of my work.  
 Pull requests, comments, issues, and suggestions are welcome — whether you’re offering code improvements, visual tweaks, or entirely new directions to explore.
 
-## Browse the Gallery
-The full visual index of sketches is available here:
+## See and Find out more on my website
 
-➡️ **[View the Gallery](sketches/README.md)**
+[The Last Index](https://thelastindex.com/)
+
+Images are also availabe here in a smaller repo gallery:
+
+[View the Gallery](sketches/README.md)
 
 Each entry links to its source folder so you can explore the code, assets, and outputs in more detail.
