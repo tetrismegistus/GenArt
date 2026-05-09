@@ -10,7 +10,9 @@ Pull requests, comments, issues, and suggestions are welcome — whether you’r
 
 ## See and Find out more on my website
 
-[The Last Index](https://thelastindex.com/)
+<a href="https://thelastindex.com">
+  <img src="https://thelastindex.com/images/og_default.webp" alt="The Last Index" width="600">
+</a>
 
 Images are also availabe here in a smaller repo gallery:
 
